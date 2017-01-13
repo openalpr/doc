@@ -6,7 +6,7 @@ Camera Placement Guide
 
 "How accurate is your LPR system?"  This is one of the most common questions we are asked at OpenALPR, and it is also the most difficult to answer.  License Plate Recognition accuracy is highly dependent on the input video.  If the camera is setup properly, accuracy will be high.  Conversely, if the camera does not clearly capture license plates, accuracy will be adversely affected.
 
-A simple test to verify that your camera can work with an LPR system is to watch the video stream.  Freeze a frame as a car drives past and try to read the number plates yourself.  If you cannot easily read the plate numbers, then the LPR system will not be successful.  Even if the plate numbers are legible, it still may not be ideally configured for LPR.  Human brains are remarkably good at identifying patterns from visual imagery.  A computer needs a clear, ideal image to perform optimally. 
+A simple test to verify that your camera can work with an LPR system is to see for yourself.  Freeze a frame as a car drives past and try to read the number plates yourself.  If you cannot easily read the plate numbers, then the LPR system will not be successful.  Even if the plate numbers are legible, it still may not be ideally configured for LPR.  Human brains are remarkably good at identifying patterns from visual imagery.  A computer needs a clear, ideal image to perform optimally. 
 
 In the image below, the license plate appears to be legible.  We can read the characters: "GFP 3054".  The letters, however, do not have a sharp contrast.  They blur into shades of gray that blend into the plate background and other characters.  A machine will struggle to read these plates accurately.
 
@@ -31,9 +31,9 @@ Lighting
 
 Adequate lighting is critical to capturing a clear image of a license plate on a moving vehicle.  Sometimes this means installing an external illuminator.  The amount of lighting required to capture fast-moving objects (without the help of bright sunlight) is often more than you may expect.  
 
-Cameras automatically adjust their shutter speed based on the amount of available light in the scene.  At high-noon, on a clear sunny day, the shutter may only open itself up for 1/10000th of a second to capture a video frame.  Because there is so much light in the environment, opening the shutter for longer would overexpose the photo.  On a dark night, the shutter may remain open for an entire second to capture enough light to create a photo.
+Cameras automatically adjust their shutter speed based on the amount of available light in the scene.  At high-noon, on a clear sunny day, the shutter may only open itself up for 1/10000th of a second to capture a video frame.  Because there is so much light in the environment, opening the shutter for longer would overexpose the photo.  On a dark night, the shutter may remain open for an entire second to capture enough light to capture the image.
 
-The shutter speed is important because it directly correlates to the blurriness of a moving vehicle.  In the example above, if the shutter is opened for just 1/10000th of a second, a vehicle traveling 60mph would have only moved 1/10th of an inch.  This would result in virtually no blur on the license plate image.  If the shutter was opened for a full second, that same vehicle would have traveled 88 feet.  You can imagine how blurry that license plate would be if it was captured using such a slow shutter.  It would be illegible to a human or computer.
+The shutter speed is important because it directly correlates to the sharpness of a moving vehicle.  In the example above, if the shutter is opened for just 1/10000th of a second, a vehicle traveling 60mph would have only moved 1/10th of an inch.  This would result in virtually no motion blur on the license plate image.  If the shutter was opened for a full second, that same vehicle would have traveled 88 feet.  You can imagine how blurry that license plate would be if it was captured using such a slow shutter.  It would be illegible to a human or computer.
 
   .. image:: images/camera_setup/motion_blur.jpg
       :scale: 100%
@@ -43,7 +43,7 @@ Unfortunately, simply setting the shutter speed to a faster value will not impro
 
 If the camera is capable of infrared capture, you can use an external infrared illuminator pointed in the direction of the vehicles.  This has the advantage of being invisible to the naked eye.  Alternatively, a spotlight can be installed to improve capture shutter speed.
 
-Some cameras also include an IR Cut filter to help for night captures.  This will help when the vehicle image is captured from the front with very bright headlights pointed towards the camera.  The filter will remove the extremely bright headlights, while leaving the less bright license plate image clearly visible.
+Some cameras also include an IR cut filter to help for night captures.  This will help when the vehicle image is captured from the front with very bright headlights pointed towards the camera.  The filter will remove the extremely bright headlights, while leaving the less bright license plate image clearly visible.
 
   .. image:: images/camera_setup/lighting_combined.png
       :scale: 100%
