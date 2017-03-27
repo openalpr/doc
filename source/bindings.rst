@@ -292,6 +292,6 @@ Results will be sent back in the following JSON format:
 OpenALPR Agent
 ====================
 
-OpenALPR can also be configured as a "black box" that makes data available to other systems.  When configured in this mode, OpenALPR is installed as a Linux daemon, and is configured to monitor one or more MJPEG video streams.  It automatically processes the images and produces JSON data describing the license plates found int he images.  This data can either be pushed to another server (as an HTTP POST) or pulled from another server (via beanstalkd queue).
+OpenALPR can also be configured as a "black box" that makes data available to other systems.  When configured in this mode, OpenALPR is installed as a Linux daemon, and is configured to monitor one or more MJPEG and H.264 video streams.  It automatically processes the images and produces JSON data describing the license plates found in the images.  This data can either be pushed to another server (as an HTTP POST) or pulled from another server (via beanstalkd queue).
 
 More information about the OpenALPR agent is available here: :ref:`alprd`
