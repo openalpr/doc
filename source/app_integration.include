@@ -1,0 +1,806 @@
+
+There are two ways that you may choose to integration OpenALPR with your application.  You may:
+
+  - Use the Commercial SDK to compile OpenALPR code libraries into your application and process individual image frames.  
+  - Run the OpenALPR Agent to directly pull video feeds and send the plate results and images to your application.
+
+
+.. _language_bindings:
+
+Commercial SDK
+------------------
+
+OpenALPR is available as a C/C++ library and has bindings in C#, Java, and Python.  The SDK receives image frames as input, and outputs license plate recognition results.  
+
+Installation
+..................
+
+Windows
+########
+
+The Windows SDK package can be downloaded here:
+http://deb.openalpr.com/windows-sdk/openalpr64-sdk-latest.zip
+
+Linux
+#######
+
+The Linux SDK is available in OpenALPR's commercial APT repository.  The libopenalpr-dev package will install the necessary headers and library packages onto your system.  To install, run:
+
+  ```
+  bash <(curl http://deb.openalpr.com/install)
+  ```
+
+Select "install_sdk" from the menu.  
+
+C
+..................
+
+First, install the OpenALPR library on your target platform.  Make sure that the software runs by testing it using the alpr command-line executable.  
+
+1. Add "alpr_c.h" as an include file to your project.
+2. Include the libopenalprc.dll (Windows) or libopenalprc.so (Unix) file with your binaries
+3. Include all other required shared libraries
+4. Put the openalpr.conf and runtime_data directory in the same location as the binaries.  Alternatively, you can specify the location of the runtime_data in openalpr.conf or directly in the code.
+5. Add a commercial license key to the "license.conf" file in the same location as the binaries  
+
+Below is a simple usage example of using the OpenALPR library using the C library:
+
+.. code-block:: c
+
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <alpr_c.h>
+
+    long read_file(const char* file_path, unsigned char** buffer)
+    {
+        FILE *fileptr;
+        long filelen;
+
+        fileptr = fopen(file_path, "rb");     // Open the file in binary mode
+        if (!fileptr)
+            return 0;
+        
+        fseek(fileptr, 0, SEEK_END);          // Jump to the end of the file
+        filelen = ftell(fileptr);             // Get the current byte offset in the file
+        rewind(fileptr);                      // Jump back to the beginning of the file
+
+        *buffer = (unsigned char *)malloc((filelen+1)*sizeof(char)); // Enough memory for file + \0
+        fread(*buffer, filelen, 1, fileptr); // Read in the entire file
+        fclose(fileptr); // Close the file
+
+        return filelen;
+    }
+
+    int main(int argc, char *argv[])
+    {
+        OPENALPR* alpr_obj;
+
+        if (argc != 2)
+        {
+            printf("Usage: %s [path to image file]\n", argv[0]);
+            return 1;
+        }
+
+        const char* file_path = argv[1];
+
+        // Leaving the config and runtime directory blank to look for these in the current directory
+        alpr_obj = openalpr_init("us", "", "");
+
+        if (openalpr_is_loaded(alpr_obj))
+        {
+            // We don't want to restrict the size of the recognition area, so we set this to an extremely large pixel size
+            // rather than decode and find the actual image width/height
+            struct AlprCRegionOfInterest roi;
+            roi.x = 0;
+            roi.y = 0;
+            roi.width = 10000;
+            roi.height = 10000;
+
+            // Read the image file
+            unsigned char* buffer;
+            long long length = read_file(file_path, &buffer);
+
+            printf("file size (bytes): %d\n", length);
+
+            if (length > 0)
+            {
+                char* plate_response = openalpr_recognize_encodedimage(alpr_obj, buffer, length, roi);
+                printf("Alpr response:\n%s\n", plate_response);
+                openalpr_free_response_string(plate_response);
+            }
+
+            free(buffer);
+
+
+        }
+
+        openalpr_cleanup(alpr_obj);
+
+
+        return 0;
+    }
+
+
+C++
+..................
+
+The C++ commercial SDK is available for Linux.  On Windows, it is recommended that you use the C library for both C and C++ since it is ubiquitously supported across all Visual Studio toolchains.
+
+Add "alpr.h" as an include file to your project.
+
+Below is a simple usage example of using the OpenALPR library using the C library:
+
+
+.. code-block:: c++ 
+
+
+    #include <alpr.h>
+
+    // Initialize the library using United States style license plates.  
+    // You can use other countries/regions as well (for example: "eu", "au", or "kr")
+    alpr::Alpr openalpr("us", "/path/to/openalpr.conf");
+
+    // Optionally specify the top N possible plates to return (with confidences).  Default is 10
+    openalpr.setTopN(20);
+
+    // Optionally, provide the library with a region for pattern matching.  This improves accuracy by 
+    // comparing the plate text with the regional pattern.
+    openalpr.setDefaultRegion("md");
+
+    // Make sure the library loaded before continuing.  
+    // For example, it could fail if the config/runtime_data is not found
+    if (openalpr.isLoaded() == false)
+    {
+        std::cerr << "Error loading OpenALPR" << std::endl;
+        return 1;
+    }
+
+    // Recognize an image file.  You could alternatively provide the image bytes in-memory.
+    alpr::AlprResults results = openalpr.recognize("/path/to/image.jpg");
+
+    // Iterate through the results.  There may be multiple plates in an image, 
+    // and each plate return sthe top N candidates.
+    for (int i = 0; i < results.plates.size(); i++)
+    {
+      alpr::AlprPlateResult plate = results.plates[i];
+      std::cout << "plate" << i << ": " << plate.topNPlates.size() << " results" << std::endl;
+      
+        for (int k = 0; k < plate.topNPlates.size(); k++)
+        {
+          alpr::AlprPlate candidate = plate.topNPlates[k];
+          std::cout << "    - " << candidate.characters << "\t confidence: " << candidate.overall_confidence;
+          std::cout << "\t pattern_match: " << candidate.matches_template << std::endl;
+        }
+    }
+
+
+C# and VB.NET
+..................
+
+Source code: https://github.com/openalpr/openalpr/tree/master/src/bindings/csharp
+
+.. code-block:: c#
+
+    using openalprnet;
+
+    var alpr = new AlprNet("us", "/path/to/openalpr.conf", "/path/to/runtime_data");
+    if (!alpr.IsLoaded())
+    {
+        Console.WriteLine("OpenAlpr failed to load!");
+        return;
+    }
+    // Optionally apply pattern matching for a particular region
+    alpr.DefaultRegion = "md";
+
+    var results = alpr.Recognize("/path/to/image.jpg");
+
+    foreach (var result in results.Plates)
+    {
+        Console.WriteLine("Plate {0}: {1} result(s)", i++, result.TopNPlates.Count);
+        Console.WriteLine("  Processing Time: {0} msec(s)", result.ProcessingTimeMs);
+        foreach (var plate in result.TopNPlates)
+        {
+            Console.WriteLine("  - {0}\t Confidence: {1}\tMatches Template: {2}", plate.Characters,
+                              plate.OverallConfidence, plate.MatchesTemplate);
+        }
+    }
+
+
+
+
+Python
+..................
+
+Source code: https://github.com/openalpr/openalpr/tree/master/src/bindings/python
+
+.. code-block:: python
+
+    from openalpr import Alpr
+
+    alpr = Alpr("us", "/path/to/openalpr.conf", "/path/to/runtime_data")
+    if not alpr.is_loaded():
+        print("Error loading OpenALPR")
+        sys.exit(1)
+        
+    alpr.set_top_n(20)
+    alpr.set_default_region("md")
+
+    results = alpr.recognize_file("/path/to/image.jpg")
+
+    i = 0
+    for plate in results['results']:
+        i += 1
+        print("Plate #%d" % i)
+        print("   %12s %12s" % ("Plate", "Confidence"))
+        for candidate in plate['candidates']:
+            prefix = "-"
+            if candidate['matches_template']:
+                prefix = "*"
+
+            print("  %s %12s%12f" % (prefix, candidate['plate'], candidate['confidence']))
+
+    # Call when completely done to release memory
+    alpr.unload()
+
+
+
+Java
+..................
+
+Source code: https://github.com/openalpr/openalpr/tree/master/src/bindings/java
+
+.. code-block:: java
+
+    import com.openalpr.jni.Alpr;
+    import com.openalpr.jni.AlprPlate;
+    import com.openalpr.jni.AlprPlateResult;
+    import com.openalpr.jni.AlprResults;
+
+    Alpr alpr = new Alpr("us", "/path/to/openalpr.conf", "/path/to/runtime_data");
+
+    // Set top N candidates returned to 20
+    alpr.setTopN(20);
+
+    // Set pattern to Maryland
+    alpr.setDefaultRegion("md");
+
+    AlprResults results = alpr.recognize("/path/to/image.jpg");
+    System.out.format("  %-15s%-8s\n", "Plate Number", "Confidence");
+    for (AlprPlateResult result : results.getPlates())
+    {
+        for (AlprPlate plate : result.getTopNPlates()) {
+            if (plate.isMatchesTemplate())
+                System.out.print("  * ");
+            else
+                System.out.print("  - ");
+            System.out.format("%-15s%-8f\n", plate.getCharacters(), plate.getOverallConfidence());
+        }
+    }
+
+    // Make sure to call this to release memory
+    alpr.unload();
+
+
+Node.js
+..................
+
+A Node.js binding to OpenALPR is available here:
+https://www.npmjs.com/package/node-openalpr
+
+The source code is available here:
+https://github.com/netPark/node-openalpr
+
+
+
+
+
+Integrating with the Agent
+------------------------------
+
+The OpenALPR agent runs as either a Windows service on Windows or a daemon on Linux.  The process runs constantly in the background and watches the configured video streams for license plates.  When a license plate is found, it immediately places JSON data onto a local beanstalkd queue for uploading or processing.
+
+Depending on your application, you must decide whether your application should receive data from OpenALPR (sent via HTTP POST) or whether it should pull data from a queue on-demand.  Both approaches are equally valid, it just depends on what is the most appropriate way to integrate based on your application architecture.
+
+
+Receiving HTTP POSTs
+......................
+
+The OpenALPR agent can be configured to send HTTP POSTs to your own HTTP server.  To enable this option, set the following parameters in /etc/openalpr/alprd.conf:
+
+.. code-block:: ini
+
+    upload_data = 1
+    upload_address = [Your HTTP server endpoint]
+    websockets_enabled = 0
+    web_server_enabled = 1
+
+You must also add a valid On-Premises license to /etc/openalpr/license.conf
+
+Once updated, restart the OpenALPR agent service for the settings to take effect.  As plates are recognized, the JSON data described in this section will be sent to your HTTP server as an HTTP POST.
+
+
+Pulling from the Queue
+.........................
+
+OpenALPR maintains a local Beanstalkd queue.  All JSON results are placed onto this queue.  Your application can pull from this queue to grab the latest plate results and process them.  
+
+Beanstalkd maintains client libraries in many popular programming languages.  For a complete list, visit: https://github.com/kr/beanstalkd/wiki/Client-Libraries
+
+To configure OpenALPR to make the results available via the local queue, set the following parameters in /etc/openalpr/alprd.conf:
+
+.. code-block:: ini
+
+    upload_data = 0
+    websockets_enabled = 0
+    web_server_enabled = 1
+
+You must also add a valid On-Premises license to /etc/openalpr/license.conf
+
+Once updated, restart the OpenALPR agent service for the settings to take effect.
+
+
+Below is a sample Python script that pulls from the local Beanstalkd queue for results:
+
+.. code-block:: python
+
+    #!/usr/bin/python
+
+    import beanstalkc
+    import json
+    from pprint import pprint
+
+    beanstalk = beanstalkc.Connection(host='localhost', port=11300)
+
+    TUBE_NAME='alprd'
+
+    # For diagnostics, print out a list of all the tubes available in Beanstalk
+    print beanstalk.tubes()
+
+    # For diagnostics, print the number of items on the current alprd queue
+    try:
+        pprint(beanstalk.stats_tube(TUBE_NAME)) 
+    except beanstalkc.CommandFailed:
+        print "Tube doesn't exist"
+
+    # Watch the "alprd" tube, this is where the plate data is.
+    beanstalk.watch(TUBE_NAME)
+
+    # Loop forever
+    while True:
+
+        # Wait for a second to get a job.  If there's a job, process it and delete it from the queue.  
+        # If not, go back to sleep
+        job = beanstalk.reserve(timeout=1.0)
+
+        if job is None:
+            print "No plates available right now, waiting..."
+
+        else:
+            print "Found a plate!"
+            plates_info = json.loads(job.body)
+
+            # Print all the info about this plate to the console
+            pprint(plates_info)
+
+            # Do something with this data (e.g., match a list, open a gate, etc.)
+            if 'data_type' not in plates_info:
+                print "This shouldn't be here... all OpenALPR data should have a data_type"
+            elif plates_info['data_type'] == 'alpr_results':
+                print "This is a plate result"
+            elif plates_info['data_type'] == 'alpr_group':
+                print "This is a group result"
+            elif plates_info['data_type'] == 'heartbeat':
+                print "This is a heartbeat"
+
+            # Delete the job from the queue now that we have processed it
+            job.delete()
+
+
+JSON Plate Results
+...................
+
+OpenALPR generates an "alpr_results" JSON value for every frame of video where a license plate is recognized.  This value will be sent multiple times for a single vehicle.  For example, as a video drives past the camera over the course of 3 seconds, OpenALPR may recognize the same license plate 50 times.  All 50 recognition results will be recorded as alpr_results JSON values.
+
+The number of recognition results largely depends on the processing speed and number of cameras being processed.  A faster processor will produce more of these per vehicle, since it is able to process video frames at a faster rate.  
+
+Individual plate results are best suited for applications that need to operate on plate data in real-time. 
+
+JSON Plate results are sent in the following format:
+
+.. code-block:: json
+
+    {
+      "version": 2,
+      "data_type": "alpr_results",
+      "epoch_time": 1490574589596,
+      "img_width": 1280,
+      "img_height": 720,
+      "processing_time_ms": 259.132385,
+      "error": false,
+      "regions_of_interest": [
+        {
+          "x": 60,
+          "y": 600,
+          "width": 620,
+          "height": 120
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "width": 1280,
+          "height": 570
+        }
+      ],
+      "results": [
+        {
+          "plate": "AE1T3E",
+          "confidence": 93.904076,
+          "matches_template": 1,
+          "plate_index": 0,
+          "region": "mo",
+          "region_confidence": 34,
+          "processing_time_ms": 17.029213,
+          "requested_topn": 10,
+          "coordinates": [
+            {
+              "x": 110,
+              "y": 300
+            },
+            {
+              "x": 227,
+              "y": 295
+            },
+            {
+              "x": 227,
+              "y": 348
+            },
+            {
+              "x": 113,
+              "y": 352
+            }
+          ],
+          "vehicle_region": {
+            "x": 0,
+            "y": 34,
+            "width": 433,
+            "height": 433
+          },
+          "candidates": [
+            {
+              "plate": "AE1T3E",
+              "confidence": 93.904076,
+              "matches_template": 1
+            },
+            {
+              "plate": "AET3E",
+              "confidence": 83.211739,
+              "matches_template": 0
+            },
+            {
+              "plate": "A1T3E",
+              "confidence": 79.840271,
+              "matches_template": 0
+            },
+            {
+              "plate": "AE1T3F",
+              "confidence": 79.130386,
+              "matches_template": 1
+            },
+            {
+              "plate": "AEIT3E",
+              "confidence": 78.878433,
+              "matches_template": 0
+            },
+            {
+              "plate": "4E1T3E",
+              "confidence": 78.217575,
+              "matches_template": 0
+            },
+            {
+              "plate": "AT3E",
+              "confidence": 69.147926,
+              "matches_template": 0
+            },
+            {
+              "plate": "AET3F",
+              "confidence": 68.438042,
+              "matches_template": 0
+            },
+            {
+              "plate": "4ET3E",
+              "confidence": 67.52523,
+              "matches_template": 0
+            },
+            {
+              "plate": "A1T3F",
+              "confidence": 65.066574,
+              "matches_template": 0
+            }
+          ]
+        }
+      ],
+      "uuid": "unspecified-cam16488027-1490574589596",
+      "camera_id": 16488027,
+      "agent_uid": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
+      "agent_version": "2.3.111",
+      "agent_type": "alprd",
+      "site_id": "unspecified",
+      "company_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+
+
+JSON Group Results
+...................
+
+
+OpenALPR generates an "alpr_group" JSON value for a collection of similar license plates.  This generally means a single plate group per vehicle.  After the plate has no longer been seen for a number of seconds, the plate_group result is sent with a reference (by UUID) to all the individual plate results that make up the group.  The group also includes a best estimate for the license plate number based on a weighted score from all the frames that are included in the group.
+
+Additionally, each plate group also includes a detection value for the make/model, color, and vehicle body type.
+
+Group results are most suitable for surveillance type purposes.  When using these values, the results may be delayed by up to 10 seconds after the vehicle has passed, so it is important that the application is not sensitive to this delay.  If more real-time results are needed, it is recommended to ignore the plate group value and only use the individual plate results.
+
+ALPR group results are sent in the following JSON format:
+
+.. code-block:: json
+
+    {
+      "data_type": "alpr_group",
+      "version": 2,
+      "epoch_start": 1490574595962,
+      "epoch_end": 1490574596287,
+      "company_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "agent_uid": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
+      "agent_version": "2.3.111",
+      "agent_type": "alprd",
+      "site_id": "unspecified",
+      "camera_id": 16488027,
+      "country": "us",
+      "uuids": [
+        "unspecified-cam16488027-1490574595962",
+        "unspecified-cam16488027-1490574596287"
+      ],
+      "best_plate": {
+        "plate": "DA0C7L",
+        "confidence": 84.679863,
+        "matches_template": 1,
+        "plate_index": 1,
+        "region": "mo",
+        "region_confidence": 96,
+        "processing_time_ms": 13.995705,
+        "requested_topn": 10,
+        "coordinates": [
+          {
+            "x": 456,
+            "y": 267
+          },
+          {
+            "x": 545,
+            "y": 264
+          },
+          {
+            "x": 545,
+            "y": 309
+          },
+          {
+            "x": 457,
+            "y": 312
+          }
+        ],
+        "vehicle_region": {
+          "x": 281,
+          "y": 0,
+          "width": 440,
+          "height": 440
+        },
+        "candidates": [
+          {
+            "plate": "DAOC7L",
+            "confidence": 88.139191,
+            "matches_template": 0
+          },
+          {
+            "plate": "DA0C7L",
+            "confidence": 84.679863,
+            "matches_template": 1
+          },
+          {
+            "plate": "DADC7L",
+            "confidence": 79.067734,
+            "matches_template": 0
+          },
+          {
+            "plate": "DAOC7U",
+            "confidence": 73.676315,
+            "matches_template": 0
+          },
+          {
+            "plate": "0AOC7L",
+            "confidence": 72.70826,
+            "matches_template": 0
+          },
+          {
+            "plate": "DA0C7U",
+            "confidence": 70.21698,
+            "matches_template": 1
+          },
+          {
+            "plate": "0A0C7L",
+            "confidence": 69.248924,
+            "matches_template": 0
+          },
+          {
+            "plate": "DADC7U",
+            "confidence": 64.604858,
+            "matches_template": 0
+          },
+          {
+            "plate": "0ADC7L",
+            "confidence": 63.63681,
+            "matches_template": 0
+          },
+          {
+            "plate": "0AOC7U",
+            "confidence": 58.245377,
+            "matches_template": 0
+          }
+        ]
+      },
+      "best_confidence": 84.679863,
+      "best_uuid": "unspecified-cam16488027-1490574595962",
+      "best_plate_number": "DA0C7L",
+      "best_region": "mo",
+      "best_region_confidence": 97.5,
+      "vehicle": {
+        "color": [
+          {
+            "name": "white",
+            "confidence": 99.999962
+          },
+          {
+            "name": "silver",
+            "confidence": 4.0e-5
+          },
+          {
+            "name": "red",
+            "confidence": 5.664504e-7
+          },
+          {
+            "name": "blue",
+            "confidence": 3.373436e-7
+          },
+          {
+            "name": "gold",
+            "confidence": 2.925424e-7
+          }
+        ],
+        "make": [
+          {
+            "name": "acura",
+            "confidence": 64.059357
+          },
+          {
+            "name": "lincoln",
+            "confidence": 24.78327
+          },
+          {
+            "name": "mercury",
+            "confidence": 6.1188
+          },
+          {
+            "name": "ford",
+            "confidence": 4.258654
+          },
+          {
+            "name": "volvo",
+            "confidence": 0.305573
+          }
+        ],
+        "make_model": [
+          {
+            "name": "acura_tl",
+            "confidence": 68.735374
+          },
+          {
+            "name": "lincoln_mks",
+            "confidence": 22.445047
+          },
+          {
+            "name": "ford_fusion",
+            "confidence": 1.551949
+          },
+          {
+            "name": "acura_rl",
+            "confidence": 1.425493
+          },
+          {
+            "name": "mercury_milan",
+            "confidence": 0.626989
+          }
+        ],
+        "body_type": [
+          {
+            "name": "sedan-standard",
+            "confidence": 99.998665
+          },
+          {
+            "name": "antique",
+            "confidence": 0.000653
+          },
+          {
+            "name": "sedan-compact",
+            "confidence": 0.000403
+          },
+          {
+            "name": "suv-crossover",
+            "confidence": 0.000167
+          },
+          {
+            "name": "sedan-sport",
+            "confidence": 6.5e-5
+          }
+        ]
+      }
+    }
+
+JSON Heartbeat
+..............
+
+Every minute, the OpenALPR agent adds a heartbeat message to the queue.  The heartbeat provides general health and status information.  The format is as follows:
+
+.. code-block:: json
+
+    {
+      "data_type": "heartbeat",
+      "company_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "agent_uid": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
+      "agent_version": "3.0.1",
+      "openalpr_version": "2.3.111",
+      "os": "linux",
+      "agent_type": "alprd",
+      "site_id": "unspecified",
+      "timestamp": 1490039466942,
+      "system_uptime_seconds": 831550,
+      "daemon_uptime_seconds": 60,
+      "cpu_cores": 8,
+      "cpu_last_update": 1490039462237,
+      "cpu_usage_percent": 50.823528,
+      "disk_quota_total_bytes": 0,
+      "disk_quota_consumed_bytes": 0,
+      "disk_quota_last_update": 0,
+      "memory_consumed_bytes": 65590419456,
+      "memory_last_update": 1490039462237,
+      "memory_swapused_bytes": 0,
+      "memory_swaptotal_bytes": 12813594624,
+      "memory_total_bytes": 67482710016,
+      "processing_threads_active": 1,
+      "processing_threads_configured": 1,
+      "beanstalk_queue_size": -1,
+      "video_streams": [
+        {
+          "camera_id": 16488027,
+          "fps": 12,
+          "is_streaming": true,
+          "url": "rtsp://10.1.1.1/video.h264",
+          "last_update": 1490039466541
+        }
+      ]
+    }
+
+
+Local Image Retrieval
+-----------------------
+
+The OpenALPR agent exposes a simple web service for retrieving license plate images.  Each image is referenced by a UUID that is sent along with the JSON metadata.
+
+By default, this web server is disabled on the agent, but you can turn it on by adding "web_server_enabled = 1" to the alprd.conf file.
+
+Assuming that the daemon port is set to the default (8355), the full image is referenced using the following URL:
+
+  - http://[*Agent_IP*]:8355/img/[*plate_event_uuid*].jpg
+
+In some cases, you may prefer to just retrieve a cropped image around the license plate.  This would require significantly less bandwidth than downloading the entire source image.  The X and Y coordinates can be computed from the JSON metadata x/y coordinates of the license plate.  The x1/y1 coordinates reference the top-left of the license plate crop region, and the x2/y2 coordinates reference the bottom right.  For example, assuming the crop is located at (477,258), (632,297):
+
+  - http://[*Agent_IP*]:8355/crop/[*plate_event_uuid*]?x1=477&y1=258&x2=632&y2=297
+
+Additionally, the web server exposes a `web service API <api/>`_ for searching license plates and groups.  Detailed documentation is available in the :ref:`web server section <web_services_api>`

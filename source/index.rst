@@ -13,29 +13,24 @@ OpenALPR is an open source Automatic License Plate Recognition library written i
 
 The software can be used in many different ways.  For example, with OpenALPR you can:
 
-  #. Recognize license plates from camera streams.  The results are :ref:`browsable, searchable and can trigger alerts <web_server>`.  The data repository can be in the cloud or stored entirely within your network on-premises. `*`
-  #. Recognize license plates from camera streams and :ref:`send the results to your own application <alprd>`.
-  #. :ref:`Process a video file <video_processing>` and store the license plate results in a CSV and SQLite database. `*`
+  #. Recognize license plates from camera streams.  The results are :ref:`browsable, searchable and can trigger alerts <web_server>`.  The data repository can be in the cloud or stored entirely within your network on-premises. 
+  #. Recognize license plates from camera streams and :ref:`send the results to your own application <on_premises>`.
+  #. :ref:`Process a video file <video_processing>` and store the license plate results in a CSV and SQLite database. 
   #. Analyze still images from the :ref:`command-line <alpr_command_line>`
   #. Integrate license plate recognition into your application :ref:`directly in-code (C/C++, C#, VB.NET, Java, Python, Node.js) <language_bindings>`
-  #. Run OpenALPR as a :ref:`web service <alpr_web_service>`.  A JPG image is sent over HTTP POST, the OpenALPR web service responds with the license plate information in the image. `*`
 
-`*` Requires  :ref:`OpenALPR Commercial License <commercial>`
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
 
-   compiling
-   commandline
-   bindings
-   alprd
-   web_server
-   video_processing
-   accuracy_improvements
+   cloud_stream
+   on_premises
+   cloud_api
+   opensource
    camera_placement
-   commercial
+
 
 
 Indices and tables
