@@ -26,9 +26,10 @@ Linux
 
 The Linux SDK is available in OpenALPR's commercial APT repository.  The libopenalpr-dev package will install the necessary headers and library packages onto your system.  To install, run:
 
-  ```
-  bash <(curl http://deb.openalpr.com/install)
-  ```
+  .. code-block:: bash
+
+    bash <(curl http://deb.openalpr.com/install)
+
 
 Select "install_sdk" from the menu.  
 
@@ -400,7 +401,7 @@ Below is a sample Python script that pulls from the local Beanstalkd queue for r
 JSON Plate Results
 ...................
 
-OpenALPR generates an "alpr_results" JSON value for every frame of video where a license plate is recognized.  This value will be sent multiple times for a single vehicle.  For example, as a video drives past the camera over the course of 3 seconds, OpenALPR may recognize the same license plate 50 times.  All 50 recognition results will be recorded as alpr_results JSON values.
+OpenALPR generates an "alpr_results" JSON value for every frame of video where a license plate is recognized.  This value will be sent multiple times for a single vehicle.  For example, as a vehicle drives past the camera over the course of 3 seconds, OpenALPR may recognize the same license plate 50 times.  All 50 recognition results will be recorded as alpr_results JSON values.
 
 The number of recognition results largely depends on the processing speed and number of cameras being processed.  A faster processor will produce more of these per vehicle, since it is able to process video frames at a faster rate.  
 

@@ -64,9 +64,10 @@ Linux
   2. Follow this `installation guide <http://www.ubuntu.com/download/desktop/install-ubuntu-desktop>`_ to install Ubuntu 16.04 64-bit.
   3. Run the following command from the terminal:
 
-  ```
-  bash <(curl http://deb.openalpr.com/install)
-  ```
+  .. code-block:: bash
+
+    bash <(curl http://deb.openalpr.com/install)
+
 
   4. To connect the agent to the OpenALPR Cloud, choose “install_agent”.
   5. When prompted if you wish to register the agent, type "n" to choose no.
