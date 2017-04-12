@@ -3,30 +3,30 @@
 Requirements
 -----------------
 
-The OpenALPR Web Server is a web-based interface that collects, manages, and presents license plate data that has been produced by one or more OpenALPR agents.  The server software installs on Ubuntu Linux.
+The OpenALPR web server is a web-based interface that collects, manages, and presents license plate data that has been produced by one or more OpenALPR agents. The server software installs on Ubuntu Linux.
 
-The web server does not process license plate video, that function is performed by the OpenALPR Agent.  The web server receives license plate data and stores the data in a local database.  When sizing a server for the OpenALPR web server, make sure to select a sufficiently fast hard drive.  For web servers supporting up to 200 OpenALPR agents, a single SSD hard drive should be sufficient.  For larger installations, the server will likely need multiple hard drives configured as a RAID.
+The web server does not process license plate videos; that function is performed by the OpenALPR agent. The web server receives license plate data and stores the data in a local database. When sizing a server for the OpenALPR web server, make sure to select a sufficiently fast hard drive. For web servers supporting up to 200 OpenALPR agents, a single SSD hard drive should be sufficient. For larger installations, the server will likely need multiple hard drives configured as a RAID.
 
 Minimum system requirements:
 
   - 4GB RAM
   - 250GB SSD hard drive
-  - Dual-core or better CPU
+  - Dual-core or greater CPU
   - Ubuntu Linux 16.04 64-bit
 
 
 Architecture
 --------------
 
-The OpenALPR agent reads a video stream from your IP camera, processes it, and uploads plate metadata to the OpenALPR web server. The agent also stores all of the plate images in a rolling buffer on the hard drive.
+The OpenALPR agent reads a video stream from your IP camera, processes the stream, and uploads plate metadata to the OpenALPR web server. The agent also stores all of the plate images in a rolling buffer on the hard drive.
 
-There is a constant stream of data flowing between the camera and the agent as well as between the agent and the web server.  The data sent to the cloud is relatively low-bandwidth because it contains text metadata describing the license plates.  The OpenALPR Web Server does not store your plate images, these are downloaded directly from the agent when you select a plate to view from the web server.
+There is a constant stream of data flowing between the camera and the agent, as well as between the agent and the web server.  The data sent to the cloud is relatively low-bandwidth because it contains text metadata describing the license plates.  The OpenALPR web server does not store your plate images; these are downloaded directly from the agent when you select a plate to view from the web server.
 
 
 Installation
 --------------
 
-Download the Ubuntu 16.04 64-bit install DVD image and burn to a DVD:
+Download the Ubuntu 16.04 64-bit install DVD image and burn it to a DVD:
 
   - http://releases.ubuntu.com/16.04/
 
@@ -45,7 +45,7 @@ Run the following command from the terminal:
     :scale: 100%
     :alt: OpenALPR VM installation step 4
 
-- Choose "install_webserver"
+Choose "install_webserver":
 
 
 .. _agent_configuration:
@@ -57,13 +57,13 @@ Configuration
 Agent Configuration
 ......................
 
-The OpenALPR web server may have any number of agents connected to it and sending license plate data.  The configuration for these agents is managed centrally on the OpenALPR Web server.  To configure an agent:
+The OpenALPR web server may have any number of agents connected to it who send license plate data. Configuration for these agents is managed centrally on the OpenALPR web server. To configure an agent:
 
-- Login to the OpenALPR Web Server.  
+- Log in to the OpenALPR web server.  
 
-- Select Configuration -> Agents from the menu on the left-hand side of the page
+- Select Configuration -> Agents from the menu on the left-hand side of the page.
 
-- You should see your new agent on this screen.  Select "Configure" to setup the camera.
+- You should see your new agent on this screen. Select **Configure** to set up the camera.
 
 - Select **Add Stream** to connect your agent to the camera stream.
 
@@ -71,20 +71,20 @@ The OpenALPR web server may have any number of agents connected to it and sendin
     :scale: 100%
     :alt: OpenALPR VM installation step 4
 
-- Select the model of IP camera you wish to connect to.  Fill in the IP address.  If the camera requires credentials, check the box and enter your camera's username and password.
-- Click **Test**.  After a few seconds, you will see a window indicating whether the connection was successful or not.  If it was successful, click **Save Camera**.  Otherwise, try another option (such as H264 Alt1 or MJPEG) and click **Test** again until you succeed.
+- Select the model of IP camera you wish to connect to. Fill in the IP address. If the camera requires credentials, check the box and enter your camera's username and password.
+- Click **Test**. After a few seconds, you will see a window indicating whether or not the connection was successful. If it was successful, click **Save Camera**. If not, try another option (such as H264 Alt1 or MJPEG) and click **Test** again until you succeed.
 
 .. image:: images/webserver_vminstall-testsuccess.png
     :scale: 100%
     :alt: OpenALPR VM installation step 4
 
-- Next, configure the **Agent Parameters**.  
+- Configure the **Agent Parameters**.  
 
-  - Choose a sensible name for your **Site ID**.  This is usually the location of the agent system (e.g., headquarters, dallas-branch, warehouse3, etc.).  Each agent should be given a unique Site ID.
-  - Choose the **country** where the camera is located.  US will recognize North American-style plates (12 inches x 6 inches).  EU will recognize European-style plates.  There is also support for other countries that have plates with different dimensions.
-  - The number of **Processing Cores**  controls how much CPU is allocated to the LPR process.  The more processing cores you provide (up to the number of CPU cores on the system) the more frames per second (fps) you can process.  Higher fps generally contributes to better accuracy and capability to detect plates on faster moving vehicles.
-  - **Disk Quota** controls how much space is reserved for storing vehicle and license plate images.  It operates as a rolling buffer, so once it runs out of space, the oldest images are removed.
-  - **Pattern** should be country (in Europe) that the camera is located in.  In the US, OpenALPR uses a high-accuracy state detection algorithm to detect the state of origin, so it is better to leave the pattern set to "None" for recognition in the USA.
+  - Choose a sensible name for your **Site ID**, such as the location of the agent system (e.g., headquarters, dallas-branch, or warehouse3). Each agent should be given a unique site ID.
+  - Choose the **country** in which the camera is located. US will recognize North American-style plates (12 inches x 6 inches). EU will recognize European-style plates. Other countries whose plates have different dimensions will also be supported.
+  - The number of **Processing Cores** will control how much CPU will be allocated to the LPR process. The more processing cores you provide (up to the number of CPU cores on the system), the more frames per second (fps) you will be able to process. Higher fps will generally increase accuracy and allow plates on faster-moving vehicles to be detected.
+  - **Disk Quota** will control how much space is reserved for storing vehicle and license plate images. It will operate as a rolling buffer, so when it runs out of space, the oldest images will be removed.
+  - For Europe, **Pattern** is the country in which the camera is located. For the USA, OpenALPR uses a high-accuracy state detection algorithm to detect the state of origin, so it is better to leave the pattern set to "None" for recognition in the USA.
 
 - Click **Update**.
 
@@ -92,7 +92,7 @@ The OpenALPR web server may have any number of agents connected to it and sendin
     :scale: 100%
     :alt: OpenALPR VM installation step 4
 
-- Lastly, if you scroll to the bottom of the page you can watch the agent status.  You should now see **Video FPS** and other information indicating that video is being pulled from the camera and license plates are being recognized.  Now that the agent is configured, it will continue collecting data from the configured video streams.  If the agent is rebooted, the OpenALPR agent will automatically start.  If the camera goes down and comes back, or the network is down temporarily, the agent will retry until connectivity is restored.  All results are queued, so no data is lost in the event of an outage.
+- Finally, if you scroll to the bottom of the page, you can watch the agent status. You should now see **Video FPS** and other information indicating that the video is being pulled from the camera and license plates are being recognized. Now that the agent is configured, it will continue collecting data from the configured video streams. If the agent is rebooted, the OpenALPR agent will automatically start. If the camera goes down or the network becomes temporarily inoperative, the agent will retry until connectivity is restored. All results will be queued, so no data will be lost in an outage.
 
 .. image:: images/webserver_vminstall7.png
     :scale: 100%
@@ -102,11 +102,11 @@ The OpenALPR web server may have any number of agents connected to it and sendin
 Advanced Agent Configuration
 ..............................
 
-The OpenALPR Agent can also be configured manually by modifying the file in /etc/openalpr/alprd.conf.  This is an advanced option, and may be useful when managing dozens/hundreds of agents.  The default values with description is found here: /usr/share/openalpr/config/alprd.defaults.conf.  You may add any value into the alprd.conf file and restart the agent for the changes to be picked up.
+You can also configure the OpenALPR agent manually by modifying the file in /etc/openalpr/alprd.conf. This advanced option may be useful in the management of dozens or hundreds of agents. The default values with descriptions can be found here: /usr/share/openalpr/config/alprd.defaults.conf. You may add any value into the alprd.conf file; to apply changes, restart the agent.
 
 Additional documentation on these configuration options is located in the :ref:`commercial_config_options`.
 
-To restart services, run the  command:
+To restart services, run the following command:
 
 .. code-block:: bash
 
@@ -124,4 +124,4 @@ To watch the OpenALPR logs, run the following command:
 Web Services 
 -----------------
 
-The `Web Services API <api/>`_ can be used to programmatically query your On-Premises server for data.  The API is documented `here <api/>`_
+The `Web Services API <api/>`_ can be used to programmatically query your on-premises server for data. The API is documented `here <api/>`_

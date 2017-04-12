@@ -1,5 +1,5 @@
 
-There are two ways that you may choose to integration OpenALPR with your application.  You may:
+You can integrate OpenALPR with your application in two ways:
 
   - Use the Commercial SDK to compile OpenALPR code libraries into your application and process individual image frames.  
   - Run the OpenALPR Agent to directly pull video feeds and send the plate results and images to your application.
@@ -10,7 +10,7 @@ There are two ways that you may choose to integration OpenALPR with your applica
 Commercial SDK
 ------------------
 
-OpenALPR is available as a C/C++ library and has bindings in C#, Java, and Python.  The SDK receives image frames as input, and outputs license plate recognition results.  
+OpenALPR is available as a C/C++ library and has bindings in C#, Java, and Python. The SDK receives image frames as input, and it outputs license plate recognition results.  
 
 Installation
 ..................
@@ -24,7 +24,7 @@ http://deb.openalpr.com/windows-sdk/openalpr64-sdk-latest.zip
 Linux
 #######
 
-The Linux SDK is available in OpenALPR's commercial APT repository.  The libopenalpr-dev package will install the necessary headers and library packages onto your system.  To install, run:
+The Linux SDK is available in OpenALPR's commercial APT repository. The libopenalpr-dev package will install the necessary headers and library packages into your system.  To install, run:
 
   .. code-block:: bash
 
@@ -36,15 +36,15 @@ Select "install_sdk" from the menu.
 C
 ..................
 
-First, install the OpenALPR library on your target platform.  Make sure that the software runs by testing it using the alpr command-line executable.  
+First, install the OpenALPR library on your target platform. Make sure the software runs by testing it with the alpr command-line executable.  
 
 1. Add "alpr_c.h" as an include file to your project.
-2. Include the libopenalprc.dll (Windows) or libopenalprc.so (Unix) file with your binaries
-3. Include all other required shared libraries
-4. Put the openalpr.conf and runtime_data directory in the same location as the binaries.  Alternatively, you can specify the location of the runtime_data in openalpr.conf or directly in the code.
-5. Add a commercial license key to the "license.conf" file in the same location as the binaries  
+2. Include the libopenalprc.dll (Windows) or libopenalprc.so (Unix) file with your binaries.
+3. Include all other required shared libraries.
+4. Insert the openalpr.conf and runtime_data directory in the same location as the binaries. Alternatively, you can specify the location of the runtime_data in openalpr.conf or directly in the code.
+5. Add a commercial license key to the "license.conf" file in the same location as the binaries.
 
-Below is a simple usage example of using the OpenALPR library using the C library:
+Below is a simple example of using the OpenALPR library with the C library:
 
 .. code-block:: c
 
@@ -85,13 +85,13 @@ Below is a simple usage example of using the OpenALPR library using the C librar
 
         const char* file_path = argv[1];
 
-        // Leaving the config and runtime directory blank to look for these in the current directory
+        // Leave the config and runtime directory blank to look for these in the current directory.
         alpr_obj = openalpr_init("us", "", "");
 
         if (openalpr_is_loaded(alpr_obj))
         {
             // We don't want to restrict the size of the recognition area, so we set this to an extremely large pixel size
-            // rather than decode and find the actual image width/height
+            // rather than decode and find the actual image width/height.
             struct AlprCRegionOfInterest roi;
             roi.x = 0;
             roi.y = 0;
@@ -126,11 +126,11 @@ Below is a simple usage example of using the OpenALPR library using the C librar
 C++
 ..................
 
-The C++ commercial SDK is available for Linux.  On Windows, it is recommended that you use the C library for both C and C++ since it is ubiquitously supported across all Visual Studio toolchains.
+The C++ commercial SDK is available for Linux. For Windows computers, we recommend that you use the C library for both C and C++ because it is ubiquitously supported across all Visual Studio toolchains.
 
 Add "alpr.h" as an include file to your project.
 
-Below is a simple usage example of using the OpenALPR library using the C library:
+Below is a simple example of using the OpenALPR library with the C library:
 
 
 .. code-block:: c++ 
@@ -138,30 +138,30 @@ Below is a simple usage example of using the OpenALPR library using the C librar
 
     #include <alpr.h>
 
-    // Initialize the library using United States style license plates.  
-    // You can use other countries/regions as well (for example: "eu", "au", or "kr")
+    // Initialize the library using United States-style license plates.  
+    // You can use other countries/regions as well (for example: "eu", "au", or "kr").
     alpr::Alpr openalpr("us", "/path/to/openalpr.conf");
 
-    // Optionally specify the top N possible plates to return (with confidences).  Default is 10
+    // Optionally, you can specify the top N possible plates to return (with confidences). The default is ten.
     openalpr.setTopN(20);
 
-    // Optionally, provide the library with a region for pattern matching.  This improves accuracy by 
+    // Optionally, you can provide the library with a region for pattern matching. This improves accuracy by 
     // comparing the plate text with the regional pattern.
     openalpr.setDefaultRegion("md");
 
-    // Make sure the library loaded before continuing.  
-    // For example, it could fail if the config/runtime_data is not found
+    // Make sure the library loads before continuing.  
+    // For example, it could fail if the config/runtime_data is not found.
     if (openalpr.isLoaded() == false)
     {
         std::cerr << "Error loading OpenALPR" << std::endl;
         return 1;
     }
 
-    // Recognize an image file.  You could alternatively provide the image bytes in-memory.
+    // Recognize an image file. Alternatively, you could provide the image bytes in-memory.
     alpr::AlprResults results = openalpr.recognize("/path/to/image.jpg");
 
-    // Iterate through the results.  There may be multiple plates in an image, 
-    // and each plate return sthe top N candidates.
+    // Carefully observe the results. There may be multiple plates in an image, 
+    // and each plate returns the top N candidates.
     for (int i = 0; i < results.plates.size(); i++)
     {
       alpr::AlprPlateResult plate = results.plates[i];
@@ -191,7 +191,7 @@ Source code: https://github.com/openalpr/openalpr/tree/master/src/bindings/cshar
         Console.WriteLine("OpenAlpr failed to load!");
         return;
     }
-    // Optionally apply pattern matching for a particular region
+    // Optionally, you can apply pattern matching for a particular region.
     alpr.DefaultRegion = "md";
 
     var results = alpr.Recognize("/path/to/image.jpg");
@@ -260,10 +260,10 @@ Source code: https://github.com/openalpr/openalpr/tree/master/src/bindings/java
 
     Alpr alpr = new Alpr("us", "/path/to/openalpr.conf", "/path/to/runtime_data");
 
-    // Set top N candidates returned to 20
+    // Set top N candidates returned to 20.
     alpr.setTopN(20);
 
-    // Set pattern to Maryland
+    // Set pattern to Maryland.
     alpr.setDefaultRegion("md");
 
     AlprResults results = alpr.recognize("/path/to/image.jpg");
@@ -279,7 +279,7 @@ Source code: https://github.com/openalpr/openalpr/tree/master/src/bindings/java
         }
     }
 
-    // Make sure to call this to release memory
+    // Make sure to call this to release memory.
     alpr.unload();
 
 
@@ -296,37 +296,37 @@ https://github.com/netPark/node-openalpr
 
 
 
-Integrating with the Agent
+Integrating With the Agent
 ------------------------------
 
-The OpenALPR agent runs as either a Windows service on Windows or a daemon on Linux.  The process runs constantly in the background and watches the configured video streams for license plates.  When a license plate is found, it immediately places JSON data onto a local beanstalkd queue for uploading or processing.
+The OpenALPR agent runs as either a Windows service (on Windows) or a daemon (on Linux). The process runs constantly in the background, watching the configured video streams for license plates. When a license plate is found, it immediately places JSON data onto a local beanstalkd queue for uploading or processing.
 
-Depending on your application, you must decide whether your application should receive data from OpenALPR (sent via HTTP POST) or whether it should pull data from a queue on-demand.  Both approaches are equally valid, it just depends on what is the most appropriate way to integrate based on your application architecture.
+Decide whether your application should receive data from OpenALPR (sent via HTTP POST) or pull data from a queue on demand. Both approaches are equally valid; your choice simply depends on the most appropriate integration method based on your application architecture.
 
 
 Receiving HTTP POSTs
 ......................
 
-The OpenALPR agent can be configured to send HTTP POSTs to your own HTTP server.  To enable this option, set the following parameters in /etc/openalpr/alprd.conf:
+The OpenALPR agent can be configured to send HTTP POSTs to your HTTP server. To enable this option, set the following parameters in /etc/openalpr/alprd.conf:
 
 .. code-block:: ini
 
     upload_data = 1
-    upload_address = [Your HTTP server endpoint]
+    upload_address = [your HTTP server endpoint]
     websockets_enabled = 0
     web_server_enabled = 1
 
-You must also add a valid On-Premises license to /etc/openalpr/license.conf
+In addition, you must add a valid on-premises license to /etc/openalpr/license.conf
 
-Once updated, restart the OpenALPR agent service for the settings to take effect.  As plates are recognized, the JSON data described in this section will be sent to your HTTP server as an HTTP POST.
+Once updated, restart the OpenALPR agent service to allow the settings to take effect. As plates are recognized, the JSON data described in this section will be sent to your HTTP server as an HTTP POST.
 
 
-Pulling from the Queue
+Pulling From the Queue
 .........................
 
-OpenALPR maintains a local Beanstalkd queue.  All JSON results are placed onto this queue.  Your application can pull from this queue to grab the latest plate results and process them.  
+OpenALPR maintains a local Beanstalkd queue. All JSON results are placed onto this queue. Your application can grab and process the latest plate results from this queue .  
 
-Beanstalkd maintains client libraries in many popular programming languages.  For a complete list, visit: https://github.com/kr/beanstalkd/wiki/Client-Libraries
+Beanstalkd maintains client libraries in many popular programming languages. For a complete list, visit: https://github.com/kr/beanstalkd/wiki/Client-Libraries
 
 To configure OpenALPR to make the results available via the local queue, set the following parameters in /etc/openalpr/alprd.conf:
 
@@ -336,12 +336,12 @@ To configure OpenALPR to make the results available via the local queue, set the
     websockets_enabled = 0
     web_server_enabled = 1
 
-You must also add a valid On-Premises license to /etc/openalpr/license.conf
+In addition, you must add a valid on-premises license to /etc/openalpr/license.conf
 
-Once updated, restart the OpenALPR agent service for the settings to take effect.
+Once updated, restart the OpenALPR agent service to allow the settings to take effect.
 
 
-Below is a sample Python script that pulls from the local Beanstalkd queue for results:
+Below is a sample Python script that pulls results from the local Beanstalkd queue:
 
 .. code-block:: python
 
@@ -355,23 +355,23 @@ Below is a sample Python script that pulls from the local Beanstalkd queue for r
 
     TUBE_NAME='alprd'
 
-    # For diagnostics, print out a list of all the tubes available in Beanstalk
+    # For diagnostics, print out a list of all the tubes available in Beanstalk.
     print beanstalk.tubes()
 
-    # For diagnostics, print the number of items on the current alprd queue
+    # For diagnostics, print the number of items on the current alprd queue.
     try:
         pprint(beanstalk.stats_tube(TUBE_NAME)) 
     except beanstalkc.CommandFailed:
         print "Tube doesn't exist"
 
-    # Watch the "alprd" tube, this is where the plate data is.
+    # Watch the "alprd" tube; this is where the plate data is.
     beanstalk.watch(TUBE_NAME)
 
     # Loop forever
     while True:
 
-        # Wait for a second to get a job.  If there's a job, process it and delete it from the queue.  
-        # If not, go back to sleep
+        # Wait for a second to get a job. If there is a job, process it and delete it from the queue.  
+        # If not, return to sleep.
         job = beanstalk.reserve(timeout=1.0)
 
         if job is None:
@@ -381,10 +381,10 @@ Below is a sample Python script that pulls from the local Beanstalkd queue for r
             print "Found a plate!"
             plates_info = json.loads(job.body)
 
-            # Print all the info about this plate to the console
+            # Print all the info about this plate to the console.
             pprint(plates_info)
 
-            # Do something with this data (e.g., match a list, open a gate, etc.)
+            # Do something with this data (e.g., match a list, open a gate, etc.).
             if 'data_type' not in plates_info:
                 print "This shouldn't be here... all OpenALPR data should have a data_type"
             elif plates_info['data_type'] == 'alpr_results':
@@ -394,18 +394,18 @@ Below is a sample Python script that pulls from the local Beanstalkd queue for r
             elif plates_info['data_type'] == 'heartbeat':
                 print "This is a heartbeat"
 
-            # Delete the job from the queue now that we have processed it
+            # Delete the job from the queue when it is processed.
             job.delete()
 
 
 JSON Plate Results
 ...................
 
-OpenALPR generates an "alpr_results" JSON value for every frame of video where a license plate is recognized.  This value will be sent multiple times for a single vehicle.  For example, as a vehicle drives past the camera over the course of 3 seconds, OpenALPR may recognize the same license plate 50 times.  All 50 recognition results will be recorded as alpr_results JSON values.
+OpenALPR generates an "alpr_results" JSON value for every frame of video in which a license plate is recognized. This value will be sent multiple times for a single vehicle. For example, as a vehicle drives past the camera over the course of three seconds, OpenALPR may recognize the same license plate fifty times. All fifty recognition results will be recorded as alpr_results JSON values.
 
-The number of recognition results largely depends on the processing speed and number of cameras being processed.  A faster processor will produce more of these per vehicle, since it is able to process video frames at a faster rate.  
+The number of recognition results largely depends on the processing speed and number of cameras being processed. A faster processor will produce more of these per vehicle because it is able to process video frames at a faster rate.  
 
-Individual plate results are best suited for applications that need to operate on plate data in real-time. 
+Individual plate results are best suited for applications that need to operate on plate data in real time. 
 
 JSON Plate results are sent in the following format:
 
@@ -535,11 +535,11 @@ JSON Group Results
 ...................
 
 
-OpenALPR generates an "alpr_group" JSON value for a collection of similar license plates.  This generally means a single plate group per vehicle.  After the plate has no longer been seen for a number of seconds, the plate_group result is sent with a reference (by UUID) to all the individual plate results that make up the group.  The group also includes a best estimate for the license plate number based on a weighted score from all the frames that are included in the group.
+OpenALPR generates an "alpr_group" JSON value for a collection of similar license plates, generally delegating a single plate group per vehicle. When the plate is not seen for a number of seconds, the plate_group result is sent with a reference (by UUID) to all the individual plate results that make up the group. The group also includes a best estimate for the license plate number based on a weighted score from all the frames included in the group.
 
-Additionally, each plate group also includes a detection value for the make/model, color, and vehicle body type.
+Additionally, each plate group includes a detection value for the make/model, color, and vehicle body type.
 
-Group results are most suitable for surveillance type purposes.  When using these values, the results may be delayed by up to 10 seconds after the vehicle has passed, so it is important that the application is not sensitive to this delay.  If more real-time results are needed, it is recommended to ignore the plate group value and only use the individual plate results.
+Group results are most suitable for surveillance-type purposes. When these values are used, results may be delayed up to ten seconds after the vehicle has passed, so it is important that the application is not sensitive to this delay. If more real-time results are needed, it is recommended that you ignore the plate_group value and use only the individual plate results.
 
 ALPR group results are sent in the following JSON format:
 
@@ -747,7 +747,7 @@ ALPR group results are sent in the following JSON format:
 JSON Heartbeat
 ..............
 
-Every minute, the OpenALPR agent adds a heartbeat message to the queue.  The heartbeat provides general health and status information.  The format is as follows:
+Every minute, the OpenALPR agent adds one heartbeat message to the queue. The heartbeat provides general health and status information. The format is as follows:
 
 .. code-block:: json
 
@@ -792,16 +792,16 @@ Every minute, the OpenALPR agent adds a heartbeat message to the queue.  The hea
 Local Image Retrieval
 -----------------------
 
-The OpenALPR agent exposes a simple web service for retrieving license plate images.  Each image is referenced by a UUID that is sent along with the JSON metadata.
+The OpenALPR agent exposes a simple web service for retrieving license plate images. Each image is referenced by a UUID that is sent along with the JSON metadata.
 
 By default, this web server is disabled on the agent, but you can turn it on by adding "web_server_enabled = 1" to the alprd.conf file.
 
-Assuming that the daemon port is set to the default (8355), the full image is referenced using the following URL:
+Assuming that the daemon port is set to the default (8355), the full image is referenced with the following URL:
 
   - http://[*Agent_IP*]:8355/img/[*plate_event_uuid*].jpg
 
-In some cases, you may prefer to just retrieve a cropped image around the license plate.  This would require significantly less bandwidth than downloading the entire source image.  The X and Y coordinates can be computed from the JSON metadata x/y coordinates of the license plate.  The x1/y1 coordinates reference the top-left of the license plate crop region, and the x2/y2 coordinates reference the bottom right.  For example, assuming the crop is located at (477,258), (632,297):
+In some cases, you may prefer to retrieve a cropped image of just the license plate. This requires significantly less bandwidth than downloading the entire source image. The X and Y coordinates can be computed from the JSON metadata x/y coordinates of the license plate. The x1/y1 coordinates reference the top left of the license plate crop region, and the x2/y2 coordinates reference the bottom right. For example, assuming the crop is located at (477,258), (632,297):
 
   - http://[*Agent_IP*]:8355/crop/[*plate_event_uuid*]?x1=477&y1=258&x2=632&y2=297
 
-Additionally, the web server exposes a `web service API <api/>`_ for searching license plates and groups.  Detailed documentation is available in the :ref:`web server section <web_services_api>`
+In addition, the web server exposes a `web service API <api/>`_ for searching license plates and groups. Detailed documentation is available in the :ref:`web server section <web_services_api>`
