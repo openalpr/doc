@@ -29,7 +29,7 @@ As a rough rule of thumb, an OpenALPR agent running on a latest-generation Intel
 
 Memory and disk requirements are relatively constant. Once OpenALPR initializes, the process uses roughly 500MB per analysis thread (CPU core), and that memory usage will not increase. The agent records JPEG images to a disk as plates are recognized. However, Disk IO is usually not a bottleneck.
 
-OpenALPR agent performance can also be drastically accelerated by Nvidia GPU hardware, which requires a custom binary compilation for the target Linux hardware system. We offer this service for a consulting fee. Please contact info@openalpr.com for more information.
+OpenALPR agent performance can also be drastically accelerated by Nvidia GPU hardware.  OpenALPR maintains binaries for CUDA 8.0 using CuDNN 6 on 64-bit Ubuntu Linux 16.04.  Please contact info@openalpr.com for more information.
 
 
 Installation
@@ -271,9 +271,9 @@ To use this utility, you must have a commercial license key. Contact info@openal
 Windows
 .........
 
-The alpr video utility is included in the latest `OpenALPR Windows Installer <http://deb.openalpr.com/windows/openalpr-latest.exe>`.
+The alpr video utility is included in the latest `OpenALPR Windows Installer <http://deb.openalpr.com/windows/openalpr-latest.exe>`_.
 
-After the agent is installed, the video utility will be located in the [install_directory]\\bin directory.
+After the agent is installed, the video utility will be located in the [install_directory]\bin directory.
 
 Linux
 .........
@@ -287,6 +287,26 @@ Run the following command to install the OpenALPR video utility:
   ```
 
 After the install is complete, you can execute the alpr_video utility directly on the command line.
+
+
+GUI Usage
+---------------------
+
+Launch the Video Processing Utility GUI by clicking the "OpenALPR Video Processor" shortcut created by the installer.
+
+.. image:: images/videoprocessing_gui.png
+    :scale: 100%
+    :alt: OpenALPR Video Processing Utility
+
+Once launched, choose Edit->Preferences to select the country, number of processing threads, and the output directory.
+
+Click "Open video..." to select files for processing.  The utility can accept:
+
+  - One or more video files
+  - One or more JPG image files
+
+Once you've selected one or more files to process, click the "Start" button to begin processing.  Each file will be processed in order.  A spreadsheet for each video file will be placed in the output folder that you specified in the preferences.
+  
 
 
 Command-Line Usage
