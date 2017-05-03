@@ -28,7 +28,7 @@ Contents:
    cloud_stream
    on_premises
    cloud_api
-   open_source
+   opensource
    camera_placement
 
 
