@@ -29,8 +29,21 @@ As a rough rule of thumb, an OpenALPR agent running on a latest-generation Intel
 
 Memory and disk requirements are relatively constant. Once OpenALPR initializes, the process uses roughly 500MB per analysis thread (CPU core), and that memory usage will not increase. The agent records JPEG images to a disk as plates are recognized. However, Disk IO is usually not a bottleneck.
 
-OpenALPR agent performance can also be drastically accelerated by Nvidia GPU hardware.  OpenALPR maintains binaries for CUDA 8.0 using CuDNN 6 on 64-bit Ubuntu Linux 16.04.  Please contact info@openalpr.com for more information.
+NVIDIA GPU Acceleration
+-------------------------
 
+OpenALPR agent performance can also be drastically accelerated by Nvidia GPU hardware.  OpenALPR maintains binaries for CUDA 8.0 using CuDNN 6 on 64-bit Ubuntu Linux 16.04.  The OpenALPR software has been compiled for CUDA hardware versions 5.2 5.3 6.0 6.1 6.2 -- most newer cards are supported.  To enable GPU acceleration, first install the GPU binaries::
+
+  sudo apt-get update && sudo apt-get install openalprgpu
+
+then edit the /etc/openalpr/openalpr.conf file and set::
+
+  hardware_acceleration = 1
+  gpu_id = 0
+  gpu_batch_size = 10
+  
+
+The batch size controls how many images are simultaneously processed by the GPU.  Setting it to a higher value generally improves performance but also consumes more GPU memory.
 
 Installation
 ---------------
@@ -261,7 +274,7 @@ Application Integration
 Video Processing
 =================
 
-The video processing utility processes a video file (e.g., MPG, AVI, or MP4) to find every license plates in the video. The output is a CSV file that lists the license plate information
+The Forensic Plate Finder processes video or image files (e.g., MPG, AVI, or MP4) to find all of the license plates. The output is a CSV file that lists the license plate information
 
 Installation
 --------------
@@ -271,9 +284,9 @@ To use this utility, you must have a commercial license key. Contact info@openal
 Windows
 .........
 
-The alpr video utility is included in the latest `OpenALPR Windows Installer <http://deb.openalpr.com/windows/openalpr-latest.exe>`_.
+The alpr video utility is included in the latest `OpenALPR Forensic Plate Finder Installer <http://deb.openalpr.com/windows-forensic/openalpr-forensic-latest.exe>`_.
 
-After the agent is installed, the video utility will be located in the [install_directory]\bin directory.
+After the agent is installed, the Forensic Plate Finder will be located in the [install_directory]\bin directory.
 
 Linux
 .........
@@ -292,11 +305,11 @@ After the install is complete, you can execute the alpr_video utility directly o
 GUI Usage
 ---------------------
 
-Launch the Video Processing Utility GUI by clicking the "OpenALPR Video Processor" shortcut created by the installer.
+Launch the Forensic Plate Finder by clicking the "OpenALPR Forensic Plate Finder" shortcut created by the installer.
 
 .. image:: images/videoprocessing_gui.png
     :scale: 100%
-    :alt: OpenALPR Video Processing Utility
+    :alt: OpenALPR Forensic Plate Finder
 
 Once launched, choose Edit->Preferences to select the country, number of processing threads, and the output directory.
 
@@ -369,7 +382,7 @@ Launch the alpr_video program with a path to a video file. In addition include a
          (required)  Video file containing license plates
 
 
-       OpenAlpr Video Processing Utility
+       OpenAlpr Forensic Plate Finder
 
 
 

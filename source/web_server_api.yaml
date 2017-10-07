@@ -1,5 +1,10 @@
 ---
 swagger: '2.0'
+host: cloud.openalpr.com
+schemes:
+  - https
+produces:
+  - application/json
 
 info:
   title: OpenALPR REST API

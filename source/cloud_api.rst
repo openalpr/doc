@@ -35,6 +35,8 @@ The endpoint for the OpenALPR Cloud APIs are described in the `REST API document
 
 For example, to connect to the OpenALPR API from the command line:
 
+.. code-block:: bash
+
     curl -X POST -F image=@/car1.jpg 'https://api.openalpr.com/v2/recognize?recognize_vehicle=1&country=us&secret_key=sk_DEMODEMODEMODEMODEMODEMO'
 
 The JSON response is as follows:
