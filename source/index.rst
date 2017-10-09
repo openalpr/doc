@@ -25,8 +25,9 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   cloud_stream
    on_premises
+   sdk
+   cloud_stream
    cloud_api
    opensource
    camera_placement
