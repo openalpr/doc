@@ -271,8 +271,8 @@ Application Integration
 .. _video_processing:
 
 
-Video Processing
-=================
+Forensic Plate Finder
+=======================
 
 The Forensic Plate Finder processes video or image files (e.g., MPG, AVI, or MP4) to find all of the license plates. The output is a CSV file that lists the license plate information
 
@@ -284,9 +284,9 @@ To use this utility, you must have a commercial license key. Contact info@openal
 Windows
 .........
 
-The alpr video utility is included in the latest `OpenALPR Forensic Plate Finder Installer <http://deb.openalpr.com/windows-forensic/openalpr-forensic-latest.exe>`_.
+Download and run the `OpenALPR Forensic Plate Finder Installer <http://deb.openalpr.com/windows-forensic/openalpr-forensic-latest.exe>`_.
 
-After the agent is installed, the Forensic Plate Finder will be located in the [install_directory]\bin directory.
+After the software is installed, the Forensic Plate Finder will be located in the install directory and as a Windows shortcut on the start menu.
 
 Linux
 .........
@@ -299,7 +299,7 @@ Run the following command to install the OpenALPR video utility:
   sudo apt update && sudo apt install openalpr-video
   ```
 
-After the install is complete, you can execute the alpr_video utility directly on the command line.
+After the install is complete, you can execute the alprvideogui and alprvideocli utility directly on the command line.
 
 
 GUI Usage
