@@ -251,7 +251,7 @@ The OpenALPR agent must be restarted for any configuration changes to take effec
 
 To restart the OpenALPR agent:
   - On **Windows**, use the OpenALPR configuration utility or manually restart the "OpenALPR Agent" Windows service.
-  - On **Linux**, run: **sudo systemctl restart openalpr-agent**.
+  - On **Linux**, run: **sudo systemctl restart openalpr-daemon**.
   - On **Docker**, restart the container.
 
 

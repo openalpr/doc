@@ -110,7 +110,7 @@ To restart services, run the following command:
 
 .. code-block:: bash
 
-    sudo systemctl restart openalpr-agent
+    sudo systemctl restart openalpr-daemon
 
 To watch the OpenALPR logs, run the following command: 
 
