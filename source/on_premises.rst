@@ -279,7 +279,7 @@ The Forensic Plate Finder processes video or image files (e.g., MPG, AVI, or MP4
 Installation
 --------------
 
-To use this utility, you must have a commercial license key. Contact info@openalpr.com to request an evaluation key. The license key must be saved in /etc/openalpr/license.conf.
+To use this utility, you must have a commercial license key. `Request a free 14-day evaluation key <https://license.openalpr.com/evalrequest/>`_. The license key must be saved in /etc/openalpr/license.conf.
 
 Windows
 .........
