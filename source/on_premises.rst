@@ -41,9 +41,10 @@ then edit the /etc/openalpr/openalpr.conf file and set::
   hardware_acceleration = 1
   gpu_id = 0
   gpu_batch_size = 10
-  
 
 The batch size controls how many images are simultaneously processed by the GPU.  Setting it to a higher value generally improves performance but also consumes more GPU memory.
+
+OpenALPR also maintains special builds for Jetson TX-1/TX-2 hardware on Jetpack v3.1.  To install, follow the standard Linux install instructions.  The defaults are configured such that the GPU will automatically be installed, enabled, and configured with a default batch size of 5.
 
 Installation
 ---------------
