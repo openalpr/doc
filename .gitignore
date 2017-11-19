@@ -3,3 +3,4 @@ venv/
 swagger/
 swagger-ui/
 upload.sh
+doxygen/

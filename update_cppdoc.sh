@@ -1,0 +1,8 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+cd /storage/projects/alpr/
+doxygen doxygen.conf
+
+cp -R /tmp/doxygen $DIR/

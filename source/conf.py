@@ -34,7 +34,7 @@ extensions = ['breathe']
 
 
 # Configure "Breathe" for conversion from doxygen to sphinx
-breathe_projects = { "OpenALPR SDK": "/tmp/doxygen/xml/" }
+breathe_projects = { "OpenALPR SDK": "/storage/projects/alprdoc/doxygen/xml/" }
 breathe_default_project = "OpenALPR SDK"
 
 # Add any paths that contain templates here, relative to this directory.
