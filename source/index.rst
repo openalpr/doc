@@ -31,6 +31,7 @@ Contents:
    cloud_api
    opensource
    camera_placement
+   release_notes
 
 
 
