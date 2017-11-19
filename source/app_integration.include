@@ -257,204 +257,115 @@ ALPR group results are sent in the following JSON format:
 
 .. code-block:: json
 
+
     {
-      "data_type": "alpr_group",
-      "version": 2,
-      "epoch_start": 1490574595962,
-      "epoch_end": 1490574596287,
-      "company_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "agent_uid": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
-      "agent_version": "2.3.111",
-      "agent_type": "alprd",
-      "site_id": "unspecified",
-      "camera_id": 16488027,
-      "country": "us",
-      "uuids": [
-        "unspecified-cam16488027-1490574595962",
-        "unspecified-cam16488027-1490574596287"
-      ],
+      "data_type": "alpr_group", 
+      "agent_type": "alprd", 
+      "epoch_start": 1510773184818, 
+      "epoch_end": 1510773185931, 
+      "camera_id": 2090756197, 
+      "agent_uid": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY", 
+      "company_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+      "user_data": "hello world", 
+      "frame_start": 59, 
+      "best_confidence": 94.96063232421875, 
+      "version": 2, 
       "best_plate": {
-        "plate": "DA0C7L",
-        "confidence": 84.679863,
-        "matches_template": 1,
-        "plate_index": 1,
-        "region": "mo",
-        "region_confidence": 96,
-        "processing_time_ms": 13.995705,
-        "requested_topn": 10,
-        "coordinates": [
-          {
-            "x": 456,
-            "y": 267
-          },
-          {
-            "x": 545,
-            "y": 264
-          },
-          {
-            "x": 545,
-            "y": 309
-          },
-          {
-            "x": 457,
-            "y": 312
-          }
-        ],
+        "plate": "2BH375", 
+        "confidence": 94.96063232421875, 
+        "region_confidence": 92, 
         "vehicle_region": {
-          "x": 281,
-          "y": 0,
-          "width": 440,
-          "height": 440
-        },
+          "y": 49, 
+          "x": 369, 
+          "height": 303, 
+          "width": 303
+        }, 
+        "region": "ma", 
+        "plate_index": 0, 
+        "processing_time_ms": 84.47315979003906, 
         "candidates": [
           {
-            "plate": "DAOC7L",
-            "confidence": 88.139191,
-            "matches_template": 0
-          },
+            "matches_template": 1, 
+            "plate": "2BH375", 
+            "confidence": 94.96063232421875
+          }, 
           {
-            "plate": "DA0C7L",
-            "confidence": 84.679863,
-            "matches_template": 1
-          },
+            "matches_template": 0, 
+            "plate": "BH375", 
+            "confidence": 79.3022232055664
+          }, 
           {
-            "plate": "DADC7L",
-            "confidence": 79.067734,
-            "matches_template": 0
-          },
-          {
-            "plate": "DAOC7U",
-            "confidence": 73.676315,
-            "matches_template": 0
-          },
-          {
-            "plate": "0AOC7L",
-            "confidence": 72.70826,
-            "matches_template": 0
-          },
-          {
-            "plate": "DA0C7U",
-            "confidence": 70.21698,
-            "matches_template": 1
-          },
-          {
-            "plate": "0A0C7L",
-            "confidence": 69.248924,
-            "matches_template": 0
-          },
-          {
-            "plate": "DADC7U",
-            "confidence": 64.604858,
-            "matches_template": 0
-          },
-          {
-            "plate": "0ADC7L",
-            "confidence": 63.63681,
-            "matches_template": 0
-          },
-          {
-            "plate": "0AOC7U",
-            "confidence": 58.245377,
-            "matches_template": 0
+            "matches_template": 0, 
+            "plate": "BBH375", 
+            "confidence": 79.13993835449219
           }
-        ]
-      },
-      "best_confidence": 84.679863,
-      "best_uuid": "unspecified-cam16488027-1490574595962",
-      "best_plate_number": "DA0C7L",
-      "best_region": "mo",
-      "best_region_confidence": 97.5,
-      "vehicle": {
-        "color": [
+        ], 
+        "coordinates": [
           {
-            "name": "white",
-            "confidence": 99.999962
-          },
+            "y": 240, 
+            "x": 490
+          }, 
           {
-            "name": "silver",
-            "confidence": 4.0e-5
-          },
+            "y": 231, 
+            "x": 548
+          }, 
           {
-            "name": "red",
-            "confidence": 5.664504e-7
-          },
+            "y": 261, 
+            "x": 552
+          }, 
           {
-            "name": "blue",
-            "confidence": 3.373436e-7
-          },
-          {
-            "name": "gold",
-            "confidence": 2.925424e-7
+            "y": 270, 
+            "x": 494
           }
-        ],
-        "make": [
-          {
-            "name": "acura",
-            "confidence": 64.059357
-          },
-          {
-            "name": "lincoln",
-            "confidence": 24.78327
-          },
-          {
-            "name": "mercury",
-            "confidence": 6.1188
-          },
-          {
-            "name": "ford",
-            "confidence": 4.258654
-          },
-          {
-            "name": "volvo",
-            "confidence": 0.305573
-          }
-        ],
-        "make_model": [
-          {
-            "name": "acura_tl",
-            "confidence": 68.735374
-          },
-          {
-            "name": "lincoln_mks",
-            "confidence": 22.445047
-          },
-          {
-            "name": "ford_fusion",
-            "confidence": 1.551949
-          },
-          {
-            "name": "acura_rl",
-            "confidence": 1.425493
-          },
-          {
-            "name": "mercury_milan",
-            "confidence": 0.626989
-          }
-        ],
-        "body_type": [
-          {
-            "name": "sedan-standard",
-            "confidence": 99.998665
-          },
-          {
-            "name": "antique",
-            "confidence": 0.000653
-          },
-          {
-            "name": "sedan-compact",
-            "confidence": 0.000403
-          },
-          {
-            "name": "suv-crossover",
-            "confidence": 0.000167
-          },
-          {
-            "name": "sedan-sport",
-            "confidence": 6.5e-5
-          }
-        ]
-      }
+        ], 
+        "matches_template": 1, 
+        "requested_topn": 10
+      }, 
+      "best_uuid": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185292", 
+      "frame_end": 81, 
+      "is_parked": false, 
+      "uuids": [
+        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773184818", 
+        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773184881", 
+        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185292", 
+        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185325", 
+        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185388", 
+        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185421", 
+        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185484", 
+        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185867", 
+        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185931"
+      ], 
+      "plate_indexes": [
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0, 
+        0
+      ], 
+      "travel_direction": 298.6413879394531, 
+      "country": "us", 
+      "best_plate_number": "2BH375", 
+      "best_region": "ma", 
+      "best_region_confidence": 79, 
+      "agent_version": "2.5.101", 
+      "candidates": [
+        {
+          "matches_template": 1, 
+          "plate": "2BH375", 
+          "confidence": 94.96063232421875
+        }
+        {
+          "matches_template": 1, 
+          "plate": "BH375", 
+          "confidence": 81.10235231351523
+        }
+      ]
     }
+
 
 JSON Heartbeat
 -------------------------
