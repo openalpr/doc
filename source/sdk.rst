@@ -17,7 +17,7 @@ Windows
 ########
 
 The Windows SDK package can be downloaded here:
-http://deb.openalpr.com/windows-sdk/openalpr64-sdk-latest.zip
+https://deb.openalpr.com/windows-sdk/openalpr64-sdk-latest.zip
 
 Linux
 #######
@@ -26,7 +26,7 @@ The Linux SDK is available in OpenALPR's commercial APT repository. The libopena
 
   .. code-block:: bash
 
-    bash <(curl http://deb.openalpr.com/install)
+    bash <(curl https://deb.openalpr.com/install)
 
 
 Select "install_sdk" from the menu.  

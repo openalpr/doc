@@ -52,7 +52,7 @@ Installation
 Windows
 .........
 
-  - Download the `OpenALPR Windows Installer <http://deb.openalpr.com/windows/openalpr-latest.exe>`_
+  - Download the `OpenALPR Windows Installer <https://deb.openalpr.com/windows-agent/openalpr-agent-latest.exe>`_
   - Install the program onto your PC
   - When installation is complete, start the Configure OpenALPR program.
   - Depending on how you wish to use the OpenALPR agent, you may choose one of four options for data destination:
@@ -80,7 +80,7 @@ Linux
 
   .. code-block:: bash
 
-    bash <(curl http://deb.openalpr.com/install)
+    bash <(curl https://deb.openalpr.com/install)
 
 
   4. To connect the agent to the OpenALPR Cloud, choose "install_agent".

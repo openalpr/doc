@@ -38,7 +38,7 @@ Run the following command from the terminal:
 
 .. code-block:: bash
 
-    bash <(curl http://deb.openalpr.com/install)
+    bash <(curl https://deb.openalpr.com/install)
 
 
 .. image:: images/linux-install.png
