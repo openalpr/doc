@@ -357,7 +357,7 @@ ALPR group results are sent in the following JSON format:
           "matches_template": 1, 
           "plate": "2BH375", 
           "confidence": 94.96063232421875
-        }
+        },
         {
           "matches_template": 1, 
           "plate": "BH375", 
