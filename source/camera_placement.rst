@@ -1,8 +1,13 @@
-.. _camera_placement:
 
 ****************************
-Camera Placement Guide
+Camera Configuration
 ****************************
+
+
+.. _camera_placement:
+
+Camera Placement Guide
+--------------------------
 
 "How accurate is your LPR system?" This is one of the most common questions we are asked at OpenALPR, as well as the most difficult to answer. License plate recognition accuracy is highly dependent on the input video. If the camera was properly set up, precision is likely. Conversely, results may be ambiguous if the camera did not clearly capture license plates.
 
@@ -81,3 +86,108 @@ Conclusion
 ============
 
 Following this guide will optimize your results with OpenALPR. Sign up today and try it out on your cameras. If you have any questions or need help reviewing your configuration for possible improvements, don't hesitate to `let us know! <http://www.openalpr.com/contact.html>`_
+
+
+
+Axis Best Practices
+------------------------
+
+Camera Positioning
+====================
+
+Mount the camera at a maximum range of 40 pixels per foot (or 131 pixels per meter) to ensure enough pixels on target (divide the horizontal camera resolution by 40 or 131 = maximum distance in feet/meter respectively). Use the pixel counter feature (see Focus & Zoom settings) to ensure at least 100 horizontal pixels (USA) or 150 (EU) and at least 80 vertical pixels on the plate.  
+
+Keep the angle of capture less than 40 degrees horizontally and vertically. The more you can minimize the angle the better the results will be.  If possible mount the camera high enough and angled slightly downward so as to avoid direct headlight/taillight and solar roof/hood/boot glare. 
+
+
+  .. figure:: images/camera_setup/axis-verticalmount.png
+      :scale: 100%
+      :alt: Maximum Vertical Angle
+
+      Maximum Vertical Angle
+
+  .. figure:: images/camera_setup/axis-horizontalmount.png
+      :scale: 100%
+      :alt: Maximum Horizontal Angle
+
+      Maximum Horizontal Angle
+
+  .. figure:: images/camera_setup/axis-idealmount.png
+      :scale: 100%
+      :alt: Ideal Horizontal Angle
+
+      Ideal Horizontal Angle
+
+
+Camera Settings
+====================
+
+  - **Resolution/Frame Rate** = 1080p (1920x1080) or 720p (1280x720) and 20 frames per second are a good starting point.  
+
+  - **Compression** = 20.  A lower setting will produce better image quality.
+
+  - **Zipstream** = Off
+
+  - **Camera Capture Mode** 
+
+    - WDR = Off.  This feature adds too much noise to the image which affects accuracy.
+
+  - **Image Appearance**
+
+    - Color level = 50
+    - Brightness = 50
+    - Sharpness = 60
+    - Contrast = 70
+    - Local Contrast = 55
+
+  - **White Balance** 
+
+    - White balance = Automatic
+    - White balance window = Automatic
+
+  - **Wide Dynamic Range**
+
+    - Enable Dynamic Contrast = No checkmark
+
+  - **Exposure Settings** 
+
+    - Exposure value = 70
+    - Exposure control = Automatic
+    - Maximum exposure Time =1/1000 
+    - Enable backlight compensation = Unchecked
+    - Exposure zone = Auto
+    - Shutter = Fixed 1/2000 - for slow speed; 1/4000 for highway speed.
+    - Gain = Auto 
+    - Max Gain = 24 db.  Avoid excessive gain settings which will add noise to the image.
+
+  - **Image Settings**
+
+    - Enable automatic iris adjustment = check
+
+  - **Day/Night**
+
+    - IR cut filter = On (Day), Off (Night) *if* NOT using an Event Action rule below = Auto.
+
+  - **IR Illumination**
+
+    - Enable IR illumination = check
+    - Synchronize IR illumination with Day/Night = On *if* using Auto IR cut filter. Off *if* using an Event Action rule below.
+
+
+Event Action Rules:
+====================
+
+Enable Event Action Rules to ensure IR cut filter is off and built-in IR illuminator (if equipped) is active during the night time or when lighting conditions warrant its use.  See two Action Rule examples:
+
+  .. figure:: images/camera_setup/axis-actionrule1.png
+      :scale: 100%
+      :alt: Action Rule Configuration
+
+  .. figure:: images/camera_setup/axis-actionrule2.png
+      :scale: 100%
+      :alt: Action Rule Configuration
+
+Actions
+**Day/Night Vision Mode** - Sets Auto mode, day mode or night mode. When this mode is selected, the Action Rule will switch the IR cut filter to Auto mode (depending on lighting conditions), to Day mode (IR cut filter on) or to Night mode (IR cut filter off). Note that the IR cut filter setting in Video & Audio > Camera Settings page must not be set to Auto.
+
+**IR Illumination** - Turns on the built-in Infrared (IR) light illuminator. It can be used in an Action Rule to turn on the IR light illuminator so that the camera can perform video surveillance in areas with low light, without requiring addition of external lighting.
