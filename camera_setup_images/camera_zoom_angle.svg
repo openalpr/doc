@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   inkscape:export-filename="/tmp/cam-capture-guide/clear_plate_combined.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="camera_zoom_angle.svg">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="TriangleOutL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleOutL"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path4321"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path4200"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter5937">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood5939" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite5941" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="3"
+         result="blur"
+         id="feGaussianBlur5943" />
+      <feOffset
+         dx="6"
+         dy="6"
+         result="offset"
+         id="feOffset5945" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite5947" />
+    </filter>
+    <mask
+       maskUnits="userSpaceOnUse"
+       id="mask5999">
+      <rect
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2.64156628;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.5;stroke-dasharray:none;stroke-opacity:1"
+         id="rect6001"
+         width="356.96259"
+         height="206.44986"
+         x="368.5163"
+         y="41.010136" />
+    </mask>
+    <clipPath
+       id="SVGID_2_">
+      <rect
+         y="140"
+         x="50"
+         width="512"
+         id="use5660"
+         height="512" />
+    </clipPath>
+    <clipPath
+       id="SVGID_2_-7">
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#SVGID_1_"
+         id="use5660-5" />
+    </clipPath>
+    <clipPath
+       id="b">
+      <use
+         height="100%"
+         width="100%"
+         y="0"
+         x="0"
+         style="overflow:visible"
+         xlink:href="#a"
+         overflow="visible"
+         id="use214" />
+    </clipPath>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter5937-3">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood5939-5" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite5941-6" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="3"
+         result="blur"
+         id="feGaussianBlur5943-2" />
+      <feOffset
+         dx="6"
+         dy="6"
+         result="offset"
+         id="feOffset5945-9" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite5947-1" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter5937-7">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood5939-0" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite5941-9" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="3"
+         result="blur"
+         id="feGaussianBlur5943-3" />
+      <feOffset
+         dx="6"
+         dy="6"
+         result="offset"
+         id="feOffset5945-6" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite5947-0" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter5937-2">
+      <feFlood
+         flood-opacity="0.498039"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood5939-7" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite5941-0" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="3"
+         result="blur"
+         id="feGaussianBlur5943-9" />
+      <feOffset
+         dx="6"
+         dy="6"
+         result="offset"
+         id="feOffset5945-3" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite5947-6" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="385.73844"
+     inkscape:cy="869.45932"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1309"
+     inkscape:window-height="624"
+     inkscape:window-x="369"
+     inkscape:window-y="222"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.46739316;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.5;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter5937)"
+       id="rect5935"
+       width="348.57144"
+       height="122.85714"
+       x="8.8093195"
+       y="3.3600388"
+       transform="matrix(1.4264797,0,0,1.5793491,106.57419,51.897119)"
+       inkscape:export-xdpi="128.36"
+       inkscape:export-ydpi="128.36"
+       inkscape:export-filename="/storage/projects/alpr/doc/camera_setup_images/produced/camera_zoom_angle2.png" />
+    <path
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#314340;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:40.05873871;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="M 470.07812 126.58008 C 373.26763 125.40668 265.34269 128.97549 145.03516 137.93359 L 145.0332 137.93359 C 136.24579 138.58884 127.86786 139.07536 119.45312 139.57812 L 119.45312 179.7168 C 128.81709 179.17011 138.21317 178.61135 148.00977 177.88086 C 332.61322 164.13528 486.92294 163.39521 615.98242 172.74805 L 615.98242 132.61719 C 570.32716 129.34466 521.96976 127.20903 470.07812 126.58008 z "
+       id="path7608" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:6, 12"
+       d="M 120.75264 159.84649 C 130.29581 159.29698 140.07533 158.65249 150.09705 157.90873 C 333.03438 144.3198 486.84724 143.30429 615.9364 152.4473 "
+       id="path4498" />
+    <path
+       id="path10"
+       d="m -281.60295,9.108727 35,152.000003 1149,65 69.5,34.5 82.50005,-37.5 -131.00005,-249.000003 z"
+       inkscape:connector-curvature="0"
+       style="fill:none" />
+    <g
+       id="g108"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       transform="translate(-298.80295,-50.991273)">
+      <path
+         style="fill:#ffffff"
+         inkscape:connector-curvature="0"
+         d="m 631,189.7 29.1,0.5 -7.7,-18.6 -29.1,-0.5 z"
+         id="path110" />
+      <path
+         style="fill:#cccecf"
+         inkscape:connector-curvature="0"
+         d="m 660.1,190.2 12,-12.4 -7.7,-18.6 -12,12.4 z"
+         id="path112" />
+      <path
+         style="fill:#9f1622"
+         inkscape:connector-curvature="0"
+         d="m 654.8,173.8 10,-10.3 -0.8,-2 -10,10.4 z"
+         id="path114" />
+      <path
+         style="fill:#cc9034"
+         inkscape:connector-curvature="0"
+         d="m 655.9,176.4 10,-10.4 -0.8,-1.9 -10,10.3 z"
+         id="path116" />
+      <path
+         style="fill:#d9dbdc"
+         inkscape:connector-curvature="0"
+         d="m 623.3,171.1 12,-12.3 29.1,0.4 -12,12.4 z"
+         id="path118" />
+      <ellipse
+         style="fill:#231f20"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1328.499,70.622)"
+         cx="656.09998"
+         cy="187.8"
+         rx="1.8"
+         ry="4"
+         id="ellipse120" />
+      <path
+         style="fill:#231f20"
+         inkscape:connector-curvature="0"
+         d="m 658.1,191.2 -2.4,2.3 -3.6,-6.5 2.1,-2.7 z"
+         id="path122" />
+      <ellipse
+         style="fill:#404041"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1325.249,75.965)"
+         cx="653.90002"
+         cy="190.2"
+         rx="1.8"
+         ry="3.7"
+         id="ellipse124" />
+      <ellipse
+         style="fill:none;stroke:#696a6c;stroke-width:0.25;stroke-miterlimit:10"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1325.274,76.062)"
+         stroke-miterlimit="10"
+         cx="653.90002"
+         cy="190.3"
+         rx="1.5"
+         ry="3.2"
+         id="ellipse126" />
+      <ellipse
+         style="fill:#fdc163"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1325.269,76.072)"
+         cx="653.90002"
+         cy="190.2"
+         rx="0.69999999"
+         ry="1.5"
+         id="ellipse128" />
+      <ellipse
+         style="fill:#bd924a"
+         transform="matrix(-0.899,0.437,-0.437,-0.899,1325.511,75.343)"
+         cx="654.09998"
+         cy="190.10001"
+         rx="0.5"
+         ry="1.2"
+         id="ellipse130" />
+      <path
+         style="fill:#ffffff"
+         inkscape:connector-curvature="0"
+         d="m 660,190.2 -3.1,0 -1.3,-1.8 -4.8,0.1 0.2,1.6 -1.7,-0.1 -1.4,-3.3 7.6,-3.6 1.8,2.5 z"
+         id="path132" />
+      <ellipse
+         style="fill:#231f20"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1312.121,74.056)"
+         cx="647.59998"
+         cy="187.7"
+         rx="1.8"
+         ry="4"
+         id="ellipse134" />
+      <path
+         style="fill:#231f20"
+         inkscape:connector-curvature="0"
+         d="m 649.5,191.1 -2.4,2.3 -3.6,-6.6 2.1,-2.6 z"
+         id="path136" />
+      <path
+         style="fill:#404041"
+         inkscape:connector-curvature="0"
+         d="m 643.7,190.9 c 0.9,1.9 2.3,3 3.2,2.6 0.9,-0.4 0.9,-2.3 0,-4.1 -0.9,-1.9 -2.3,-3 -3.2,-2.6 -0.9,0.3 -0.9,2.2 0,4.1 z"
+         id="path138" />
+      <ellipse
+         style="fill:none;stroke:#696a6c;stroke-width:0.25;stroke-miterlimit:10"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1308.944,79.774)"
+         stroke-miterlimit="10"
+         cx="645.29999"
+         cy="190.10001"
+         rx="1.5"
+         ry="3.2"
+         id="ellipse140" />
+      <path
+         style="fill:#fdc163"
+         inkscape:connector-curvature="0"
+         d="m 644.7,190.4 c 0.4,0.8 1,1.2 1.3,1.1 0.4,-0.2 0.3,-0.9 0,-1.7 -0.4,-0.8 -1,-1.2 -1.3,-1.1 -0.4,0.2 -0.4,0.9 0,1.7 z"
+         id="path142" />
+      <ellipse
+         style="fill:#bd924a"
+         transform="matrix(-0.899,0.437,-0.437,-0.899,1309.105,78.608)"
+         cx="645.5"
+         cy="190"
+         rx="0.5"
+         ry="1.2"
+         id="ellipse144" />
+      <path
+         style="fill:#ffffff"
+         inkscape:connector-curvature="0"
+         d="m 651.4,190.1 -3.1,-0.1 -1.2,-1.7 -4.9,0.1 0.2,1.6 -1.7,-0.1 -1.4,-3.4 7.6,-3.5 1.8,2.4 z"
+         id="path146" />
+      <ellipse
+         style="fill:#231f20"
+         transform="matrix(-0.9,0.437,-0.437,-0.9,1293.828,77.881)"
+         cx="638"
+         cy="187.7"
+         rx="1.8"
+         ry="4"
+         id="ellipse148" />
+      <path
+         style="fill:#231f20"
+         inkscape:connector-curvature="0"
+         d="m 639.9,191.1 -2.4,2.3 -3.6,-6.5 2.1,-2.7 z"
+         id="path150" />
+      <path
+         style="fill:#404041"
+         inkscape:connector-curvature="0"
+         d="m 634.1,190.9 c 0.9,1.9 2.3,3 3.2,2.6 0.9,-0.4 0.9,-2.3 0,-4.1 -0.9,-1.9 -2.3,-3 -3.2,-2.6 -0.9,0.4 -0.9,2.2 0,4.1 z"
+         id="path152" />
+      <ellipse
+         style="fill:none;stroke:#696a6c;stroke-width:0.25;stroke-miterlimit:10"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1290.704,83.909)"
+         stroke-miterlimit="10"
+         cx="635.70001"
+         cy="190.2"
+         rx="1.5"
+         ry="3.2"
+         id="ellipse154" />
+      <ellipse
+         style="fill:#fdc163"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1290.657,83.651)"
+         cx="635.70001"
+         cy="190.10001"
+         rx="0.69999999"
+         ry="1.5"
+         id="ellipse156" />
+      <ellipse
+         style="fill:#bd924a"
+         transform="matrix(-0.899,0.437,-0.437,-0.899,1290.937,83.15)"
+         cx="635.90002"
+         cy="190"
+         rx="0.5"
+         ry="1.2"
+         id="ellipse158" />
+      <path
+         style="fill:#ffffff"
+         inkscape:connector-curvature="0"
+         d="m 641.8,190.1 -3.1,0 -1.2,-1.8 -4.9,0.1 0.2,1.6 -1.7,-0.1 -1.3,-3.3 7.5,-3.6 1.8,2.5 z"
+         id="path160" />
+      <path
+         style="fill:#be1e2d"
+         inkscape:connector-curvature="0"
+         d="m 630.5,185.3 26.1,0.3 -0.5,-1.1 -26.1,-0.4 z"
+         id="path162" />
+      <path
+         style="fill:#faaf40"
+         inkscape:connector-curvature="0"
+         d="m 631.1,186.7 26.1,0.3 -0.5,-1.1 -26.1,-0.4 z"
+         id="path164" />
+      <ellipse
+         style="fill:#231f20"
+         transform="matrix(-0.895,0.446,-0.446,-0.895,1433.032,21.969)"
+         cx="713.90002"
+         cy="179.8"
+         rx="1.8"
+         ry="4"
+         id="ellipse166" />
+      <path
+         style="fill:#231f20"
+         inkscape:connector-curvature="0"
+         d="m 715.9,183.2 -2.3,2.3 -3.7,-6.5 2.1,-2.7 z"
+         id="path168" />
+      <ellipse
+         style="fill:#404041"
+         transform="matrix(-0.895,0.447,-0.447,-0.895,1429.85,27.249)"
+         cx="711.70001"
+         cy="182.3"
+         rx="1.8"
+         ry="3.7"
+         id="ellipse170" />
+      <ellipse
+         style="fill:none;stroke:#696a6c;stroke-width:0.25;stroke-miterlimit:10"
+         transform="matrix(-0.895,0.447,-0.447,-0.895,1429.947,27.676)"
+         stroke-miterlimit="10"
+         cx="711.70001"
+         cy="182.3"
+         rx="1.5"
+         ry="3.2"
+         id="ellipse172" />
+      <ellipse
+         style="fill:#fdc163"
+         transform="matrix(-0.894,0.448,-0.448,-0.894,1429.697,26.536)"
+         cx="711.70001"
+         cy="182.3"
+         rx="0.69999999"
+         ry="1.5"
+         id="ellipse174" />
+      <ellipse
+         style="fill:#bd924a"
+         transform="matrix(-0.895,0.446,-0.446,-0.895,1430.307,27.633)"
+         cx="711.90002"
+         cy="182.2"
+         rx="0.5"
+         ry="1.2"
+         id="ellipse176" />
+      <path
+         style="fill:#5a7d83"
+         inkscape:connector-curvature="0"
+         d="m 711.5,174.5 1,0 1.2,-4.5 -1,-0.1 -2.2,2.2 z"
+         id="path178" />
+      <path
+         style="fill:#668b92"
+         inkscape:connector-curvature="0"
+         d="m 712.5,174.5 2.2,-2.2 -1,-2.3 -2.2,2.2 z"
+         id="path180" />
+      <path
+         style="fill:#ffffff"
+         inkscape:connector-curvature="0"
+         d="m 663.6,190.5 29,0.5 -7.7,-18.6 -29,-0.5 z"
+         id="path182" />
+      <path
+         style="fill:#cccecf"
+         inkscape:connector-curvature="0"
+         d="M 692.6,191 704.7,178.6 697,160 684.9,172.4 Z"
+         id="path184" />
+      <path
+         style="fill:#9f1622"
+         inkscape:connector-curvature="0"
+         d="m 687.3,174.6 10.1,-10.4 -0.8,-1.9 -10.1,10.4 z"
+         id="path186" />
+      <path
+         style="fill:#cc9034"
+         inkscape:connector-curvature="0"
+         d="m 688.4,177.1 10,-10.3 -0.8,-1.9 -10,10.3 z"
+         id="path188" />
+      <path
+         style="fill:#d9dbdc"
+         inkscape:connector-curvature="0"
+         d="m 655.9,171.9 12,-12.3 29.1,0.4 -12.1,12.4 z"
+         id="path190" />
+      <path
+         style="fill:#79a3ad"
+         inkscape:connector-curvature="0"
+         d="m 694,189.7 14.7,0.2 -2.2,-5.3 -8.7,-7 -8.9,-0.2 z"
+         id="path192" />
+      <path
+         style="fill:#65bae8"
+         inkscape:connector-curvature="0"
+         d="m 703.1,184.2 -6,-5.2 -6,-0.2 2.2,5.4"
+         id="path194" />
+      <path
+         style="fill:#ffffff"
+         inkscape:connector-curvature="0"
+         d="m 703.5,180 14.7,0.2 -2.2,-5.3 -8.7,-7 -8.9,-0.1 z"
+         id="path196" />
+      <path
+         style="fill:#668b92"
+         inkscape:connector-curvature="0"
+         d="m 688.9,177.4 9.5,-9.6 8.9,0.1 -9.5,9.7 z"
+         id="path198" />
+      <path
+         style="fill:#739ca5"
+         inkscape:connector-curvature="0"
+         d="m 706.5,184.6 9.5,-9.7 -8.7,-7 -9.5,9.7 z"
+         id="path200" />
+      <path
+         style="fill:#668b92"
+         inkscape:connector-curvature="0"
+         d="m 708.7,189.9 9.5,-9.7 -2.2,-5.3 -9.5,9.7 z"
+         id="path202" />
+      <path
+         style="fill:#58595b"
+         inkscape:connector-curvature="0"
+         d="m 709,188.3 8.2,-8.4 -1.4,-3.5 -8.3,8.4 z"
+         id="path204" />
+      <path
+         style="fill:#ffe18c"
+         inkscape:connector-curvature="0"
+         d="m 715.1,181.1 1.5,-1.6 -0.8,-1.9 -1.5,1.5 z m -6,6 1.5,-1.6 -0.8,-1.9 -1.5,1.6 z"
+         id="path206" />
+      <path
+         style="fill:#65bae8"
+         inkscape:connector-curvature="0"
+         d="m 706.2,182.5 7.6,-7.6 -6.2,-5 -7.6,7.6 z"
+         id="path208" />
+      <defs
+         id="defs210">
+        <path
+           inkscape:connector-curvature="0"
+           id="a"
+           d="m 706.2,182.5 7.6,-7.6 -6.2,-5 -7.6,7.6 z" />
+      </defs>
+      <clipPath
+         id="clipPath4500">
+        <use
+           height="100%"
+           width="100%"
+           y="0"
+           x="0"
+           style="overflow:visible"
+           xlink:href="#a"
+           overflow="visible"
+           id="use4502" />
+      </clipPath>
+      <path
+         style="opacity:0.3;fill:#ffffff"
+         inkscape:connector-curvature="0"
+         clip-path="url(#b)"
+         d="m 715.11,174.576 -16.347,2.246 -0.136,-0.99 16.347,-2.246 z m 0.876,1.964 -16.346,2.246 -0.136,-0.99 16.346,-2.247 z"
+         id="path216" />
+      <ellipse
+         style="fill:#231f20"
+         transform="matrix(-0.9,0.437,-0.437,-0.9,1420.755,48.476)"
+         cx="704.79999"
+         cy="187.5"
+         rx="1.8"
+         ry="4"
+         id="ellipse218" />
+      <path
+         style="fill:#231f20"
+         inkscape:connector-curvature="0"
+         d="m 706.7,191 -2.3,2.2 -3.7,-6.5 2.2,-2.7 z"
+         id="path220" />
+      <path
+         style="fill:#404041"
+         inkscape:connector-curvature="0"
+         d="m 701,190.7 c 0.9,1.9 2.3,3 3.2,2.6 0.9,-0.4 0.9,-2.3 0,-4.1 -0.9,-1.9 -2.3,-3 -3.2,-2.6 -0.9,0.4 -0.9,2.2 0,4.1 z"
+         id="path222" />
+      <path
+         style="fill:none;stroke:#696a6c;stroke-width:0.25;stroke-miterlimit:10"
+         inkscape:connector-curvature="0"
+         stroke-miterlimit="10"
+         d="m 701.2,190.6 c 0.8,1.6 2,2.6 2.8,2.2 0.8,-0.4 0.7,-2 0,-3.6 -0.8,-1.6 -2,-2.6 -2.8,-2.2 -0.8,0.4 -0.8,2 0,3.6 z"
+         id="path224" />
+      <ellipse
+         style="fill:#fdc163"
+         transform="matrix(-0.9,0.437,-0.437,-0.9,1417.518,53.895)"
+         cx="702.59998"
+         cy="189.89999"
+         rx="0.69999999"
+         ry="1.5"
+         id="ellipse226" />
+      <ellipse
+         style="fill:#bd924a"
+         transform="matrix(-0.899,0.437,-0.437,-0.899,1417.767,53.252)"
+         cx="702.79999"
+         cy="189.8"
+         rx="0.5"
+         ry="1.2"
+         id="ellipse228" />
+      <path
+         style="fill:#79a3ad"
+         inkscape:connector-curvature="0"
+         d="m 708.7,189.9 -3.1,0 -1.3,-1.8 -4.8,0.1 0.2,1.6 -1.7,-0.1 -1.4,-3.3 7.8,-2.9 1.6,1.8 z"
+         id="path230" />
+      <ellipse
+         style="fill:#231f20"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1390.674,57.835)"
+         cx="688.70001"
+         cy="188.60001"
+         rx="1.8"
+         ry="4"
+         id="ellipse232" />
+      <path
+         style="fill:#231f20"
+         inkscape:connector-curvature="0"
+         d="m 690.6,192 -2.3,2.3 -3.7,-6.5 2.2,-2.7 z"
+         id="path234" />
+      <ellipse
+         style="fill:#404041"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1387.488,63.528)"
+         cx="686.5"
+         cy="191"
+         rx="1.8"
+         ry="3.7"
+         id="ellipse236" />
+      <ellipse
+         style="fill:none;stroke:#696a6c;stroke-width:0.25;stroke-miterlimit:10"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1387.446,63.261)"
+         stroke-miterlimit="10"
+         cx="686.5"
+         cy="191"
+         rx="1.5"
+         ry="3.2"
+         id="ellipse238" />
+      <ellipse
+         style="fill:#fdc163"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1387.537,63.8)"
+         cx="686.5"
+         cy="191"
+         rx="0.69999999"
+         ry="1.5"
+         id="ellipse240" />
+      <ellipse
+         style="fill:#bd924a"
+         transform="matrix(-0.9,0.435,-0.435,-0.9,1387.908,63.818)"
+         cx="686.59998"
+         cy="190.89999"
+         rx="0.5"
+         ry="1.2"
+         id="ellipse242" />
+      <path
+         style="fill:#ffffff"
+         inkscape:connector-curvature="0"
+         d="m 692.6,191 -3.1,0 -1.3,-1.8 -4.8,0.1 0.2,1.6 -1.7,-0.1 -1.4,-3.3 7.5,-3.6 1.9,2.4 z"
+         id="path244" />
+      <ellipse
+         style="fill:#231f20"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1374.279,61.185)"
+         cx="680.09998"
+         cy="188.39999"
+         rx="1.8"
+         ry="4"
+         id="ellipse246" />
+      <path
+         style="fill:#231f20"
+         inkscape:connector-curvature="0"
+         d="m 682,191.9 -2.3,2.3 -3.6,-6.6 2.1,-2.6 z"
+         id="path248" />
+      <ellipse
+         style="fill:#404041"
+         transform="matrix(-0.9,0.437,-0.437,-0.9,1371.048,66.621)"
+         cx="677.90002"
+         cy="190.89999"
+         rx="1.8"
+         ry="3.7"
+         id="ellipse250" />
+      <ellipse
+         style="fill:none;stroke:#696a6c;stroke-width:0.25;stroke-miterlimit:10"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1371.119,66.984)"
+         stroke-miterlimit="10"
+         cx="677.90002"
+         cy="190.89999"
+         rx="1.5"
+         ry="3.2"
+         id="ellipse252" />
+      <ellipse
+         style="fill:#fdc163"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1371.133,67.095)"
+         cx="677.90002"
+         cy="190.89999"
+         rx="0.69999999"
+         ry="1.5"
+         id="ellipse254" />
+      <ellipse
+         style="fill:#bd924a"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1371.501,67.088)"
+         cx="678.09998"
+         cy="190.8"
+         rx="0.5"
+         ry="1.2"
+         id="ellipse256" />
+      <path
+         style="fill:#ffffff"
+         inkscape:connector-curvature="0"
+         d="m 684,190.8 -3.1,0 -1.3,-1.7 -4.8,0.1 0.2,1.5 -1.7,0 -1.4,-3.4 7.5,-3.5 1.9,2.4 z"
+         id="path258" />
+      <ellipse
+         style="fill:#231f20"
+         transform="matrix(-0.9,0.437,-0.437,-0.9,1356.027,65.241)"
+         cx="670.5"
+         cy="188.5"
+         rx="1.8"
+         ry="4"
+         id="ellipse260" />
+      <path
+         style="fill:#231f20"
+         inkscape:connector-curvature="0"
+         d="m 672.4,191.9 -2.3,2.3 -3.6,-6.5 2.1,-2.7 z"
+         id="path262" />
+      <path
+         style="fill:#404041"
+         inkscape:connector-curvature="0"
+         d="m 666.7,191.7 c 0.9,1.9 2.3,3 3.2,2.6 0.9,-0.4 0.9,-2.3 0,-4.1 -0.9,-1.9 -2.3,-3 -3.2,-2.6 -0.9,0.4 -0.9,2.2 0,4.1 z"
+         id="path264" />
+      <ellipse
+         style="fill:none;stroke:#696a6c;stroke-width:0.25;stroke-miterlimit:10"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1352.894,71.214)"
+         stroke-miterlimit="10"
+         cx="668.29999"
+         cy="190.89999"
+         rx="1.5"
+         ry="3.2"
+         id="ellipse266" />
+      <ellipse
+         style="fill:#fdc163"
+         transform="matrix(-0.899,0.437,-0.437,-0.899,1352.727,70.296)"
+         cx="668.29999"
+         cy="190.89999"
+         rx="0.69999999"
+         ry="1.5"
+         id="ellipse268" />
+      <ellipse
+         style="fill:#bd924a"
+         transform="matrix(-0.9,0.436,-0.436,-0.9,1353.221,71.012)"
+         cx="668.5"
+         cy="190.8"
+         rx="0.5"
+         ry="1.2"
+         id="ellipse270" />
+      <path
+         style="fill:#ffffff"
+         inkscape:connector-curvature="0"
+         d="m 674.4,190.9 -3.1,0 -1.3,-1.8 -4.8,0.1 0.2,1.6 -1.7,-0.1 -1.4,-3.3 7.5,-3.6 1.9,2.5 z"
+         id="path272" />
+      <path
+         style="fill:#5a7d83"
+         inkscape:connector-curvature="0"
+         d="m 700.6,186.2 1,0.1 1.2,-4.6 -0.9,-0.1 -2.2,2.3 z"
+         id="path274" />
+      <path
+         style="fill:#668b92"
+         inkscape:connector-curvature="0"
+         d="m 701.6,186.3 2.2,-2.2 -1,-2.4 -2.2,2.2 z"
+         id="path276" />
+      <path
+         style="fill:#be1e2d"
+         inkscape:connector-curvature="0"
+         d="m 663,186.1 26.2,0.3 -0.5,-1.1 -26.2,-0.4 z"
+         id="path278" />
+      <path
+         style="fill:#faaf40"
+         inkscape:connector-curvature="0"
+         d="m 663.6,187.5 26.1,0.3 -0.4,-1.1 -26.2,-0.4 z"
+         id="path280" />
+    </g>
+    <path
+       style="opacity:0.2"
+       inkscape:connector-curvature="0"
+       id="path356"
+       d="m 552.43889,123.30174 c 0,1.5 -4.7,2.7 -10.5,2.7 -5.8,0 -10.5,-1.2 -10.5,-2.7 0,-1.5 4.7,-2.7 10.5,-2.7 5.8,0 10.5,1.2 10.5,2.7 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#7d4b19"
+       inkscape:connector-curvature="0"
+       id="path358"
+       d="m 538.73889,122.40174 3.1,0.7 3.2,-0.5 0.5,-20.6 -6.3,-0.1 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#603913"
+       inkscape:connector-curvature="0"
+       id="path360"
+       d="m 538.73889,122.40174 2.8,0.7 0.5,-21.1 -2.8,-0.1 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:0.3;fill:#1d1d1b"
+       inkscape:connector-curvature="0"
+       id="path362"
+       d="m 538.93889,114.50174 6.3,0.1 0.3,-12.6 -6.3,-0.1 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#39b54a"
+       inkscape:connector-curvature="0"
+       id="path364"
+       d="m 550.13889,111.80174 7.8,-12.800003 -7.1,-13.1 -15,-0.4 -7.8,12.8 7.2,13.100003 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#7d4b19"
+       inkscape:connector-curvature="0"
+       id="path366"
+       d="m 544.74289,117.93174 -0.837,-1.123 3.526,-2.63 0.837,1.12 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#30993f"
+       inkscape:connector-curvature="0"
+       id="path368"
+       d="m 550.13889,111.80174 -7.5,-13.800003 -7.4,13.400003 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#37ad47"
+       inkscape:connector-curvature="0"
+       id="path370"
+       d="m 528.03889,98.301737 14.6,-0.3 -7.4,13.400003 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#35a644"
+       inkscape:connector-curvature="0"
+       id="path372"
+       d="m 557.93889,99.001737 -15.3,-1 7.5,13.800003 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#39b048"
+       inkscape:connector-curvature="0"
+       id="path374"
+       d="m 550.83889,85.901737 -8.2,12.1 15.3,1 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#3bba4c"
+       inkscape:connector-curvature="0"
+       id="path376"
+       d="m 535.83889,85.501737 6.8,12.5 8.2,-12.1 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#39b54a"
+       inkscape:connector-curvature="0"
+       id="path378"
+       d="m 528.03889,98.301737 14.6,-0.3 -6.8,-12.5 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:0.2"
+       inkscape:connector-curvature="0"
+       id="path380"
+       d="m 577.43889,122.50174 c 0,1.9 -6.1,3.4 -13.5,3.4 -7.5,0 -13.5,-1.5 -13.5,-3.4 0,-1.9 6.1,-3.5 13.5,-3.5 7.5,0.1 13.5,1.6 13.5,3.5 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#7d4b19"
+       inkscape:connector-curvature="0"
+       id="path382"
+       d="m 559.83889,121.40174 4,0.9 4.1,-0.7 0.7,-26.500003 -8.1,-0.2 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#603913"
+       inkscape:connector-curvature="0"
+       id="path384"
+       d="m 559.83889,121.40174 3.6,0.9 0.7,-27.300003 -3.6,-0.1 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:0.3;fill:#1d1d1b"
+       inkscape:connector-curvature="0"
+       id="path386"
+       d="m 560.13889,111.10174 8.1,0.2 0.4,-16.200003 -8.1,-0.2 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#39b54a"
+       inkscape:connector-curvature="0"
+       id="path388"
+       d="m 574.53889,107.70174 10.1,-16.500003 -9.3,-16.9 -19.2,-0.5 -10.1,16.5 9.2,16.900003 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#7d4b19"
+       inkscape:connector-curvature="0"
+       id="path390"
+       d="m 567.51889,115.59174 -1.137,-1.523 4.567,-3.412 1.137,1.522 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#30993f"
+       inkscape:connector-curvature="0"
+       id="path392"
+       d="m 574.53889,107.70174 -9.6,-17.800003 -9.7,17.300003 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#37ad47"
+       inkscape:connector-curvature="0"
+       id="path394"
+       d="m 546.03889,90.301737 18.9,-0.4 -9.7,17.300003 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#35a644"
+       inkscape:connector-curvature="0"
+       id="path396"
+       d="m 584.63889,91.201737 -19.7,-1.3 9.6,17.800003 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#39b048"
+       inkscape:connector-curvature="0"
+       id="path398"
+       d="m 575.33889,74.301737 -10.4,15.6 19.7,1.3 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#3bba4c"
+       inkscape:connector-curvature="0"
+       id="path400"
+       d="m 556.13889,73.801737 8.8,16.1 10.4,-15.6 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#39b54a"
+       inkscape:connector-curvature="0"
+       id="path402"
+       d="m 546.03889,90.301737 18.9,-0.4 -8.8,-16.1 z"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#3c3539;fill-opacity:0.29585799;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 314.23922,107.06074 -116.36868,-3.36119 109.77875,29.06189 c 0,0 11.19587,-3.2779 12.7607,-11.49239 1.62183,-8.51369 -6.17077,-14.20831 -6.17077,-14.20831 z"
+       id="path6322"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccsc"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#3c3539;fill-opacity:0.29585799;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 272.46802,144.53097 8.2374,81.05606 71.83016,-53.37838 c 0,0 -4.66896,-20.05754 -31.72128,-30.93267 -28.31289,-11.38188 -48.34628,3.25499 -48.34628,3.25499 z"
+       id="path6322-3"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccsc"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g6582"
+       transform="matrix(0.6494294,0,0,0.6494294,-96.931168,47.358026)"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(0.06006202,0,0,0.06006202,562.11096,250.77469)"
+         id="g5654"
+         style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:42;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+        <defs
+           id="defs5656">
+          <rect
+             height="512"
+             id="SVGID_1_"
+             width="512"
+             x="50"
+             y="140" />
+        </defs>
+        <clipPath
+           id="clipPath6270">
+          <use
+             height="100%"
+             width="100%"
+             y="0"
+             x="0"
+             style="overflow:visible"
+             xlink:href="#SVGID_1_"
+             id="use6272" />
+        </clipPath>
+        <path
+           inkscape:connector-curvature="0"
+           class="st0"
+           d="M 306,629.5 C 434.8,629.5 539.5,524.8 539.5,396 539.5,267.2 434.8,162.5 306,162.5 177.2,162.5 72.5,267.2 72.5,396 72.5,524.8 177.2,629.5 306,629.5 l 0,0 z"
+           id="path5662"
+           clip-path="url(#SVGID_2_-7)"
+           style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:42;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      </g>
+      <polygon
+         transform="matrix(0.06006202,0,0,0.06006202,562.11096,250.77469)"
+         class="st1"
+         points="448,495.3 348.7,396 348.7,396 448,296.7 405.3,254 306,353.3 206.7,254 164,296.7 263.3,396 164,495.3 206.7,538 306,438.7 405.3,538 "
+         id="polygon5664"
+         style="fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:2.29999995;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       transform="translate(187.85114,94.132407)"
+       style="fill:#ffffff;stroke:#2ca02c;stroke-width:2.29999995"
+       id="g5015"
+       inkscape:export-filename="/tmp/cam-capture-guide/produced/camera_zoom_angle.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <circle
+         cx="10"
+         cy="10"
+         r="8.5"
+         id="circle5017" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 5.2,10 3.3,3.4 6.3,-6.2"
+         id="path5019" />
+    </g>
+  </g>
+</svg>
