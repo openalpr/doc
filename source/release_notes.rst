@@ -3,6 +3,36 @@
 Release Notes
 ********************
 
+2.5.101
+=======
+
+Release Date: December 3, 2017
+
+Features:
+
+  - New ALPR configuration GUI for Windows/Linux agents.
+  - Added South Korea and Great Britain training data
+  - Better handling for plates extending beyond the edge of the image
+  - Improved support for automatically detecting RTSP/MJPEG stream URL decoder types
+  - Improved (more accurate/smoother) statistics generated from AlprStream
+  - Removed unused GStreamer plugin DLLs from package
+  - Agent now stores and uploads "plate groups" by default - 3-10x longer image storage retention
+
+Bug Fixes:
+  - Added missing ROIs from ALPR results
+  - Fixed relatively small memory leak (~200KB / day of continuous usage) in AlprStream
+
+API Changes
+  - ALPR API: Added perspective corrected plate crop (JPEG bytes) to ALPR results object
+  - ALPR API: Added license key parameter to constructor
+  - AlprStream: Added "motion_stickiness" parameter to adjust how long motion detection lingers over areas
+  - AlprStream: Added configurable GStreamer pipeline for more comprehensive input stream support
+  - AlprStream: Added "candidates" to each plate group object which contains top N other possible plate numbers
+  - AlprStream: Added "user_data" value that contains arbitrary user_data sent along with the group/plate results
+  - AlprStream: Added image width/height to AlprGroup results
+
+
+
 2.4.102
 ==========
 
@@ -84,4 +114,11 @@ Major Features:
 
 Bug fixes:
   - Resolve a small memory leak
+
+
+E-mail Notifications
+=====================
+
+If you wish to be notified whenever OpenALPR updates are released, please `subscribe to our mailing list <https://list.openalpr.com/subscription?f=Q32MjluxHoVzoBh2N1cKA7634FJdV6vKesAsjym41nZle763Xpl4u23RFgzJ763rcvqrAwdp3IrOBH0eyQVGMajiT8Yg>`_.  
+
 
