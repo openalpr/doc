@@ -84,22 +84,34 @@ Linux
 
 
   4. To connect the agent to the OpenALPR Cloud, choose "install_agent".
-  5. If you wish to register the agent with an on-premises web server, do the following:
+  5. If you are using a GUI, you can configure the agent using the alprdconfig utility by running the following command:
+
+  .. code-block:: bash
+
+    sudo alprdconfig
+
+  6. If your server does not have a GUI and you wish to connect your software to an OpenALPR On-Premises web server, run the following commands.
      - Type "n" to choose "no" to registering with the OpenALPR Cloud.
      - Type the command alprlink-register -w http://[ip_address_of_web_server] .
      - Type in the e-mail address and password that you used to install the web server.
 
+  
 
 Docker
 ............
 
   1. Run the command **docker pull openalpr/commercial-agent** to pull the latest OpenALPR docker commercial agent.
   2. Run the following command to register the agent with the service:
-     - docker run -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/commercial-agent alprlink-register
+
+  .. code-block:: bash
+
+      docker run -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/commercial-agent alprlink-register
 
   3. Start the docker container with the following command:
-     - docker run -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/commercial-agent
 
+  .. code-block:: bash
+
+      docker run --restart always -d -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/commercial-agent
 
 .. _commercial_config_options:
 
@@ -285,7 +297,7 @@ To use this utility, you must have a commercial license key. `Request a free 14-
 Windows
 .........
 
-Download and run the `OpenALPR Forensic Plate Finder Installer <http://deb.openalpr.com/windows-forensic/openalpr-forensic-latest.exe>`_.
+Download and run the `OpenALPR Forensic Plate Finder Installer <https://deb.openalpr.com/windows-forensic/openalpr-forensic-latest.exe>`_.
 
 After the software is installed, the Forensic Plate Finder will be located in the install directory and as a Windows shortcut on the start menu.
 
