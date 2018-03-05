@@ -1,0 +1,102 @@
+
+OpenALPR can be directly integrated with Milestone XProtect.  After installing a plug-in on your Milestone server, OpenALPR data is 
+sent into Milestone XProtect where it is searchable and time-synchronized to the video recordings.  The OpenALPR results can 
+also be used to trigger alarms within XProtect.
+
+Installation
+----------------
+
+Install OpenALPR Agent for :ref:`openalpr_windows_agent_install` on your Milestone XProtect server.  
+
+Once install is complete, launch the OpenALPR Configuration Utility
+
+Configuration
+----------------
+
+Setup OpenALPR
+..............................
+
+For the "Data Destinations" choose "Local Queue"
+
+  .. image:: images/milestone/local_queue.png
+      :scale: 100%
+      :alt: Local Queue data destination
+
+Enter a license key here.  If you need an evaluation license, you can get one from https://license.openalpr.com/evalrequest
+
+  .. image:: images/milestone/license_key.png
+      :scale: 100%
+      :alt: Local Queue data destination
+
+Select the country that you wish to use for recognition.  If your cameras are in US/Canada/Mexico, choose "North America".  If you are located in a European country, 
+choose Europe.
+
+You should also specify the number of CPU cores you wish to allocate for LPR.  Generally, you should plan to use about 1 CPU core per camera stream.
+
+  .. image:: images/milestone/agent_settings.png
+      :scale: 100%
+      :alt: Local Queue data destination
+
+Next, add a camera that you wish to monitor for License Plate Recognition.  The name can be anything, it's just a label for you to know which camera it is.  The camera you add should already be configured for video recording in Milestone.  
+
+You can use autodiscovery (requires ONVIF to be enabled on the camera), or type in the IP/hostname of your camera.  You can also enter the full RTSP/MJPEG URL if you know it.
+
+Click on the camera to watch as a vehicle drives past.  There should be a box drawn around the plate to indicate that it has been recognized.
+
+  .. image:: images/milestone/camera_setup.png
+      :scale: 100%
+      :alt: Local Queue data destination
+
+Integrate with Milestone
+..............................
+
+Install the Milestone OpenALPR Plug-in.  We recommend installing to the default location because this is where Milestone will look for plug-ins.
+https://deb.openalpr.com/milestone/openalpr_milestone_plugin_signed_1_5_0.exe
+
+Launch XProtect Smart Client
+
+Click on the "OpenALPR" tab
+
+Click on the "Camera Mapping" button and check if OpenALPR has automatically mapped to your Milestone camera(s).  In many cases, automatically mapping the 
+cameras is not possible, so you must specify which camera name (in OpenALPR) maps to the camera in Milestone.  Make sure the OpenALPR cameras are properly mapped 
+to cameras in Milestone and click "Save"
+
+  .. image:: images/milestone/camera_mapping.png
+      :scale: 100%
+      :alt: Local Queue data destination
+
+Searching
+-----------
+
+Select a time range and search for matching license plates.  If you leave the search parameters empty, it will search for all plates.
+
+  .. image:: images/milestone/search_results.png
+      :scale: 100%
+      :alt: Local Queue data destination
+
+Tips:
+
+  - You can search for a partial plate number, by typing in that partial number.  Any matches will appear.
+  - You can search for vehicle make, model, color, and body type information by prefixing your search with the type.  For example: Make=honda or Color=blue
+  - Right-click on the result to view the corresponding video clip
+
+OpenALPR records the plate numbers as bookmarks
+
+
+Alarms
+--------
+
+OpenALPR can trigger Milestone XProtect alarms.  The configuration is simply managed in a spreadsheet (csv) file.  On the Milestone interface, click
+"Alert List" which will open the CSV file in your default editor (e.g., Excel).  
+
+Each entry in the spreadsheet will create an alarm.  After editing the alert list, click save (make sure to keep the CSV format, do not save in Excel format).  Once saved, the alarms will automatically update and any plates that match will be flagged as an Alarm in Milestone.
+
+  .. image:: images/milestone/milestone_alarm.png
+      :scale: 100%
+      :alt: Local Queue data destination
+
+Source Code
+------------
+
+The OpenALPR Milestone Plug-in source code is available on GitHub. https://github.com/openalpr/milestone_plugin
+

@@ -49,6 +49,8 @@ OpenALPR also maintains special builds for Jetson TX-1/TX-2 hardware on Jetpack 
 Installation
 ---------------
 
+.. _openalpr_windows_agent_install:
+
 Windows
 .........
 
@@ -425,3 +427,10 @@ Plate groups:
     2,gb,CV60UK,0,6,70,77,2.84,3.12,6,82.6058,gb,0
     1,gb,GP0VZC,0,9,199,211,8,8.48,18,84.4312,gb,0
     4,gb,GR15RYT,1,2,981,994,39.28,39.8,39,82.4912,gb,0
+
+
+
+Milestone XProtect Plug-in
+=============================
+
+.. include:: milestone.include 
