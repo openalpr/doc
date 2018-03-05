@@ -3,8 +3,43 @@
 Release Notes
 ********************
 
+2.5.103
+=========
+
+Release Date: March 5, 2018
+
+  - Massive Nvidia GPU performance improvement 100%+ faster throughput (fps) on desktop GPU, even larger improvement on Jetson
+  - Performance improvement for CPU-only processing (~10-15%)
+  - Significantly improved efficiency and some usability improvements for live video preview
+  - Small accuracy improvement for all supported countries
+  - Small accuracy improvement for recognition on GPU
+  - Vehicle: Improved make/color/body type detection.
+  - Vehicle: Added vehicle orientation and year.
+  - Vehicle: Added make/models for many countries (previously this was exclusively USA cars)
+  - New countries: Japan and Indonesia
+  - Added province detection for Australia, Japan, UAE, South Africa, Indonesia
+  - Better accuracy in Great Britain for 1 and 2-line license plates
+  - Web Server: Professional PDF report export for plate reads and alerts
+  - Web Server: Search Auditing
+  - Web Server: Search by State/Province
+  - Web Server: Support both whitelists and blacklists for alerting
+  - Web Server: Automatically add camera name/agent hostname to new agents
+
+Bug Fixes:
+
+  - Fixed rare race condition when video reconnects after losing connection
+  - Fixed small memory leak when parsing metadata for certain video formats
+
+API Changes:
+
+  - AlprStream: Added queue_empty to API response object
+  - Vehicle: Added "country" parameter to vehicle classifier
+  - Vehicle: Added orientation/year to output
+  - State Recognition: Prefixing USA states with "us-" to be consistent with other countries
+
+
 2.5.101
-=======
+=========
 
 Release Date: December 3, 2017
 
