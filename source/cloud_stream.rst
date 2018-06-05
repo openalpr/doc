@@ -67,7 +67,7 @@ Install the OpenALPR Agent on your 64-bit Ubuntu Linux 14.04/16.04 OS. The OpenA
   - Download the Ubuntu 16.04 64-bit install DVD image and burn it to a DVD.
   - Follow this installation guide to install Ubuntu 16.04 64-bit.
   - Run the following command from the terminal: 
-	- bash <(curl https://deb.openalpr.com/install)
+	- bash <(curl -s https://deb.openalpr.com/install)
   - To connect the agent to the OpenALPR Cloud, choose “install agent.”
   - When prompted, type the e-mail address and password that you used to login to the cloud site.
 

@@ -26,7 +26,7 @@ The Linux SDK is available in OpenALPR's commercial APT repository. The libopena
 
   .. code-block:: bash
 
-    bash <(curl https://deb.openalpr.com/install)
+    bash <(curl -s https://deb.openalpr.com/install)
 
 
 Select "install_sdk" from the menu.  

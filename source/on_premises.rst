@@ -82,7 +82,7 @@ Linux
 
   .. code-block:: bash
 
-    bash <(curl https://deb.openalpr.com/install)
+    bash <(curl -s https://deb.openalpr.com/install)
 
 
   4. To connect the agent to the OpenALPR Cloud, choose "install_agent".
