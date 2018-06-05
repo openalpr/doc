@@ -218,6 +218,7 @@ The agent groups similar plate numbers together and sends a JSON post containing
     plate_groups_max_delay_to_send = 7500
 
 
+
 Image Retrieval
 #############################
 
@@ -257,6 +258,37 @@ Each camera configuration file may **optionally** be configured with the followi
   
   - **prewarp** - A series of numbers that adjusts the rotation/angle of the camera image before processing. The exact value can be obtained through the OpenALPR configuration utility
   - **detection_mask_image** - The path to a black and white image file that creates a mask over the video stream before processing. Black areas are ignored, white areas are scanned for plates.
+
+
+Custom GStreamer Pipeline
+####################################
+
+In some cases, you may require more control over the process that grabs video from your device and makes it available to OpenALPR.  The OpenALPR agent and AlprStream SDK both allow you to configure a custom GStreamer Pipeline which can handle pulling video from your camera.  GStreamer is open source and supports user plug-ins which allow you to write your own C code in case you need to utilize 3rd party device drivers to pull the data.
+
+To get started, you should first familiarize yourself with GStreamer pipelines.  The following are a few examples of pulling video from various sources.  gst-launch-1.0 is a command line program that will execute the pipeline and display the output.
+
+**Webcam**
+
+    gst-launch-1.0 v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1,width=1280,height=720 ! decodebin ! videoconvert ! video/x-raw,format=BGR ! videoconvert ! autovideosink
+
+**Video File**
+
+    gst-launch-1.0 filesrc location=/tmp/video.mp4 ! decodebin ! videoconvert ! video/x-raw,format=BGR ! videoconvert ! autovideosink
+
+**RTSP/H264 Camera**
+
+    gst-launch-1.0 rtspsrc location=rtsp://192.168.0.100/video user-id=testuser user-pw=test drop-on-latency=1 latency=1000 ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=0 min-threshold-time=10 ! rtph264depay ! h264parse ! decodebin ! videoconvert ! video/x-raw,format=BGR ! videoconvert ! autovideosink
+
+
+Once you have experimented with GStreamer to display video, you can now integrate it with OpenALPR.  Our software will see the video exactly as the gst-launch-1.0 command displays it.  If using the agent, you can add your custom gstreamer format as follows:
+
+    1. Edit /etc/openalpr/stream.d/[cameraname].conf
+    2. Add gstreamer_format = [your custom gstreamer pipeline]
+    3. Remove the "autovideosink" and replace it with "appsink name=sink max-buffers=5"
+    4. Make sure you do not include the "gst-launch-1.0" command at the beginning.
+
+If you are using the AlprStream SDK, you will apply the pipeline to the API function "connect_video_stream_url" by passing it a string for "gstreamer_pipeline_format"
+
 
 
 Restarting the Agent 

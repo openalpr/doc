@@ -1,16 +1,17 @@
 ---
 swagger: '2.0'
 host: cloud.openalpr.com
+securityDefinitions: {}
 schemes:
   - https
 produces:
   - application/json
 
 info:
-  title: OpenALPR REST API
-  version: v1.0
+  title: Cloud Stream REST API
+  version: v1.0.2
   description: |
-    The OpenALPR REST API allows you to search license plate data programmatically from the 
+    The OpenALPR Cloud Stream Web Server API allows you to search license plate data programmatically from the 
     OpenALPR Web server.  Using this API you can search for license plate groups, individual 
     reads, and alerts.  You can also retrieve the plate images from the agent.
 
@@ -188,6 +189,32 @@ paths:
           name: company_id
           required: true
           type: string
+
+        - description: X coordinate for cropping.
+          in: query
+          name: x
+          required: false
+          type: string
+        - description: y coordinate for cropping.
+          in: query
+          name: y
+          required: false
+          type: string
+        - description: width coordinate for cropping.
+          in: query
+          name: width
+          required: false
+          type: string
+        - description: height coordinate for cropping.
+          in: query
+          name: height
+          required: false
+          type: string
+        - description: Resizes the image on the agent to a maximum size before transmitting
+          in: query
+          name: max_width
+          required: false
+          type: string
       responses:
         '200':
           description: OK
@@ -198,14 +225,76 @@ paths:
         '404':
           description: |
             The requested ID was not found
-  '/img/{uuid}.jpg':
+
+  '/img/{agent_uid}/{image_uuid}':
+    get:
+      tags:
+        - webserver
+      description: Get an image for the requested agent and UUID.  This will proxy the request to the remote agent.
+      parameters:
+        - in: path
+          name: agent_uid
+          required: true
+          type: string
+        - in: path
+          name: image_uuid
+          required: true
+          type: string
+
+        - description: Company UUID used for authentication
+          in: query
+          name: company_id
+          required: true
+          type: string
+        - description: X coordinate for cropping.
+          in: query
+          name: x
+          required: false
+          type: string
+        - description: y coordinate for cropping.
+          in: query
+          name: y
+          required: false
+          type: string
+        - description: width coordinate for cropping.
+          in: query
+          name: width
+          required: false
+          type: string
+        - description: height coordinate for cropping.
+          in: query
+          name: height
+          required: false
+          type: string
+        - description: Resizes the image on the agent to a maximum width (in pixels) before transmitting
+          in: query
+          name: max_width
+          required: false
+          type: string
+      produces:
+        - image/jpeg
+      responses:
+        '200':
+          description: OK
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: not found
+
+
+  '/img/{image_uuid}.jpg':
     get:
       tags:
         - agent
-      description: Get an image for the requested plate.  This web service is served on port 8355.
+      description: |
+        Get an image for the requested plate.  This web service is served locally on the agent on port 8355.
+        By default the local agent webservice is disabled, so you must first enable it in alprd.conf
       parameters:
         - in: path
-          name: uuid
+          name: image_uuid
           required: true
           type: string
       produces:
@@ -213,14 +302,13 @@ paths:
       responses:
         '200':
           description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/plate'
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
         '404':
           description: not found
-securityDefinitions: {}
-swagger: '2.0'
 
 definitions:
   plate:

@@ -124,4 +124,4 @@ To watch the OpenALPR logs, run the following command:
 Web Services 
 -----------------
 
-The `Web Services API <api/>`_ can be used to programmatically query your on-premises server for data. The API is documented `here <api/>`_
+The `Web Services API <api/?api=cloudstream>`_ can be used to programmatically query your on-premises server for data. The API is documented `here <api/?api=cloudstream>`_
