@@ -28,16 +28,47 @@ To simplify integration, the OpenALPR Cloud API also includes permissively licen
 The GitHub repo is available here: https://github.com/openalpr/cloudapi
 
 
-Manual Integration
+Code Samples
 ----------------------
 
-The endpoint for the OpenALPR Cloud APIs are described in the `REST API documentation <api/cloudapi.html>`_.  Our REST API is defined explicitly in a `Swagger Yaml Descriptor <api/specs/cloudapi.yaml>`_
+The endpoint for the OpenALPR Cloud APIs are described in the `REST API documentation <api/?api=cloudapi>`_.  
 
 For example, to connect to the OpenALPR API from the command line:
+
+
+Bash
+=====
 
 .. code-block:: bash
 
     curl -X POST -F image=@/car1.jpg 'https://api.openalpr.com/v2/recognize?recognize_vehicle=1&country=us&secret_key=sk_DEMODEMODEMODEMODEMODEMO'
+
+Python
+=======
+
+.. code-block:: python
+
+    #!/usr/bin/python
+
+    import requests
+    import base64
+    import json
+
+    # Sample image file is available at http://plates.openalpr.com/ea7the.jpg
+    IMAGE_PATH = '/tmp/sample.jpg'
+    SECRET_KEY = 'sk_DEMODEMODEMODEMODEMODEMO'
+
+    with open(IMAGE_PATH, 'rb') as image_file:
+        img_base64 = base64.b64encode(image_file.read())
+
+    url = 'https://api.openalpr.com/v2/recognize_bytes?recognize_vehicle=1&country=us&secret_key=%s' % (SECRET_KEY)
+    r = requests.post(url, data = img_base64)
+
+    print(json.dumps(r.json(), indent=2))
+
+
+Results
+=========
 
 The JSON response is as follows:
 
@@ -45,284 +76,172 @@ The JSON response is as follows:
 
 
     {
-      "data_type": "alpr_results",
-      "epoch_time": 1493845123778,
-      "processing_time": {
-        "total": 563.16100000004,
-        "plates": 105.437424,
-        "vehicles": 387.21999999984
-      },
-      "img_height": 600,
-      "img_width": 600,
-      "results": [
-        {
-          "plate": "627WWI",
-          "confidence": 94.061699,
-          "region_confidence": 83,
-          "vehicle_region": {
-            "y": 31,
-            "x": 34,
-            "height": 529,
-            "width": 529
-          },
-          "region": "wa",
-          "plate_index": 0,
-          "processing_time_ms": 14.55243,
-          "candidates": [
-            {
-              "matches_template": 1,
-              "plate": "627WWI",
-              "confidence": 94.061699
-            },
-            {
-              "matches_template": 0,
-              "plate": "627WI",
-              "confidence": 81.672684
-            },
-            {
-              "matches_template": 1,
-              "plate": "627WKI",
-              "confidence": 79.146172
-            },
-            {
-              "matches_template": 1,
-              "plate": "627WVI",
-              "confidence": 78.999771
-            },
-            {
-              "matches_template": 1,
-              "plate": "627KWI",
-              "confidence": 78.723572
-            },
-            {
-              "matches_template": 0,
-              "plate": "627WW1",
-              "confidence": 78.552238
-            },
-            {
-              "matches_template": 0,
-              "plate": "627I",
-              "confidence": 66.982719
-            },
-            {
-              "matches_template": 0,
-              "plate": "627KI",
-              "confidence": 66.334557
-            },
-            {
-              "matches_template": 0,
-              "plate": "627W1",
-              "confidence": 66.163216
-            },
-            {
-              "matches_template": 0,
-              "plate": "627VI",
-              "confidence": 64.309807
-            }
-          ],
-          "coordinates": [
-            {
-              "y": 358,
-              "x": 242
-            },
-            {
-              "y": 358,
-              "x": 356
-            },
-            {
-              "y": 411,
-              "x": 356
-            },
-            {
-              "y": 410,
-              "x": 244
-            }
-          ],
-          "vehicle": {
-            "color": [
-              {
-                "confidence": 40.467598,
-                "name": "blue"
-              },
-              {
-                "confidence": 27.456575,
-                "name": "silver"
-              },
-              {
-                "confidence": 22.455431,
-                "name": "gray"
-              },
-              {
-                "confidence": 7.715964,
-                "name": "green"
-              },
-              {
-                "confidence": 1.071705,
-                "name": "white"
-              },
-              {
-                "confidence": 0.591513,
-                "name": "black"
-              },
-              {
-                "confidence": 0.109028,
-                "name": "red"
-              },
-              {
-                "confidence": 0.090082,
-                "name": "gold"
-              },
-              {
-                "confidence": 0.040028,
-                "name": "yellow"
-              },
-              {
-                "confidence": 0.002081,
-                "name": "_ignore_"
-              }
-            ],
-            "make": [
-              {
-                "confidence": 81.062904,
-                "name": "mini"
-              },
-              {
-                "confidence": 14.504533,
-                "name": "chevrolet"
-              },
-              {
-                "confidence": 2.192204,
-                "name": "jeep"
-              },
-              {
-                "confidence": 1.432994,
-                "name": "scion"
-              },
-              {
-                "confidence": 0.619696,
-                "name": "fiat"
-              },
-              {
-                "confidence": 0.093039,
-                "name": "pontiac"
-              },
-              {
-                "confidence": 0.063397,
-                "name": "hyundai"
-              },
-              {
-                "confidence": 0.01175,
-                "name": "volvo"
-              },
-              {
-                "confidence": 0.005218,
-                "name": "saturn"
-              },
-              {
-                "confidence": 0.002759,
-                "name": "dodge"
-              }
-            ],
-            "body_type": [
-              {
-                "confidence": 99.990334,
-                "name": "sedan-compact"
-              },
-              {
-                "confidence": 0.006352,
-                "name": "sedan-wagon"
-              },
-              {
-                "confidence": 0.00316,
-                "name": "suv-standard"
-              },
-              {
-                "confidence": 0.000124,
-                "name": "sedan-sport"
-              },
-              {
-                "confidence": 1.3e-5,
-                "name": "suv-crossover"
-              },
-              {
-                "confidence": 7.0e-6,
-                "name": "sedan-standard"
-              },
-              {
-                "confidence": 6.0e-6,
-                "name": "van-mini"
-              },
-              {
-                "confidence": 1.0e-6,
-                "name": "van-full"
-              },
-              {
-                "confidence": 7.532104e-7,
-                "name": "antique"
-              },
-              {
-                "confidence": 3.668671e-7,
-                "name": "sedan-convertible"
-              }
-            ],
-            "make_model": [
-              {
-                "confidence": 64.938133,
-                "name": "chevrolet_sonic"
-              },
-              {
-                "confidence": 25.10136,
-                "name": "mini_cooper"
-              },
-              {
-                "confidence": 7.424521,
-                "name": "scion_xa"
-              },
-              {
-                "confidence": 0.8777,
-                "name": "mini_cooper-clubman"
-              },
-              {
-                "confidence": 0.790787,
-                "name": "jeep_liberty"
-              },
-              {
-                "confidence": 0.504434,
-                "name": "fiat_500"
-              },
-              {
-                "confidence": 0.15509,
-                "name": "chevrolet_aveo"
-              },
-              {
-                "confidence": 0.022665,
-                "name": "jeep_compass"
-              },
-              {
-                "confidence": 0.022426,
-                "name": "volvo_c30"
-              },
-              {
-                "confidence": 0.019563,
-                "name": "saturn_ion"
-              }
-            ]
-          },
-          "matches_template": 1,
-          "requested_topn": 10
-        }
-      ],
-      "credits_monthly_used": 100,
-      "version": 2,
-      "credits_monthly_total": 1000,
-      "error": false,
-      "regions_of_interest": [
-        {
-          "y": 0,
-          "x": 0,
-          "height": 600,
-          "width": 600
-        }
-      ],
-      "credit_cost": 2
+       "uuid" : "",
+       "regions_of_interest" : [
+          {
+             "height" : 600,
+             "width" : 600,
+             "y" : 0,
+             "x" : 0
+          }
+       ],
+       "credits_monthly_used" : 7040,
+       "credit_cost" : 2,
+       "img_height" : 600,
+       "error" : false,
+       "epoch_time" : 1522978197756,
+       "version" : 2,
+       "results" : [
+          {
+             "plate_index" : 0,
+             "vehicle_region" : {
+                "y" : 7,
+                "width" : 568,
+                "height" : 568,
+                "x" : 16
+             },
+             "processing_time_ms" : 68.9315719604492,
+             "vehicle" : {
+                "body_type" : [
+                   {
+                      "name" : "sedan-compact",
+                      "confidence" : 89.6389389038086
+                   },
+                   {
+                      "name" : "suv-standard",
+                      "confidence" : 2.92187452316284
+                   },
+                   {
+                      "name" : "sedan-wagon",
+                      "confidence" : 2.83985614776611
+                   }
+                ],
+                "year" : [
+                   {
+                      "confidence" : 47.3032341003418,
+                      "name" : "2000-2004"
+                   },
+                   {
+                      "name" : "2005-2009",
+                      "confidence" : 39.6665573120117
+                   },
+                   {
+                      "name" : "1995-1999",
+                      "confidence" : 7.91491031646729
+                   }
+                ],
+                "make_model" : [
+                   {
+                      "confidence" : 40.9104766845703,
+                      "name" : "chevrolet_hhr"
+                   },
+                   {
+                      "name" : "toyota_ist",
+                      "confidence" : 22.9741859436035
+                   },
+                   {
+                      "confidence" : 6.41662836074829,
+                      "name" : "chevrolet_trailblazer"
+                   },
+                   {
+                      "confidence" : 1.58923923969269,
+                      "name" : "mazda_verisa"
+                   },
+                   {
+                      "confidence" : 1.31779313087463,
+                      "name" : "nissan_micra"
+                   },
+                   {
+                      "name" : "mazda_tribute",
+                      "confidence" : 1.24455153942108
+                   },
+                   {
+                      "confidence" : 0.991917014122009,
+                      "name" : "chevrolet_uplander"
+                   }
+                ],
+                "make" : [
+                   {
+                      "confidence" : 32.4275550842285,
+                      "name" : "chevrolet"
+                   },
+                   {
+                      "name" : "toyota",
+                      "confidence" : 31.9965953826904
+                   },
+                   {
+                      "confidence" : 15.4623928070068,
+                      "name" : "nissan"
+                   },
+                   {
+                      "confidence" : 8.25705337524414,
+                      "name" : "daihatsu"
+                   },
+                   {
+                      "name" : "mazda",
+                      "confidence" : 3.8371422290802
+                   }
+                ],
+                "color" : [
+                   {
+                      "name" : "silver-gray",
+                      "confidence" : 73.2146682739258
+                   },
+                   {
+                      "name" : "blue",
+                      "confidence" : 15.9568424224854
+                   }
+                ],
+                "orientation" : [
+                   {
+                      "name" : "180",
+                      "confidence" : 97.7202453613281
+                   },
+                   {
+                      "confidence" : 1.84529066085815,
+                      "name" : "225"
+                   }
+                ]
+             },
+             "matches_template" : 1,
+             "plate" : "627WWI",
+             "requested_topn" : 10,
+             "coordinates" : [
+                {
+                   "x" : 237,
+                   "y" : 357
+                },
+                {
+                   "y" : 359,
+                   "x" : 364
+                },
+                {
+                   "x" : 362,
+                   "y" : 416
+                },
+                {
+                   "x" : 237,
+                   "y" : 414
+                }
+             ],
+             "region_confidence" : 99,
+             "region" : "wa",
+             "candidates" : [
+                {
+                   "matches_template" : 1,
+                   "confidence" : 94.9990844726562,
+                   "plate" : "627WWI"
+                }
+             ],
+             "confidence" : 94.9990844726562
+          }
+       ],
+       "credits_monthly_total" : 10000000000,
+       "img_width" : 600,
+       "data_type" : "alpr_results",
+       "processing_time" : {
+          "total" : 621.703000000025,
+          "plates" : 140.277725219727,
+          "vehicles" : 476.741000000004
+       }
     }

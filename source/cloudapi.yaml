@@ -3,6 +3,11 @@ swagger: '2.0'
 info:
   version: "2.0.1"
   title: OpenALPR Cloud API
+  description: |
+    The OpenALPR Cloud API allows you to send images to the cloud for processing. 
+    The image will be analyzed for license plates and vehicle make/models.  The results 
+    are returned in JSON format
+
 host: api.openalpr.com
 basePath: /v2
 schemes:
@@ -156,6 +161,73 @@ paths:
         403:
           $ref: '#/responses/api_403'
 
+  # Send an image to OpenALPR and get the analyzed results
+  /config:
+    get:
+      operationId: getConfig
+      description: |
+        Get a list of available results for plate and vehicle recognition
+      produces:
+        - application/json
+          
+      # Expected responses for this operation:
+      responses:
+        200:
+          description: ok
+          schema:
+            properties:
+              vehicle_labels:
+                type: object
+                properties:
+                  bodytype:
+                    type: array
+                    items: 
+                      type: string
+                      example: sedan-compact
+
+                  orientation:
+                    type: array
+                    items: 
+                      type: string
+                      example: 45
+
+                  color:
+                    type: array
+                    items: 
+                      type: string
+                      example: blue
+
+                  make:
+                    type: array
+                    items: 
+                      type: string
+                      example: volvo
+                    
+                  makemodel:
+                    type: array
+                    items: 
+                      type: string
+                      example: volvo_v40
+                    
+                  year:
+                    type: array
+                    items: 
+                      type: string
+                      example: 2000-2004
+                      
+              countries:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                      example: "us"
+                    name:
+                      type: string
+                      example: "North America"
+                  
+          
 parameters:
   prewarp:
     name: prewarp
@@ -341,6 +413,7 @@ responses:
           description: Text error message describing the invalid input
 
 
+
 definitions:
 
   coordinate:
@@ -448,4 +521,3 @@ definitions:
       vehicle:
         $ref: '#/definitions/vehicle_details'
           
-
