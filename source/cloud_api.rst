@@ -37,14 +37,14 @@ For example, to connect to the OpenALPR API from the command line:
 
 
 Bash
-=====
+###############
 
 .. code-block:: bash
 
     curl -X POST -F image=@/car1.jpg 'https://api.openalpr.com/v2/recognize?recognize_vehicle=1&country=us&secret_key=sk_DEMODEMODEMODEMODEMODEMO'
 
 Python
-=======
+###############
 
 .. code-block:: python
 
@@ -68,7 +68,7 @@ Python
 
 
 Results
-=========
+###############
 
 The JSON response is as follows:
 
