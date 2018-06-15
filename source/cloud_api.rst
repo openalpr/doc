@@ -67,6 +67,54 @@ Python
     print(json.dumps(r.json(), indent=2))
 
 
+C#
+#########################
+
+.. code-block:: C#
+
+    using System;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Net.Http;
+    using System.IO;
+
+    namespace ConsoleApplicationTest
+    {
+        class Program
+        {
+            private static readonly HttpClient client = new HttpClient();
+
+            public static async Task<string> ProcessImage(string image_path)
+            {
+                string SECRET_KEY = "sk_DEMODEMODEMODEMODEMODEMO";
+
+                Byte[] bytes = File.ReadAllBytes(image_path);
+                string imagebase64 = Convert.ToBase64String(bytes);
+
+                var content = new StringContent(imagebase64);
+
+                var response = await client.PostAsync("https://api.openalpr.com/v2/recognize_bytes?recognize_vehicle=1&country=us&secret_key=" + SECRET_KEY, content).ConfigureAwait(false);
+
+                var buffer = await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
+                var byteArray = buffer.ToArray();
+                var responseString = Encoding.UTF8.GetString(byteArray, 0, byteArray.Length);
+
+                return responseString;
+            }
+
+            static void Main(string[] args)
+            {
+                Task<string> recognizeTask = Task.Run(() => ProcessImage(@"C:\Temp\car1.jpg"));
+                recognizeTask.Wait();
+                string task_result = recognizeTask.Result;
+                
+                System.Console.WriteLine(task_result);
+            }
+        }
+    }
+
+
 Results
 ###############
 
