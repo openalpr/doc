@@ -272,11 +272,6 @@ parameters:
       
       This field is required if using the "plate" task
       
-      You may use multiple datasets by using commas between the country 
-      codes.  For example, 'au,auwide' would analyze using both the 
-      Australian plate styles.  A full list of supported country codes 
-      can be found here
-      https://github.com/openalpr/openalpr/tree/master/runtime_data/config
     required: true
     type: string
 
