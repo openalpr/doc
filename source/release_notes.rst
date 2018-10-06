@@ -3,6 +3,45 @@
 Release Notes
 ********************
 
+2.6.101
+=========
+
+Release Date: October, 5 2018
+
+  - Accuracy improvement across all countries
+  - H264 video recording in the agent (simplistic NVR capability)
+  - Russian license plate recognition with province support
+  - Improved plate tracking for stop-and-go traffic
+  - Recognition for additional countries in the middle-east (Qatar, Egypt, Bahrain, Iraq, Jordan, Kuwait, Oman)
+  - Extended European support to include two-line license plates
+  - Extended Brazil and Argentina support to include two-line license plates
+  - Direction of Travel tagging in the Web UI
+  - Analytics reports in the Web UI
+  - Added Nvidia support to Ubuntu 18.04 using CUDA 10.0
+
+Bug fixes:
+
+  - Video streams better maintain input framerate under high CPU load
+  - Improved selection of best plate group images.  Images with a plate and a vehicle outside of the image frame are less likely.
+  - Fixed race condition on initialization (thread safety issue) in ALPR API Python binding
+  - Fixed .NET binding issue in the "recognize" function when using an encoded image in-memory.
+  - Fixed .NET UTF-8 decoding issue (better support for plates with international characters)
+  - Fixed video buffering issue in the Agent that, in some cases, caused significant video buffering and delays
+  - Fixed issue causing direction of travel value to be set to 0 in certain some cases
+  - Fixed bug in the agent where video files (used as cameras on automatic loop) with spaces in the filepath would not load
+  - Faster default timer for sending plate groups
+  - Fixed issue where results could back up on the agent when processing cameras with extremely busy roads (e.g., highways)
+  - Agent buffers and retries POSTs when an HTTP 500 is received
+
+API Changes:
+
+  - AlprStream: Added JSON deserialize function
+  - AlprStream: Added option to serialize plate crop image in JSON
+  - AlprStream: Added set_location function for mobile applications (GPS lat/lng coordinates will be sent in JSON payload)
+  - Alpr: Added JSON deserialize function
+
+
+
 2.5.103
 =========
 
@@ -37,6 +76,16 @@ API Changes:
   - Vehicle: Added orientation/year to output
   - State Recognition: Prefixing USA states with "us-" to be consistent with other countries
 
+Archived Windows Installers
+
+  - https://deb.openalpr.com/windows-agent/openalpr-agent-3.1.2-signed.exe
+  - https://deb.openalpr.com/windows-sdk/openalpr64-sdk-2.5.103.zip
+
+Archived Linux Repositories
+
+  - deb https://deb.openalpr.com/snapshot/bionic-2.5.103/ bionic main
+  - deb https://deb.openalpr.com/snapshot/xenial-2.5.103/ xenial main
+  - deb https://deb.openalpr.com/snapshot/jetson32-2.5.103/ jetson32 main
 
 2.5.101
 =========
