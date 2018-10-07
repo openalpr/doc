@@ -257,114 +257,134 @@ ALPR group results are sent in the following JSON format:
 
 .. code-block:: json
 
-
     {
-      "data_type": "alpr_group", 
-      "agent_type": "alprd", 
-      "epoch_start": 1510773184818, 
-      "epoch_end": 1510773185931, 
-      "camera_id": 2090756197, 
-      "agent_uid": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY", 
-      "company_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
-      "user_data": "hello world", 
-      "frame_start": 59, 
-      "best_confidence": 94.96063232421875, 
-      "version": 2, 
-      "best_plate": {
-        "plate": "2BH375", 
-        "confidence": 94.96063232421875, 
-        "region_confidence": 92, 
-        "vehicle_region": {
-          "y": 49, 
-          "x": 369, 
-          "height": 303, 
-          "width": 303
-        }, 
-        "region": "ma", 
-        "plate_index": 0, 
-        "processing_time_ms": 84.47315979003906, 
-        "candidates": [
+       "data_type" : "alpr_group",
+       "version" : 2,
+       "company_id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+       "agent_uid" : "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
+       "camera_id" : 2090267338,
+       "best_plate_number" : "6PK132",
+       "best_confidence" : 90.2536163330078,
+       "best_region" : "us-mo",
+       "best_region_confidence" : 83,
+       "best_image_width" : 1280,
+       "best_image_height" : 720,
+       "best_uuid" : "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-2090267338-1538924513527",
+       "matches_template" : false,
+       "epoch_start" : 1538924513527,
+       "epoch_end" : 1538924513627,
+       "frame_start" : 68,
+       "frame_end" : 71,
+       "is_parked" : false
+       "agent_type" : "alprd",
+       "user_data" : "hello world",
+       "uuids" : [
+          "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-2090267338-1538924513527",
+          "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-2090267338-1538924513627"
+       ],
+       "travel_direction" : 285.945404052734,
+       "agent_version" : "2.6.101",
+       "country" : "us",
+       "plate_indexes" : [
+          0,
+          0
+       ],
+       "candidates" : [
           {
-            "matches_template": 1, 
-            "plate": "2BH375", 
-            "confidence": 94.96063232421875
-          }, 
-          {
-            "matches_template": 0, 
-            "plate": "BH375", 
-            "confidence": 79.3022232055664
-          }, 
-          {
-            "matches_template": 0, 
-            "plate": "BBH375", 
-            "confidence": 79.13993835449219
+             "matches_template" : 0,
+             "confidence" : 90.2536163330078,
+             "plate" : "6PK132"
           }
-        ], 
-        "coordinates": [
           {
-            "y": 240, 
-            "x": 490
-          }, 
-          {
-            "y": 231, 
-            "x": 548
-          }, 
-          {
-            "y": 261, 
-            "x": 552
-          }, 
-          {
-            "y": 270, 
-            "x": 494
+             "matches_template" : 0,
+             "confidence" : 70.315123252332,
+             "plate" : "6PKI32"
           }
-        ], 
-        "matches_template": 1, 
-        "requested_topn": 10
-      }, 
-      "best_uuid": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185292", 
-      "frame_end": 81, 
-      "is_parked": false, 
-      "uuids": [
-        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773184818", 
-        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773184881", 
-        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185292", 
-        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185325", 
-        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185388", 
-        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185421", 
-        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185484", 
-        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185867", 
-        "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234567890-1510773185931"
-      ], 
-      "plate_indexes": [
-        0, 
-        0, 
-        0, 
-        0, 
-        0, 
-        0, 
-        0, 
-        0, 
-        0
-      ], 
-      "travel_direction": 298.6413879394531, 
-      "country": "us", 
-      "best_plate_number": "2BH375", 
-      "best_region": "ma", 
-      "best_region_confidence": 79, 
-      "agent_version": "2.5.101", 
-      "candidates": [
-        {
-          "matches_template": 1, 
-          "plate": "2BH375", 
-          "confidence": 94.96063232421875
-        },
-        {
-          "matches_template": 1, 
-          "plate": "BH375", 
-          "confidence": 81.10235231351523
-        }
-      ]
+       ],
+       "best_plate" : {
+          "plate_index" : 0,
+          "confidence" : 90.2536163330078,
+          "region_confidence" : 70,
+          "plate_crop_jpeg" : "...base64_jpeg_bytes...",
+          "processing_time_ms" : 21.2537994384766,
+          "candidates" : [
+             {
+                "plate" : "6PK132",
+                "matches_template" : 0,
+                "confidence" : 90.2536163330078
+             },
+             {
+                "confidence" : 75.9956741333008,
+                "matches_template" : 0,
+                "plate" : "6PKI32"
+             },
+             {
+                "plate" : "6PK32",
+                "confidence" : 75.5074081420898,
+                "matches_template" : 0
+             },
+             {
+                "matches_template" : 0,
+                "confidence" : 75.3532333374023,
+                "plate" : "6PKA32"
+             },
+             {
+                "plate" : "6PK12",
+                "matches_template" : 0,
+                "confidence" : 74.8602905273438
+             },
+             {
+                "matches_template" : 0,
+                "confidence" : 74.8599395751953,
+                "plate" : "PK132"
+             },
+             {
+                "confidence" : 74.7018280029297,
+                "matches_template" : 0,
+                "plate" : "GPK132"
+             },
+             {
+                "confidence" : 74.6972503662109,
+                "matches_template" : 0,
+                "plate" : "6PK122"
+             },
+             {
+                "plate" : "6PKI2",
+                "matches_template" : 0,
+                "confidence" : 60.6023483276367
+             }
+          ],
+          "region" : "us-mo",
+          "matches_template" : 0,
+          "requested_topn" : 20,
+          "plate" : "6PK132",
+          "vehicle_region" : {
+             "y" : 71,
+             "width" : 229,
+             "height" : 229,
+             "x" : 0
+          },
+          "coordinates" : [
+             {
+                "y" : 219,
+                "x" : 62
+             },
+             {
+                "x" : 115,
+                "y" : 217
+             },
+             {
+                "y" : 245,
+                "x" : 114
+             },
+             {
+                "x" : 61,
+                "y" : 247
+             }
+          ]
+       },
     }
+
 
 
 JSON Heartbeat
@@ -375,40 +395,45 @@ Every minute, the OpenALPR agent adds one heartbeat message to the queue. The he
 .. code-block:: json
 
     {
-      "data_type": "heartbeat",
-      "company_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "agent_uid": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
-      "agent_version": "3.0.1",
-      "openalpr_version": "2.3.111",
-      "os": "linux",
-      "agent_type": "alprd",
-      "site_id": "unspecified",
-      "timestamp": 1490039466942,
-      "system_uptime_seconds": 831550,
-      "daemon_uptime_seconds": 60,
-      "cpu_cores": 8,
-      "cpu_last_update": 1490039462237,
-      "cpu_usage_percent": 50.823528,
-      "disk_quota_total_bytes": 0,
-      "disk_quota_consumed_bytes": 0,
-      "disk_quota_last_update": 0,
-      "memory_consumed_bytes": 65590419456,
-      "memory_last_update": 1490039462237,
-      "memory_swapused_bytes": 0,
-      "memory_swaptotal_bytes": 12813594624,
-      "memory_total_bytes": 67482710016,
-      "processing_threads_active": 1,
-      "processing_threads_configured": 1,
-      "beanstalk_queue_size": -1,
-      "video_streams": [
-        {
-          "camera_id": 16488027,
-          "fps": 12,
-          "is_streaming": true,
-          "url": "rtsp://10.1.1.1/video.h264",
-          "last_update": 1490039466541
-        }
-      ]
+       "data_type" : "heartbeat",
+       "company_id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+       "agent_uid" : "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
+       "agent_hostname" : "mymachine",
+       "license_systemid" : "10799630758371023307",
+       "license_key" : "...license_key...",
+       "license_valid" : true,
+       "memory_swapused_bytes" : 8265138176,
+       "memory_last_update" : 1538925240573,
+       "memory_total_bytes" : 67475775488,
+       "memory_swaptotal_bytes" : 12813594624,
+       "memory_consumed_bytes" : 67061047296,
+       "cpu_last_update" : 1538925240573,
+       "cpu_cores" : 8,
+       "cpu_usage_percent" : 54.1457290649414,
+       "disk_quota_earliest_result" : 1538924513527,
+       "disk_quota_total_bytes" : 2147483648,
+       "disk_quota_consumed_bytes" : 524288000,
+       "processing_threads_configured" : 1,
+       "processing_threads_active" : 1,
+       "timestamp" : 1538925244693,
+       "daemon_uptime_seconds" : 35,
+       "system_uptime_seconds" : 585390,
+       "recording_enabled" : false,
+       "agent_type" : "alprd",
+       "agent_version" : "2.6.101",
+       "beanstalk_queue_size" : 0,
+       "openalpr_version" : "2.6.101",
+       "os" : "linux",
+       "video_streams" : [
+          {
+             "fps" : 30,
+             "camera_id" : 2090267338,
+             "camera_name" : "h265",
+             "last_update" : 1538925244689,
+             "is_streaming" : true,
+             "url" : "rtsp://192.168.0.1/stream"
+          }
+       ],
     }
 
 
