@@ -32,17 +32,47 @@ Memory and disk requirements are relatively constant. Once OpenALPR initializes,
 NVIDIA GPU Acceleration
 -------------------------
 
-OpenALPR agent performance can also be drastically accelerated by Nvidia GPU hardware.  OpenALPR maintains binaries for CUDA 8.0 using CuDNN 6 on 64-bit Ubuntu Linux 16.04.  The OpenALPR software has been compiled for CUDA hardware versions 5.2 5.3 6.0 6.1 6.2 -- most newer cards are supported.  To enable GPU acceleration, first install the GPU binaries::
+OpenALPR agent performance can also be drastically accelerated by Nvidia GPU hardware.  OpenALPR maintains binaries for CUDA 10.0 using CuDNN 7 on 64-bit Ubuntu Linux 18.04.  The OpenALPR software has been compiled for CUDA hardware versions 5.2 5.3 6.0 6.1 6.2 7.0 7.2 7.5.  You can verify your CUDA version here: https://developer.nvidia.com/cuda-gpus
 
-  sudo apt-get update && sudo apt-get install openalprgpu
+Ubuntu 18.04
+==============
 
-then edit the /etc/openalpr/openalpr.conf file and set::
+First setup the Nvidia repos::
+
+  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb -O /tmp/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+  sudo dpkg -i /tmp/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+
+If you have not already installed Nvidia drivers, you must do this first::
+
+  sudo apt-get update
+  sudo apt-get install -y nvidia-driver-410 
+  sudo reboot
+
+Now you may install the OpenALPR GPU acceleration package::
+
+  <(curl https://deb.openalpr.com/install)
+
+  Select OpenALPR software and the install_nvidia option 
+
+Ubuntu 16.04
+===============
+
+To enable GPU acceleration, first install Nvidia packages::
+
+  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb -O /tmp/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+  sudo dpkg -i /tmp/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+
+Next install the OpenALPR Nvidia acceleration.  Choose "install_nvidia" from the menu::
+
+  bash <(curl https://deb.openalpr.com/install)
+
+The following properties will be set automatically in /etc/openalpr/openalpr.conf::
 
   hardware_acceleration = 1
   gpu_id = 0
   gpu_batch_size = 10
 
-The batch size controls how many images are simultaneously processed by the GPU.  Setting it to a higher value generally improves performance but also consumes more GPU memory.
+The batch size controls how many images are simultaneously processed by the GPU.  The default value is usually the best balance of performance and GPU memory usage.  
 
 OpenALPR also maintains special builds for Jetson TX-1/TX-2 hardware on Jetpack v3.1.  To install, follow the standard Linux install instructions.  The defaults are configured such that the GPU will automatically be installed, enabled, and configured with a default batch size of 5.
 
@@ -113,7 +143,7 @@ Docker
 
   .. code-block:: bash
 
-      docker run --restart always -d -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/commercial-agent
+      docker run --restart always -d --cap-add SYS_NICE -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/commercial-agent
 
 .. _commercial_config_options:
 
