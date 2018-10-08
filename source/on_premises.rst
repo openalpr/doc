@@ -107,8 +107,8 @@ and are integrating OpenALPR data into your own application.
 Linux
 .........
 
-  1. Download the Ubuntu 16.04 64-bit install DVD image and burn it to a DVD.
-  2. Follow this `installation guide <http://www.ubuntu.com/download/desktop/install-ubuntu-desktop>`_ to install Ubuntu 16.04 64-bit.
+  1. Download the `Ubuntu 18.04 64-bit install DVD image <http://releases.ubuntu.com/18.04/>`_ and burn it to a DVD.
+  2. Follow this `installation guide <http://www.ubuntu.com/download/desktop/install-ubuntu-desktop>`_ to install Ubuntu 18.04 64-bit.
   3. Run the following command from the terminal:
 
   .. code-block:: bash

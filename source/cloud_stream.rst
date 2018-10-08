@@ -11,7 +11,7 @@ For professional account users, the OpenALPR Axis camera Agent uploads videos di
 
 For basic account users, the Windows/Linux OpenALPR Agent works with any IP camera that supports H.264 and MJPEG streams. All video is processed on your own PC/server, and the plate information is uploaded to the OpenALPR Cloud Stream portal, where it is viewable for 30 days. This hybrid cloud service is cost-effective because the license plate processing is performed on your own hardware and plate images are stored locally. Users define how much CPU and storage to utilize for the OpenALPR Agent, which is managed through the Cloud Stream portal with a web browser. Minimal bandwidth is required because only the metadata is uploaded. Full resolution plate images reside locally and can be viewed on demand when the user requires visual verification.
 
-For free account users, data retention is limited to two days, and users are required to login to the Cloud Stream portal to view results. Just like in a basic account, the OpenALPR Agent works with any IP camera and will run on 64-bit Windows or Ubuntu Linux 16.04 operating systems. If you require alert notifications, enhanced search, and longer data retention, you can upgrade to a basic account (or professional account if you are using an Axis camera) at any time by entering your credit card information.
+For free account users, data retention is limited to two days, and users are required to login to the Cloud Stream portal to view results. Just like in a basic account, the OpenALPR Agent works with any IP camera and will run on 64-bit Windows or Ubuntu Linux 18.04 operating systems. If you require alert notifications, enhanced search, and longer data retention, you can upgrade to a basic account (or professional account if you are using an Axis camera) at any time by entering your credit card information.
 
 
 Sign up here: https://cloud.openalpr.com/
@@ -62,10 +62,10 @@ Congratulations — you're all set up! As vehicles move past the camera, the vid
 Linux
 ---------------
 
-Install the OpenALPR Agent on your 64-bit Ubuntu Linux 14.04/16.04 OS. The OpenALPR Agent will operate as a background daemon.
+Install the OpenALPR Agent on your 64-bit Ubuntu Linux 18.04 OS. The OpenALPR Agent will operate as a background daemon.
 
-  - Download the Ubuntu 16.04 64-bit install DVD image and burn it to a DVD.
-  - Follow this installation guide to install Ubuntu 16.04 64-bit.
+  - Download the Ubuntu 18.04 64-bit install DVD image and burn it to a DVD.
+  - Follow this installation guide to install Ubuntu 18.04 64-bit.
   - Run the following command from the terminal: 
 	- bash <(curl -s https://deb.openalpr.com/install)
   - To connect the agent to the OpenALPR Cloud, choose “install agent.”

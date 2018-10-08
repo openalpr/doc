@@ -12,7 +12,7 @@ Minimum system requirements:
   - 4GB RAM
   - 250GB SSD hard drive
   - Dual-core or greater CPU
-  - Ubuntu Linux 16.04 64-bit
+  - Ubuntu Linux 18.04 64-bit
 
 
 Architecture
@@ -26,11 +26,11 @@ There is a constant stream of data flowing between the camera and the agent, as 
 Installation
 --------------
 
-Download the Ubuntu 16.04 64-bit install DVD image and burn it to a DVD:
+Download the Ubuntu 18.04 64-bit install DVD image and burn it to a DVD:
 
-  - http://releases.ubuntu.com/16.04/
+  - http://releases.ubuntu.com/18.04/
 
-Follow this installation guide to install Ubuntu 16.04 64-bit:
+Follow this installation guide to install Ubuntu 18.04 64-bit:
 
   - http://www.ubuntu.com/download/desktop/install-ubuntu-desktop
 
