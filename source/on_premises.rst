@@ -35,12 +35,13 @@ NVIDIA GPU Acceleration
 OpenALPR agent performance can also be drastically accelerated by Nvidia GPU hardware.  OpenALPR maintains binaries for CUDA 10.0 using CuDNN 7 on 64-bit Ubuntu Linux 18.04.  The OpenALPR software has been compiled for CUDA hardware versions 5.2 5.3 6.0 6.1 6.2 7.0 7.2 7.5.  You can verify your CUDA version here: https://developer.nvidia.com/cuda-gpus
 
 Ubuntu 18.04
-==============
+................
 
 First setup the Nvidia repos::
 
   wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb -O /tmp/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
   sudo dpkg -i /tmp/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
+  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
 
 If you have not already installed Nvidia drivers, you must do this first::
 
@@ -55,7 +56,7 @@ Now you may install the OpenALPR GPU acceleration package::
   Select OpenALPR software and the install_nvidia option 
 
 Ubuntu 16.04
-===============
+...............
 
 To enable GPU acceleration, first install Nvidia packages::
 
