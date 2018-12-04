@@ -78,7 +78,7 @@ API Changes:
 
 Archived Windows Installers
 
-  - https://deb.openalpr.com/windows-agent/openalpr-agent-3.1.2-signed.exe
+  - https://deb.openalpr.com/windows-agent/openalpr-agent-3.1.1-signed.exe
   - https://deb.openalpr.com/windows-sdk/openalpr64-sdk-2.5.103.zip
 
 Archived Linux Repositories
