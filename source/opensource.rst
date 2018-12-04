@@ -719,12 +719,6 @@ When you're ready to start training, you'll need to create a library of characte
     :scale: 100%
     :alt: character tile 1
 
-부-0-0-2.png
-
-.. image:: images/training_ocr_char2.png
-    :scale: 100%
-    :alt: character tile 2
-
 0-0-az2012.png
 
 .. image:: images/training_ocr_char3.png
