@@ -18,20 +18,16 @@ When you're ready to get started, sign-up for an account at https://cloud.openal
 Once enrolled, you will automatically be assigned a free account with a limited number of API credits per month. Each time you use the service, you will use one or more 
 API credits. You may enter your credit card information and upgrade your plan to receive access to more credits per month.
 
-Integration Libraries
+Integration 
 -----------------------
 
 Because the OpenALPR Cloud API is REST-based, it works with any programming language on any operating system. You can make API calls using whatever method
 you prefer.
 
-To simplify integration, the OpenALPR Cloud API also includes permissively licensed open-source client libraries in a variety of languages. 
-The GitHub repo is available here: https://github.com/openalpr/cloudapi
-
+The endpoint for the OpenALPR Cloud APIs are described in the `REST API documentation <api/?api=cloudapi>`_.
 
 Code Samples
 ----------------------
-
-The endpoint for the OpenALPR Cloud APIs are described in the `REST API documentation <api/?api=cloudapi>`_.  
 
 For example, to connect to the OpenALPR API from the command line:
 
