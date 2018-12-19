@@ -51,7 +51,7 @@ If you have not already installed Nvidia drivers, you must do this first::
 
 Now you may install the OpenALPR GPU acceleration package::
 
-  <(curl https://deb.openalpr.com/install)
+  bash <(curl https://deb.openalpr.com/install)
 
   Select OpenALPR software and the install_nvidia option 
 
