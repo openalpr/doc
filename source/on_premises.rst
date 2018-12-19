@@ -493,7 +493,3 @@ Plate groups:
 
 
 
-Milestone XProtect Plug-in
-=============================
-
-.. include:: milestone.include 
