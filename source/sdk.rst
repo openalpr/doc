@@ -209,9 +209,9 @@ Source code: https://github.com/openalpr/openalpr/tree/master/src/bindings/cshar
 
 .. code-block:: c#
 
-    using openalprnet;
+    using AlprNet;
 
-    var alpr = new AlprNet("us", "/path/to/openalpr.conf", "/path/to/runtime_data");
+    var alpr = new Alpr("us", "/path/to/openalpr.conf", "/path/to/runtime_data");
     if (!alpr.IsLoaded())
     {
         Console.WriteLine("OpenAlpr failed to load!");
