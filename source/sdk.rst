@@ -212,24 +212,23 @@ Source code: https://github.com/openalpr/openalpr/tree/master/src/bindings/cshar
     using AlprNet;
 
     var alpr = new Alpr("us", "/path/to/openalpr.conf", "/path/to/runtime_data");
+    alpr.Initialize();
     if (!alpr.IsLoaded())
     {
         Console.WriteLine("OpenAlpr failed to load!");
         return;
     }
-    // Optionally, you can apply pattern matching for a particular region.
-    alpr.DefaultRegion = "md";
 
-    var results = alpr.Recognize("/path/to/image.jpg");
-
-    foreach (var result in results.Plates)
+    var frame_lpr_data = alpr.Recognize("C:/path/to/imagefile/infiniti.jpg");
+    int i = 0;
+    foreach (var result in frame_lpr_data.results)
     {
-        Console.WriteLine("Plate {0}: {1} result(s)", i++, result.TopNPlates.Count);
-        Console.WriteLine("  Processing Time: {0} msec(s)", result.ProcessingTimeMs);
-        foreach (var plate in result.TopNPlates)
+        Console.WriteLine("Plate {0}: {1} result(s)", ++i, result.candidates.Count);
+        Console.WriteLine("  Processing Time: {0} msec(s)", result.processing_time_ms);
+        foreach (var plate in result.candidates)
         {
-            Console.WriteLine("  - {0}\t Confidence: {1}\tMatches Template: {2}", plate.Characters,
-                              plate.OverallConfidence, plate.MatchesTemplate);
+            Console.WriteLine("  - {0}\t Confidence: {1}\tMatches Template: {2}", plate.plate,
+                              plate.confidence, plate.matches_template);
         }
     }
 
