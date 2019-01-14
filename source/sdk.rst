@@ -460,7 +460,7 @@ Each thread should have its own Alpr object, but can share the AlprStream object
 Python
 ..................
 
-Download our sample [video file](http://download.openalpr.com/bench/720p.mp4) which has several cars with license plates
+Download our sample video file (http://download.openalpr.com/bench/720p.mp4) which has several cars with license plates
 in a parking lot (or take your own video in .mp4 format). Then, run the following code:
 
 .. code-block:: python
