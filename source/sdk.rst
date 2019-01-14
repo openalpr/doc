@@ -39,12 +39,15 @@ Alpr API
 Overview
 ##########
 
-The OpenALPR C API recognizes license plates given individual images.
+The OpenALPR C API recognizes license plates given individual images. In addition to the
+installation options above, the Alpr API is available as a pip package through PyPI here:
+https://pypi.org/project/openalpr/.
+
 The library instance should be initialized once for each thread.  There 
 is a significant initilization time (a few seconds) so you should not destroy 
 the instance until you are finished using it.
- 
-This instance is not threadsafe by design.  An ALPR instance should be used on a single 
+
+This instance is not threadsafe by design.  An ALPR instance should be used on a single
 thread and not shared across threads.
 
 C++
@@ -453,3 +456,37 @@ Each thread should have its own Alpr object, but can share the AlprStream object
         alprstream_cleanup(stream);
         return 0;
     }
+
+Python
+..................
+
+Download our sample [video file](http://download.openalpr.com/bench/720p.mp4) which has several cars with license plates
+in a parking lot (or take your own video in .mp4 format). Then, run the following code:
+
+.. code-block:: python
+
+    from alprstream import AlprStream
+    from openalpr import Alpr
+
+    alpr = Alpr("us", "/path/to/openalpr.conf", "/path/to/runtime_data")
+    if not alpr.is_loaded():
+        print("Error loading OpenALPR")
+        sys.exit(1)
+    alpr_stream = AlprStream(frame_queue_size=10, use_motion_detection=True)
+    if not alpr_stream.is_loaded():
+        print("Error loading AlprStream")
+        sys.exit(1)
+
+    alpr_stream.connect_video_file('/path/to/720p.mp4', 0)
+
+    while alpr_stream.video_file_active() or alpr_stream.get_queue_size() > 0:
+        single_frame = alpr_stream.process_frame(alpr)
+        active_groups = len(alpr_stream.peek_active_groups())
+        print("Active groups: {:<3} \tQueue size: {}".format(active_groups, alpr_stream.get_queue_size()))
+        groups = alpr_stream.pop_completed_groups()
+        for group in groups:
+            print("=" * 50)
+            print("Group ({}-{}): {} ({:.2f}% confident)".format(
+                group['epoch_start'], group['epoch_end'],
+                group['best_plate']['plate'], group['best_plate']['confidence']))
+            print("=" * 50)
