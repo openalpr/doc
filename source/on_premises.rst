@@ -125,7 +125,7 @@ Linux
 
   6. If your server does not have a GUI and you wish to connect your software to an OpenALPR On-Premises web server, run the following commands.
      - Type "n" to choose "no" to registering with the OpenALPR Cloud.
-     - Type the command alprlink-register -w http://[ip_address_of_web_server] .
+     - Type the command alprlink-register -w https://[ip_address_of_web_server] .
      - Type in the e-mail address and password that you used to install the web server.
 
   
