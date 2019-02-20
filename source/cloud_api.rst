@@ -185,7 +185,7 @@ Java
 JavaScript
 ###############
 
-.. code-block:: html
+.. code-block:: Java
 
 <html>
     <title>
