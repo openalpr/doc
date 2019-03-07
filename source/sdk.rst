@@ -444,6 +444,11 @@ Each thread should have its own Alpr object, but can share the AlprStream object
             // Free the memory for each response
             alprstream_free_frame_response(response);
 
+            // Get Group results:
+            char* group_result = alprstream_pop_completed_groups_and_recognize_vehicle(stream);
+            cout << "Groups: " << group_result << endl;
+            alprstream_free_response_string(group_result);
+
             cout << "Stream queue size: " << alprstream_get_queue_size(stream) << endl;
         }
 
