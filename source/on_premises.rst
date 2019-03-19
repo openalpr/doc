@@ -403,13 +403,13 @@ Once you've selected one or more files to process, click the "Start" button to b
 Command-Line Usage
 ---------------------
 
-Launch the alpr_video program with a path to a video file. In addition include an output directory; this is where the CSV and SQLite files are saved. The threads option provides more threads to process the video simmultaneously. This should not exceed the number of CPU cores on the machine.
+Launch the alprvideocli program with a path to a video file. In addition include an output directory; this is where the CSV and SQLite files are saved. The threads option provides more threads to process the video simmultaneously. This should not exceed the number of CPU cores on the machine.
 
 .. code-block:: bash
 
     USAGE: 
 
-       ./alpr_video  --output_dir <output_dir> [-c <country_code>] [--config
+       ./alprvideocli  --output_dir <output_dir> [-c <country_code>] [--config
                      <config_file>] [-n <topN>] [--threads <num_threads>] [-p
                      <pattern code>] [--save_frames] [--debug] [--motion] [--]
                      [--version] [-h] <video_file_path>
