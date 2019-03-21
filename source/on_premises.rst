@@ -77,6 +77,27 @@ The batch size controls how many images are simultaneously processed by the GPU.
 
 OpenALPR also maintains special builds for Jetson TX-1/TX-2 hardware on Jetpack v3.1.  To install, follow the standard Linux install instructions.  The defaults are configured such that the GPU will automatically be installed, enabled, and configured with a default batch size of 5.
 
+Windows 10
+...............
+
+Prerequisites::
+
+  Windows 10 64-bit
+  Nvidia GPU driver >= 417.22
+
+Install::
+
+  Install the latest version of the OpenALPR Agent or SDK 
+  Install https://deb.openalpr.com/windows-nvidia/vc_redist_msvc2015.x64.exe
+  Download and extract the following file to the agent bin directory (default C:\OpenALPR\Agent\bin) or SDK directory: https://deb.openalpr.com/windows-nvidia/openalpr_nvidiawindowslibs_2.6.103.zip
+
+If running the agent, edit the OpenALPR agent config file (c:\openalpr\agent\etc\openalpr\alprd.conf) and add the following line::
+  hardware_acceleration = 1
+
+Restart the OpenALPR Agent Service
+
+
+
 Installation
 ---------------
 
