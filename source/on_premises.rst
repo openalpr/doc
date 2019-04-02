@@ -131,21 +131,27 @@ Linux
 
   1. Download the `Ubuntu 18.04 64-bit install DVD image <http://releases.ubuntu.com/18.04/>`_ and burn it to a DVD.
   2. Follow this `installation guide <http://www.ubuntu.com/download/desktop/install-ubuntu-desktop>`_ to install Ubuntu 18.04 64-bit.
-  3. Run the following command from the terminal:
+  3. Ensure you have curl installed by running the following command from the terminal:
+  
+  .. code-block:: bash
+
+    sudo apt-get update && sudo apt-get install -y curl
+
+  4. Run the following command from the terminal:
 
   .. code-block:: bash
 
     bash <(curl -s https://deb.openalpr.com/install)
 
 
-  4. To connect the agent to the OpenALPR Cloud, choose "install_agent".
-  5. If you are using a GUI, you can configure the agent using the alprdconfig utility by running the following command:
+  5. To connect the agent to the OpenALPR Cloud, choose "install_agent".
+  6. If you are using a GUI, you can configure the agent using the alprdconfig utility by running the following command:
 
   .. code-block:: bash
 
     sudo alprdconfig
 
-  6. If your server does not have a GUI and you wish to connect your software to an OpenALPR On-Premises web server, run the following commands.
+  7. If your server does not have a GUI and you wish to connect your software to an OpenALPR On-Premises web server, run the following commands.
      - Type "n" to choose "no" to registering with the OpenALPR Cloud.
      - Type the command alprlink-register -w https://[ip_address_of_web_server] .
      - Type in the e-mail address and password that you used to install the web server.
