@@ -3,10 +3,46 @@
 Release Notes
 ********************
 
+2.6.103
+=========
+
+Release Date: March 26, 2019
+
+  - Windows GPU support for both Agent and SDK
+  - Added Support for Singapore and Malaysia license plates
+  - Extended Support for all countries in the Gulf Cooperation Council.  All emirates in UAE are now differentiated
+  - Extended support for Mercosur format in Brazil
+  - Improved accuracy for Japanese plates (smaller provinces, green plates, and low-numbered plates)
+  - GPU support for multiple cards in one server
+  - Encoding JPEG on GPU when available (reduces CPU load)
+  - Small (~10KB) JPEG crop for the plate and vehicle are sent with plate group JSON result by default
+  - Supporting custom branding/white-labeling for OpenALPR configuration utility
+  - More efficient H264 decoding
+  
+Bug fixes:
+
+  - Fixed performance issue related to retrieving recorded video in the agent
+  - Added upload option for second beanstalkd tube
+  - Writing heartbeat data to second tube
+  - Added disk size stats to heartbeat data
+  - Added command line option to toggle GPU on alpr command line program
+  - Fixed rare race condition crash in stream processing
+  - Faster GPU initialization
+
+API Changes:
+
+  - Alpr: Can initialize Alpr instance as GPU or CPU using the constructor (without modifying the configuration file)
+  - Alpr: Added getters for GPU settings
+  - Alpr: Deprecated prewarp function.  It no longer contributes to accuracy
+  - Alpr: Added GPU batching functions to C API (can be used on Windows)
+  - AlprStream: Added vehicle_jpeg crop value to AlprGroupResult
+  - AlprStream: Added Python binding
+
+
 2.6.101
 =========
 
-Release Date: October, 5 2018
+Release Date: October 5, 2018
 
   - Accuracy improvement across all countries
   - H264 video recording in the agent (simplistic NVR capability)
@@ -40,7 +76,16 @@ API Changes:
   - AlprStream: Added set_location function for mobile applications (GPS lat/lng coordinates will be sent in JSON payload)
   - Alpr: Added JSON deserialize function
 
+Archived Windows Installers
 
+  - https://deb.openalpr.com/windows-agent/openalpr-agent-3.1.2-signed.exe
+  - https://deb.openalpr.com/windows-sdk/openalpr64-sdk-2.6.101.zip
+
+Archived Linux Repositories
+
+  - deb https://deb.openalpr.com/snapshot/bionic-2.6.101/ bionic main
+  - deb https://deb.openalpr.com/snapshot/xenial-2.6.101/ xenial main
+  - deb https://deb.openalpr.com/snapshot/jetson32-2.6.101/ jetson32 main
 
 2.5.103
 =========

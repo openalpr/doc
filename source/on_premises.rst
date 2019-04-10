@@ -77,6 +77,28 @@ The batch size controls how many images are simultaneously processed by the GPU.
 
 OpenALPR also maintains special builds for Jetson TX-1/TX-2 hardware on Jetpack v3.1.  To install, follow the standard Linux install instructions.  The defaults are configured such that the GPU will automatically be installed, enabled, and configured with a default batch size of 5.
 
+Windows 10
+...............
+
+Prerequisites::
+
+  Windows 10 64-bit
+  Nvidia GPU driver >= 417.22
+
+Install:
+
+  - Install the latest version of the OpenALPR Agent or SDK 
+  - Install https://deb.openalpr.com/windows-nvidia/vc_redist_msvc2015.x64.exe
+  - Download and extract the following file to the agent bin directory (default C:\\OpenALPR\\Agent\\bin) or SDK directory https://deb.openalpr.com/windows-nvidia/openalpr_nvidiawindowslibs_2.6.103.zip
+
+If running the agent, edit the OpenALPR agent config file (c:\\openalpr\\agent\\etc\\openalpr\\alprd.conf) and add the following line::
+
+  hardware_acceleration = 1
+
+Restart the OpenALPR Agent Service
+
+
+
 Installation
 ---------------
 
@@ -109,23 +131,29 @@ Linux
 
   1. Download the `Ubuntu 18.04 64-bit install DVD image <http://releases.ubuntu.com/18.04/>`_ and burn it to a DVD.
   2. Follow this `installation guide <http://www.ubuntu.com/download/desktop/install-ubuntu-desktop>`_ to install Ubuntu 18.04 64-bit.
-  3. Run the following command from the terminal:
+  3. Ensure you have curl installed by running the following command from the terminal:
+  
+  .. code-block:: bash
+
+    sudo apt-get update && sudo apt-get install -y curl
+
+  4. Run the following command from the terminal:
 
   .. code-block:: bash
 
     bash <(curl -s https://deb.openalpr.com/install)
 
 
-  4. To connect the agent to the OpenALPR Cloud, choose "install_agent".
-  5. If you are using a GUI, you can configure the agent using the alprdconfig utility by running the following command:
+  5. To connect the agent to the OpenALPR Cloud, choose "install_agent".
+  6. If you are using a GUI, you can configure the agent using the alprdconfig utility by running the following command:
 
   .. code-block:: bash
 
     sudo alprdconfig
 
-  6. If your server does not have a GUI and you wish to connect your software to an OpenALPR On-Premises web server, run the following commands.
+  7. If your server does not have a GUI and you wish to connect your software to an OpenALPR On-Premises web server, run the following commands.
      - Type "n" to choose "no" to registering with the OpenALPR Cloud.
-     - Type the command alprlink-register -w http://[ip_address_of_web_server] .
+     - Type the command alprlink-register -w https://[ip_address_of_web_server] .
      - Type in the e-mail address and password that you used to install the web server.
 
   
@@ -403,13 +431,13 @@ Once you've selected one or more files to process, click the "Start" button to b
 Command-Line Usage
 ---------------------
 
-Launch the alpr_video program with a path to a video file. In addition include an output directory; this is where the CSV and SQLite files are saved. The threads option provides more threads to process the video simmultaneously. This should not exceed the number of CPU cores on the machine.
+Launch the alprvideocli program with a path to a video file. In addition include an output directory; this is where the CSV and SQLite files are saved. The threads option provides more threads to process the video simmultaneously. This should not exceed the number of CPU cores on the machine.
 
 .. code-block:: bash
 
     USAGE: 
 
-       ./alpr_video  --output_dir <output_dir> [-c <country_code>] [--config
+       ./alprvideocli  --output_dir <output_dir> [-c <country_code>] [--config
                      <config_file>] [-n <topN>] [--threads <num_threads>] [-p
                      <pattern code>] [--save_frames] [--debug] [--motion] [--]
                      [--version] [-h] <video_file_path>
