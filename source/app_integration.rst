@@ -110,6 +110,7 @@ Below are sample scripts in Python and PHP that pull results from the local Bean
             job.delete()
 
 .. code-block:: php
+
     <?php
         // Load PheanStalk PHP Library.
         require('vendor/autoload.php');
