@@ -344,7 +344,7 @@ Web Server
 Application Integration
 ========================
 
-.. include:: app_integration.include
+.. include:: app_integration.rst
 
 .. _video_processing:
 

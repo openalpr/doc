@@ -53,7 +53,7 @@ In addition, you must add a valid on-premises license to /etc/openalpr/license.c
 Once updated, restart the OpenALPR agent service to allow the settings to take effect.
 
 
-Below is a sample Python script that pulls results from the local Beanstalkd queue:
+Below are sample scripts in Python and PHP that pull results from the local Beanstalkd queue:
 
 .. code-block:: python
 
@@ -109,6 +109,54 @@ Below is a sample Python script that pulls results from the local Beanstalkd que
             # Delete the job from the queue when it is processed.
             job.delete()
 
+.. code-block:: php
+    <?php
+        // Load PheanStalk PHP Library.
+        require('vendor/autoload.php');
+        use Pheanstalk\Pheanstalk;
+
+        //Create PheanStalk instance
+        $pheanstalk = Pheanstalk::create('127.0.0.1');
+
+        //Get available tubes
+        echo "----Available Tubes----\r\n\r\n";
+        var_dump($pheanstalk->listTubes());
+        echo "\r\n\r\n----End of Tube List----\r\n\r\n";
+
+        //Watch the alprd-alt tube
+        $pheanstalk->watch('alprd-alt');
+
+        //Print the tubes statistics
+        echo "----Tube Statistics----\r\n\r\n";
+        var_dump($pheanstalk->statsTube('alprd-alt'));
+        echo "\r\n\r\n----End of Tube Statistics----\r\n\r\n";
+
+        //Do this forever
+        while(true){
+            try{
+                //Reserve a job off the queue
+                $job = $pheanstalk->reserve();
+            }
+
+            catch(Exception $e){
+                //If we get an exception just keep going
+                continue;
+            }
+
+            //If the job is NULL then there is nothing to do
+            if($job == NULL){
+                echo "Nothing for us to do right meow. Just chill. \r\n";
+            }
+
+            else{
+                //Otherwise we have a job ready to process
+                echo "There is something in the job queue. Get to work! \r\n";
+                echo "----Job Data----\r\n\r\n";
+                echo $job->getData() . "\r\n\r\nJob ID:" . $job->getId() . "\r\n\r\n";
+                echo "----End of Job Data ----\r\n\r\n";
+            }
+        }
+    ?>
 
 JSON Plate Results
 -------------------------
