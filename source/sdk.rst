@@ -470,6 +470,7 @@ in a parking lot (or take your own video in .mp4 format). Then, run the followin
 
 .. code-block:: python
 
+    import sys
     from alprstream import AlprStream
     from openalpr import Alpr
 
