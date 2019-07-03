@@ -89,7 +89,7 @@ Install:
 
   - Install the latest version of the OpenALPR Agent or SDK 
   - Install https://deb.openalpr.com/windows-nvidia/vc_redist_msvc2015.x64.exe
-  - Download and extract the following file to the agent bin directory (default C:\\OpenALPR\\Agent\\bin) or SDK directory https://deb.openalpr.com/windows-nvidia/openalpr_nvidiawindowslibs_2.6.103.zip
+  - Download and extract the following file to the agent bin directory (default C:\\OpenALPR\\Agent\\bin) or SDK directory https://deb.openalpr.com/windows-nvidia/openalpr_nvidiawindowslibs_2.7.101.zip
 
 If running the agent, edit the OpenALPR agent config file (c:\\openalpr\\agent\\etc\\openalpr\\alprd.conf) and add the following line::
 

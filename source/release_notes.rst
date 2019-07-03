@@ -3,6 +3,32 @@
 Release Notes
 ********************
 
+2.7.101
+========
+
+Release Date: July 1, 2019
+
+  - Significantly faster CPU processing (2x faster on 64-bit Intel processors)
+  - Performance improvement on Nvidia GPUs (roughly 40% faster processing)
+  - Decreased memory usage on both CPU and Nvidia GPUs
+  - Small accuracy improvement across all countries
+  - Reduced false positives on road signs and billboards
+
+Web Server:
+
+  - New Dispatch View for real-time alerting (alerts displayed on a map)
+  - Text Messaging for alerts
+  - Improved user management
+  - Additional management REST APIs
+  - Usability enhancements for Analytic Reports
+  - Improved efficiency
+
+Bug fixes:
+
+  - ONVIF discovery stability issue
+  - AlprStream Python binding initialization error when using multiple threads
+  - C# Vehicle Classifier binding bug
+
 2.6.103
 =========
 
@@ -37,6 +63,19 @@ API Changes:
   - Alpr: Added GPU batching functions to C API (can be used on Windows)
   - AlprStream: Added vehicle_jpeg crop value to AlprGroupResult
   - AlprStream: Added Python binding
+
+Archived Windows Installers
+
+  - https://deb.openalpr.com/windows-agent/openalpr-agent-2.6.103-signed.exe
+  - https://deb.openalpr.com/windows-sdk/openalpr64-sdk-2.6.103.zip
+
+Archived Linux Repositories
+
+  - deb https://deb.openalpr.com/snapshot/bionic-2.6.103/ bionic main
+  - deb https://deb.openalpr.com/snapshot/xenial-2.6.103/ xenial main
+  - deb https://deb.openalpr.com/snapshot/jetson32-2.6.103/ jetson32 main
+  - deb https://deb.openalpr.com/snapshot/jetson40-2.6.103/ jetson40 main
+
 
 
 2.6.101
