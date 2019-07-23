@@ -401,9 +401,11 @@ Install the OpenALPR agent following the install procedure in the OpenALPR agent
 
 Run the following command to install the OpenALPR video utility:
 
-  ```
-  sudo apt update && sudo apt install openalpr-video
-  ```
+.. code-block:: bash
+
+    curl -L https://deb.openalpr.com/openalpr.gpg.key | sudo apt-key add -
+    echo 'deb https://deb.openalpr.com/bionic/ bionic main' | sudo tee /etc/apt/sources.list.d/openalpr.list
+    sudo apt update && sudo apt install -y openalpr-video
 
 After the install is complete, you can execute the alprvideogui and alprvideocli utility directly on the command line.
 
