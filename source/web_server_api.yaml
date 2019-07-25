@@ -30,9 +30,9 @@ paths:
         - webserver
       description: Search for ALPR plate results
       parameters:
-        - description: Company UUID used for authentication
+        - description: API Key used for authentication.  This can be generated for each user by going to /account/my_account on the webserver
           in: query
-          name: company_id
+          name: api_key
           required: true
           type: string
         - description: unique ID for the site
@@ -80,16 +80,16 @@ paths:
         '400':
           description: "Bad input provided.  Adjust the query parameters and try again.\nThe text accompanying the error will provide more detail about which query \nparameters are incorrect.\n"
         '401':
-          description: "Unauthorized.  You must either provide a valid company_id or \nhave a logged in session\n"
+          description: "Unauthorized.  You must either provide a valid api_key or \nhave a logged in session\n"
   /api/search/platecandidate:
     get:
       tags:
         - webserver
       description: Search among all possible candidate plate numbers
       parameters:
-        - description: Company UUID used for authentication
+        - description: API Key used for authentication.  This can be generated for each user by going to /account/my_account on the webserver
           in: query
-          name: company_id
+          name: api_key
           required: true
           type: string
         - description: unique ID for the site
@@ -137,7 +137,7 @@ paths:
         '400':
           description: "Bad input provided.  Adjust the query parameters and try again.\nThe text accompanying the error will provide more detail about which query \nparameters are incorrect.\n"
         '401':
-          description: "Unauthorized.  You must either provide a valid company_id or \nhave a logged in session\n"
+          description: "Unauthorized.  You must either provide a valid api_key or \nhave a logged in session\n"
 
   /api/search/alert:
     get:
@@ -145,9 +145,9 @@ paths:
         - webserver
       description: Search for ALPR plate results
       parameters:
-        - description: Company UUID used for authentication
+        - description: API Key used for authentication.  This can be generated for each user by going to /account/my_account on the webserver
           in: query
-          name: company_id
+          name: api_key
           required: true
           type: string
         - description: unique ID for the site
@@ -195,7 +195,7 @@ paths:
         '400':
           description: "Bad input provided.  Adjust the query parameters and try again.\nThe text accompanying the error will provide more detail about which query \nparameters are incorrect.\n"
         '401':
-          description: "Unauthorized.  You must either provide a valid company_id or \nhave a logged in session\n"
+          description: "Unauthorized.  You must either provide a valid api_key or \nhave a logged in session\n"
   '/api/detail/platecandidate/{group_id}':
     get:
       tags:
@@ -206,9 +206,9 @@ paths:
           name: group_id
           required: true
           type: string
-        - description: Company UUID used for authentication
+        - description: API Key used for authentication.  This can be generated for each user by going to /account/my_account on the webserver
           in: query
-          name: company_id
+          name: api_key
           required: true
           type: string
       responses:
@@ -217,7 +217,7 @@ paths:
           schema:
             $ref: '#/definitions/plate'
         '401':
-          description: "Unauthorized.  You must either provide a valid company_id or \nhave a logged in session\n"
+          description: "Unauthorized.  You must either provide a valid api_key or \nhave a logged in session\n"
         '404':
           description: |
             The requested ID was not found
@@ -228,11 +228,17 @@ paths:
       tags:
         - webserver
       description: List the agents registered with the webserver
+      parameters:
+        - description: API Key used for authentication.  This can be generated for each user by going to /account/my_account on the webserver
+          in: query
+          name: api_key
+          required: true
+          type: string
       responses:
         '200':
           description: OK
         '401':
-          description: "Unauthorized.  You must either provide a valid company_id or \nhave a logged in session\n"
+          description: "Unauthorized.  You must either provide a valid api_key or \nhave a logged in session\n"
         '404':
           description: |
             The requested ID was not found
@@ -242,11 +248,17 @@ paths:
       tags:
         - webserver
       description: List the cameras registered with the webserver
+      parameters:
+        - description: API Key used for authentication.  This can be generated for each user by going to /account/my_account on the webserver
+          in: query
+          name: api_key
+          required: true
+          type: string
       responses:
         '200':
           description: OK
         '401':
-          description: "Unauthorized.  You must either provide a valid company_id or \nhave a logged in session\n"
+          description: "Unauthorized.  You must either provide a valid api_key or \nhave a logged in session\n"
         '404':
           description: |
             The requested ID was not found
@@ -257,11 +269,17 @@ paths:
       tags:
         - webserver
       description: List the alert lists that are configured
+      parameters:
+        - description: API Key used for authentication.  This can be generated for each user by going to /account/my_account on the webserver
+          in: query
+          name: api_key
+          required: true
+          type: string
       responses:
         '200':
           description: OK
         '401':
-          description: "Unauthorized.  You must either provide a valid company_id or \nhave a logged in session\n"
+          description: "Unauthorized.  You must either provide a valid api_key or \nhave a logged in session\n"
         '404':
           description: |
             The requested ID was not found
@@ -271,11 +289,17 @@ paths:
       tags:
         - webserver
       description: List the users that are associated with this account
+      parameters:
+        - description: API Key used for authentication.  This can be generated for each user by going to /account/my_account on the webserver
+          in: query
+          name: api_key
+          required: true
+          type: string
       responses:
         '200':
           description: OK
         '401':
-          description: "Unauthorized.  You must either provide a valid company_id or \nhave a logged in session\n"
+          description: "Unauthorized.  You must either provide a valid api_key or \nhave a logged in session\n"
         '404':
           description: |
             The requested ID was not found
@@ -295,9 +319,9 @@ paths:
           required: true
           type: string
 
-        - description: Company UUID used for authentication
+        - description: API Key used for authentication.  This can be generated for each user by going to /account/my_account on the webserver
           in: query
-          name: company_id
+          name: api_key
           required: true
           type: string
         - description: X coordinate for cropping.
