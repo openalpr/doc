@@ -124,123 +124,140 @@ JSON Plate results are sent in the following format:
 .. code-block:: json
 
     {
-      "version": 2,
-      "data_type": "alpr_results",
-      "epoch_time": 1490574589596,
-      "img_width": 1280,
-      "img_height": 720,
-      "processing_time_ms": 259.132385,
-      "error": false,
-      "regions_of_interest": [
-        {
-          "x": 60,
-          "y": 600,
-          "width": 620,
-          "height": 120
-        },
-        {
-          "x": 0,
-          "y": 0,
-          "width": 1280,
-          "height": 570
-        }
-      ],
-      "results": [
-        {
-          "plate": "AE1T3E",
-          "confidence": 93.904076,
-          "matches_template": 1,
-          "plate_index": 0,
-          "region": "mo",
-          "region_confidence": 34,
-          "processing_time_ms": 17.029213,
-          "requested_topn": 10,
-          "coordinates": [
-            {
-              "x": 110,
-              "y": 300
-            },
-            {
-              "x": 227,
-              "y": 295
-            },
-            {
-              "x": 227,
-              "y": 348
-            },
-            {
-              "x": 113,
-              "y": 352
-            }
-          ],
-          "vehicle_region": {
-            "x": 0,
-            "y": 34,
-            "width": 433,
-            "height": 433
+       "processing_time_ms" : 105.850112915039,
+       "data_type" : "alpr_results",
+       "uuid" : "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234-1562681608425",
+       "version" : 2,
+       "camera_id" : 1234,
+       "results" : [
+          {
+             "plate_index" : 0,
+             "coordinates" : [
+                {
+                   "x" : 3257,
+                   "y" : 188
+                },
+                {
+                   "x" : 3467,
+                   "y" : 194
+                },
+                {
+                   "x" : 3460,
+                   "y" : 307
+                },
+                {
+                   "y" : 302,
+                   "x" : 3247
+                }
+             ],
+             "processing_time_ms" : 47.0029602050781,
+             "plate_crop_jpeg" : "... base 64 image data ...",
+             "plate" : "D2651BF",
+             "vehicle_region" : {
+                "y" : 0,
+                "x" : 3042,
+                "height" : 630,
+                "width" : 630
+             },
+             "region" : "us-mo",
+             "confidence" : 92.9419174194336,
+             "matches_template" : 0,
+             "requested_topn" : 10,
+             "candidates" : [
+                {
+                   "plate" : "D2651BF",
+                   "confidence" : 92.9419174194336,
+                   "matches_template" : 0
+                },
+                {
+                   "plate" : "D2651F",
+                   "matches_template" : 0,
+                   "confidence" : 80.8129653930664
+                },
+                {
+                   "matches_template" : 0,
+                   "confidence" : 80.0941772460938,
+                   "plate" : "D265BF"
+                },
+                {
+                   "plate" : "D251BF",
+                   "matches_template" : 0,
+                   "confidence" : 79.946403503418
+                }
+             ],
+             "region_confidence" : 40
           },
-          "candidates": [
-            {
-              "plate": "AE1T3E",
-              "confidence": 93.904076,
-              "matches_template": 1
-            },
-            {
-              "plate": "AET3E",
-              "confidence": 83.211739,
-              "matches_template": 0
-            },
-            {
-              "plate": "A1T3E",
-              "confidence": 79.840271,
-              "matches_template": 0
-            },
-            {
-              "plate": "AE1T3F",
-              "confidence": 79.130386,
-              "matches_template": 1
-            },
-            {
-              "plate": "AEIT3E",
-              "confidence": 78.878433,
-              "matches_template": 0
-            },
-            {
-              "plate": "4E1T3E",
-              "confidence": 78.217575,
-              "matches_template": 0
-            },
-            {
-              "plate": "AT3E",
-              "confidence": 69.147926,
-              "matches_template": 0
-            },
-            {
-              "plate": "AET3F",
-              "confidence": 68.438042,
-              "matches_template": 0
-            },
-            {
-              "plate": "4ET3E",
-              "confidence": 67.52523,
-              "matches_template": 0
-            },
-            {
-              "plate": "A1T3F",
-              "confidence": 65.066574,
-              "matches_template": 0
-            }
-          ]
-        }
-      ],
-      "uuid": "unspecified-cam16488027-1490574589596",
-      "camera_id": 16488027,
-      "agent_uid": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
-      "agent_version": "2.3.111",
-      "agent_type": "alprd",
-      "site_id": "unspecified",
-      "company_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+          {
+             "requested_topn" : 10,
+             "candidates" : [
+                {
+                   "matches_template" : 1,
+                   "confidence" : 94.7376327514648,
+                   "plate" : "CG3L5Y"
+                },
+                {
+                   "confidence" : 79.4123077392578,
+                   "matches_template" : 0,
+                   "plate" : "CGL5Y"
+                },
+                {
+                   "plate" : "CG3L5",
+                   "confidence" : 79.0777206420898,
+                   "matches_template" : 0
+                }
+             ],
+             "region_confidence" : 99,
+             "confidence" : 94.7376327514648,
+             "region" : "us-mo",
+             "matches_template" : 1,
+             "plate_crop_jpeg" : "... base64 image data ...",
+             "plate" : "CG3L5Y",
+             "vehicle_region" : {
+                "x" : 821,
+                "height" : 1512,
+                "y" : 0,
+                "width" : 1512
+             },
+             "plate_index" : 1,
+             "coordinates" : [
+                {
+                   "y" : 882,
+                   "x" : 1419
+                },
+                {
+                   "x" : 1744,
+                   "y" : 893
+                },
+                {
+                   "y" : 1055,
+                   "x" : 1736
+                },
+                {
+                   "y" : 1044,
+                   "x" : 1409
+                }
+             ],
+             "processing_time_ms" : 47.0029602050781
+          }
+       ],
+       "agent_version" : "2.7.101",
+       "error" : false,
+       "company_id" : "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+       "epoch_time" : 1562681608425,
+       "agent_uid" : "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
+       "img_width" : 4096,
+       "regions_of_interest" : [
+          {
+             "x" : 0,
+             "height" : 2160,
+             "y" : 0,
+             "width" : 4096
+          }
+       ],
+       "agent_type" : "alprd",
+       "img_height" : 2160
     }
+
 
 
 JSON Group Results
@@ -258,131 +275,176 @@ ALPR group results are sent in the following JSON format:
 .. code-block:: json
 
     {
-       "data_type" : "alpr_group",
-       "version" : 2,
-       "company_id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-       "agent_uid" : "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
-       "camera_id" : 2090267338,
-       "best_plate_number" : "6PK132",
-       "best_confidence" : 90.2536163330078,
-       "best_region" : "us-mo",
-       "best_region_confidence" : 83,
-       "best_image_width" : 1280,
-       "best_image_height" : 720,
-       "best_uuid" : "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-2090267338-1538924513527",
-       "matches_template" : false,
-       "epoch_start" : 1538924513527,
-       "epoch_end" : 1538924513627,
-       "frame_start" : 68,
-       "frame_end" : 71,
-       "is_parked" : false
+       "epoch_end" : 1562681124479,
+       "best_image_height" : 2160,
+       "best_image_width" : 4096,
+       "best_region_confidence" : 57.2820510864258,
+       "is_parked" : false,
        "agent_type" : "alprd",
-       "user_data" : "hello world",
-       "uuids" : [
-          "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-2090267338-1538924513527",
-          "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-2090267338-1538924513627"
-       ],
-       "travel_direction" : 285.945404052734,
-       "agent_version" : "2.6.101",
+       "data_type" : "alpr_group",
+       "gps_latitude" : 37.635986328125,
+       "frame_start" : 0,
+       "best_region" : "us-mo",
+       "agent_uid" : "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
+       "agent_version" : "2.7.101",
        "country" : "us",
+       "uuids" : [
+          "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234-1562681121543",
+          "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234-1562681121504",
+          "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234-1562681121576"
+       ],
        "plate_indexes" : [
+          0,
           0,
           0
        ],
+       "frame_end" : 72,
+       "epoch_start" : 1562681121504,
+       "vehicle_crop_jpeg" : "...base64 jpeg data...",
+       "version" : 2,
        "candidates" : [
           {
              "matches_template" : 0,
-             "confidence" : 90.2536163330078,
-             "plate" : "6PK132"
-          }
+             "plate" : "D2651BF",
+             "confidence" : 93.877067565918
+          },
           {
+             "plate" : "D2651F",
              "matches_template" : 0,
-             "confidence" : 70.315123252332,
-             "plate" : "6PKI32"
+             "confidence" : 74.8114395141602
+          },
+          {
+             "confidence" : 73.527099609375,
+             "plate" : "D265BF",
+             "matches_template" : 0
           }
        ],
-       "best_plate" : {
-          "plate_index" : 0,
-          "confidence" : 90.2536163330078,
-          "region_confidence" : 70,
-          "plate_crop_jpeg" : "...base64_jpeg_bytes...",
-          "processing_time_ms" : 21.2537994384766,
-          "candidates" : [
+       "best_uuid" : "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY-1234-1562681122676",
+       "gps_longitude" : -79.2059326171875,
+       "vehicle" : {
+          "orientation" : [
              {
-                "plate" : "6PK132",
-                "matches_template" : 0,
-                "confidence" : 90.2536163330078
+                "name" : "270",
+                "confidence" : 48.2063217163086
              },
              {
-                "confidence" : 75.9956741333008,
-                "matches_template" : 0,
-                "plate" : "6PKI32"
-             },
-             {
-                "plate" : "6PK32",
-                "confidence" : 75.5074081420898,
-                "matches_template" : 0
-             },
-             {
-                "matches_template" : 0,
-                "confidence" : 75.3532333374023,
-                "plate" : "6PKA32"
-             },
-             {
-                "plate" : "6PK12",
-                "matches_template" : 0,
-                "confidence" : 74.8602905273438
-             },
-             {
-                "matches_template" : 0,
-                "confidence" : 74.8599395751953,
-                "plate" : "PK132"
-             },
-             {
-                "confidence" : 74.7018280029297,
-                "matches_template" : 0,
-                "plate" : "GPK132"
-             },
-             {
-                "confidence" : 74.6972503662109,
-                "matches_template" : 0,
-                "plate" : "6PK122"
-             },
-             {
-                "plate" : "6PKI2",
-                "matches_template" : 0,
-                "confidence" : 60.6023483276367
+                "confidence" : 41.217414855957,
+                "name" : "90"
              }
           ],
-          "region" : "us-mo",
-          "matches_template" : 0,
-          "requested_topn" : 20,
-          "plate" : "6PK132",
-          "vehicle_region" : {
-             "y" : 71,
-             "width" : 229,
-             "height" : 229,
-             "x" : 0
-          },
-          "coordinates" : [
+          "color" : [
              {
-                "y" : 219,
-                "x" : 62
+                "name" : "black",
+                "confidence" : 27.3192367553711
              },
              {
-                "x" : 115,
-                "y" : 217
+                "confidence" : 26.2272186279297,
+                "name" : "silver-gray"
+             }
+          ],
+          "make_model" : [
+             {
+                "confidence" : 3.64025783538818,
+                "name" : "ford_focus"
              },
              {
-                "y" : 245,
-                "x" : 114
+                "name" : "chevrolet_cruze",
+                "confidence" : 2.92206859588623
+             }
+          ],
+          "make" : [
+             {
+                "confidence" : 18.9258556365967,
+                "name" : "ford"
              },
              {
-                "x" : 61,
-                "y" : 247
+                "confidence" : 6.7553653717041,
+                "name" : "chevrolet"
+             },
+             {
+                "confidence" : 6.33295917510986,
+                "name" : "toyota"
+             }
+          ],
+          "year" : [
+             {
+                "name" : "2010-2014",
+                "confidence" : 54.3283767700195
+             },
+             {
+                "confidence" : 27.7071475982666,
+                "name" : "2015-2019"
+             }
+          ],
+          "body_type" : [
+             {
+                "name" : "sedan-standard",
+                "confidence" : 51.1733474731445
+             },
+             {
+                "name" : "sedan-compact",
+                "confidence" : 14.3800678253174
              }
           ]
        },
+       "best_confidence" : 93.877067565918,
+       "best_plate_number" : "D2651BF",
+       "company_id" : "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+       "matches_template" : false,
+       "travel_direction" : 85.5532836914062,
+       "camera_id" : 1234,
+       "best_plate" : {
+          "matches_template" : 0,
+          "plate_index" : 0,
+          "region_confidence" : 62,
+          "plate" : "D2651BF",
+          "plate_crop_jpeg" : "...base64 jpeg data...",
+          "confidence" : 93.877067565918,
+          "coordinates" : [
+             {
+                "y" : 187,
+                "x" : 3274
+             },
+             {
+                "x" : 3485,
+                "y" : 192
+             },
+             {
+                "y" : 306,
+                "x" : 3480
+             },
+             {
+                "y" : 301,
+                "x" : 3266
+             }
+          ],
+          "region" : "us-mo",
+          "processing_time_ms" : 52.1168479919434,
+          "candidates" : [
+             {
+                "plate" : "D2651BF",
+                "matches_template" : 0,
+                "confidence" : 93.877067565918
+             },
+             {
+                "plate" : "D2651F",
+                "matches_template" : 0,
+                "confidence" : 81.3600769042969
+             },
+             {
+                "plate" : "D265BF",
+                "matches_template" : 0,
+                "confidence" : 80.9256439208984
+             }
+          ],
+          "vehicle_region" : {
+             "x" : 3060,
+             "height" : 630,
+             "y" : 0,
+             "width" : 630
+          },
+          "requested_topn" : 10
+       }
     }
 
 
@@ -395,46 +457,51 @@ Every minute, the OpenALPR agent adds one heartbeat message to the queue. The he
 .. code-block:: json
 
     {
-       "data_type" : "heartbeat",
-       "company_id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-       "agent_uid" : "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
-       "agent_hostname" : "mymachine",
-       "license_systemid" : "10799630758371023307",
-       "license_key" : "...license_key...",
-       "license_valid" : true,
-       "memory_swapused_bytes" : 8265138176,
-       "memory_last_update" : 1538925240573,
-       "memory_total_bytes" : 67475775488,
-       "memory_swaptotal_bytes" : 12813594624,
-       "memory_consumed_bytes" : 67061047296,
-       "cpu_last_update" : 1538925240573,
-       "cpu_cores" : 8,
-       "cpu_usage_percent" : 54.1457290649414,
-       "disk_quota_earliest_result" : 1538924513527,
-       "disk_quota_total_bytes" : 2147483648,
-       "disk_quota_consumed_bytes" : 524288000,
-       "processing_threads_configured" : 1,
-       "processing_threads_active" : 1,
-       "timestamp" : 1538925244693,
-       "daemon_uptime_seconds" : 35,
-       "system_uptime_seconds" : 585390,
-       "recording_enabled" : false,
-       "agent_type" : "alprd",
-       "agent_version" : "2.6.101",
-       "beanstalk_queue_size" : 0,
-       "openalpr_version" : "2.6.101",
-       "os" : "linux",
+       "disk_quota_earliest_result" : 0,
+       "processing_threads_configured" : 6,
+       "processing_threads_active" : 6,
+       "license_key" : "licensekeyvalue",
+       "memory_swaptotal_bytes" : 0,
+       "cpu_usage_percent" : 0,
+       "disk_quota_total_bytes" : 1073741824,
+       "memory_total_bytes" : 0,
        "video_streams" : [
           {
-             "fps" : 30,
-             "camera_id" : 2090267338,
-             "camera_name" : "h265",
-             "last_update" : 1538925244689,
+             "url" : "rtsp://192.168.0.1/stream",
+             "fps" : 0,
+             "camera_id" : 1234,
+             "gps_longitude" : -79.2059326171875,
+             "last_update" : 1562681904001,
              "is_streaming" : true,
-             "url" : "rtsp://192.168.0.1/stream"
+             "camera_name" : "test",
+             "gps_latitude" : 37.635986328125
           }
        ],
+       "system_uptime_seconds" : 0,
+       "memory_last_update" : 0,
+       "recording_enabled" : true,
+       "license_valid" : true,
+       "daemon_uptime_seconds" : 0,
+       "data_type" : "heartbeat",
+       "disk_quota_consumed_bytes" : 0,
+       "agent_version" : "2.7.101",
+       "company_id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+       "disk_drive_free_bytes" : 8031714103340852224,
+       "os" : "linux",
+       "agent_type" : "alprd",
+       "beanstalk_queue_size" : -1,
+       "openalpr_version" : "2.7.101",
+       "disk_drive_total_bytes" : 491323654144,
+       "agent_uid" : "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
+       "memory_swapused_bytes" : 0,
+       "memory_consumed_bytes" : 0,
+       "agent_hostname" : "hostnameforthismachine",
+       "timestamp" : 1562681904008,
+       "license_systemid" : "12341234123412341234",
+       "cpu_cores" : 8,
+       "cpu_last_update" : 0
     }
+
 
 
 Local Image Retrieval
