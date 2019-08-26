@@ -201,7 +201,7 @@ JavaScript
             xhr.open("POST", url);
 
             // Send POST data and display response
-            xhr.send("base64_string");
+            xhr.send("base64_string");  // Replace with base64 string of an actual image
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     document.getElementById("response").innerHTML = xhr.responseText;
