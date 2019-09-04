@@ -3,8 +3,6 @@
 
 .. _commercial_sdk:
 
-Commercial SDK
-==================
 
 The OpenALPR commercial SDK exposes APIs for identifying license plates in individual images, as well as videos or feeds of sequential images.  The SDK can run on your hardware and integrate directly with your application.
 

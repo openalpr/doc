@@ -2,7 +2,7 @@
 You can integrate OpenALPR with your application in two ways:
 
   - Use the :ref:`OpenALPR SDK <commercial_sdk>` to compile OpenALPR code libraries into your application and process individual image frames or video streams.  
-  - Run the OpenALPR Agent to directly pull video feeds and send the plate results and images to your application.
+  - Run the Watchman agent to directly pull video feeds and send the plate results and images to your application.
 
 
 
@@ -11,7 +11,7 @@ You can integrate OpenALPR with your application in two ways:
 Integrating With the Agent
 ------------------------------
 
-The OpenALPR agent runs as either a Windows service (on Windows) or a daemon (on Linux). The process runs constantly in the background, watching the configured video streams for license plates. When a license plate is found, it immediately places JSON data onto a local beanstalkd queue for uploading or processing.
+The Watchman agent runs as either a Windows service (on Windows) or a daemon (on Linux). The process runs constantly in the background, watching the configured video streams for license plates. When a license plate is found, it immediately places JSON data onto a local beanstalkd queue for uploading or processing.
 
 Decide whether your application should receive data from OpenALPR (sent via HTTP POST) or pull data from a queue on demand. Both approaches are equally valid; your choice simply depends on the most appropriate integration method based on your application architecture.
 
@@ -19,7 +19,7 @@ Decide whether your application should receive data from OpenALPR (sent via HTTP
 Receiving HTTP POSTs
 -------------------------
 
-The OpenALPR agent can be configured to send HTTP POSTs to your HTTP server. To enable this option, set the following parameters in /etc/openalpr/alprd.conf:
+The Watchman agent can be configured to send HTTP POSTs to your HTTP server. To enable this option, set the following parameters in /etc/openalpr/alprd.conf:
 
 .. code-block:: ini
 
@@ -30,7 +30,7 @@ The OpenALPR agent can be configured to send HTTP POSTs to your HTTP server. To 
 
 In addition, you must add a valid on-premises license to /etc/openalpr/license.conf
 
-Once updated, restart the OpenALPR agent service to allow the settings to take effect. As plates are recognized, the JSON data described in this section will be sent to your HTTP server as an HTTP POST.
+Once updated, restart the Watchman agent service to allow the settings to take effect. As plates are recognized, the JSON data described in this section will be sent to your HTTP server as an HTTP POST.
 
 
 Pulling From the Queue
@@ -50,7 +50,7 @@ To configure OpenALPR to make the results available via the local queue, set the
 
 In addition, you must add a valid on-premises license to /etc/openalpr/license.conf
 
-Once updated, restart the OpenALPR agent service to allow the settings to take effect.
+Once updated, restart the Watchman agent service to allow the settings to take effect.
 
 
 Below is a sample Python script that pulls results from the local Beanstalkd queue:
@@ -452,7 +452,7 @@ ALPR group results are sent in the following JSON format:
 JSON Heartbeat
 -------------------------
 
-Every minute, the OpenALPR agent adds one heartbeat message to the queue. The heartbeat provides general health and status information. The format is as follows:
+Every minute, the Watchman agent adds one heartbeat message to the queue. The heartbeat provides general health and status information. The format is as follows:
 
 .. code-block:: json
 
@@ -507,7 +507,7 @@ Every minute, the OpenALPR agent adds one heartbeat message to the queue. The he
 Local Image Retrieval
 -------------------------
 
-The OpenALPR agent exposes a simple web service for retrieving license plate images. Each image is referenced by a UUID that is sent along with the JSON metadata.
+The Watchman agent exposes a simple web service for retrieving license plate images. Each image is referenced by a UUID that is sent along with the JSON metadata.
 
 By default, this web server is disabled on the agent, but you can turn it on by adding "web_server_enabled = 1" to the alprd.conf file.
 

@@ -1,8 +1,6 @@
 
 .. _cloud_api:
 
-Cloud API
-=============
 
 The OpenALPR Cloud API is a web-based service that analyzes images for license plates as well as vehicle information such as make, model, and color. 
 The Cloud API service is easy to integrate into your application via a web-based REST service. When you send image data to the OpenALPR API, we process that data 
@@ -201,7 +199,7 @@ JavaScript
             xhr.open("POST", url);
 
             // Send POST data and display response
-            xhr.send("base64_string");
+            xhr.send("base64_string");  // Replace with base64 string of an actual image
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     document.getElementById("response").innerHTML = xhr.responseText;

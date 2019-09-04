@@ -3,9 +3,9 @@
 Requirements
 -----------------
 
-The OpenALPR web server is a web-based interface that collects, manages, and presents license plate data that has been produced by one or more OpenALPR agents. The server software installs on Ubuntu Linux.
+The Watchman On-Premises web server is a web-based interface that collects, manages, and presents license plate data that has been produced by one or more OpenALPR agents. The server software installs on Ubuntu Linux.
 
-The web server does not process license plate videos; that function is performed by the OpenALPR agent. The web server receives license plate data and stores the data in a local database. When sizing a server for the OpenALPR web server, make sure to select a sufficiently fast hard drive. For web servers supporting up to 200 OpenALPR agents, a single SSD hard drive should be sufficient. For larger installations, the server will likely need multiple hard drives configured as a RAID.
+The web server does not process license plate videos; that function is performed by the OpenALPR agent. The web server receives license plate data and stores the data in a local database. When sizing a server for the Watchman On-Premises web server, make sure to select a sufficiently fast hard drive. For web servers supporting up to 200 OpenALPR agents, a single SSD hard drive should be sufficient. For larger installations, the server will likely need multiple hard drives configured as a RAID.
 
 Minimum system requirements:
 
@@ -18,9 +18,9 @@ Minimum system requirements:
 Architecture
 --------------
 
-The OpenALPR agent reads a video stream from your IP camera, processes the stream, and uploads plate metadata to the OpenALPR web server. The agent also stores all of the plate images in a rolling buffer on the hard drive.
+The OpenALPR agent reads a video stream from your IP camera, processes the stream, and uploads plate metadata to the Watchman On-Premises web server. The agent also stores all of the plate images in a rolling buffer on the hard drive.
 
-There is a constant stream of data flowing between the camera and the agent, as well as between the agent and the web server.  The data sent to the cloud is relatively low-bandwidth because it contains text metadata describing the license plates.  The OpenALPR web server does not store your plate images; these are downloaded directly from the agent when you select a plate to view from the web server.
+There is a constant stream of data flowing between the camera and the agent, as well as between the agent and the web server.  The data sent to the cloud is relatively low-bandwidth because it contains text metadata describing the license plates.  The Watchman On-Premises web server does not store your plate images; these are downloaded directly from the agent when you select a plate to view from the web server.
 
 
 Installation
@@ -57,9 +57,9 @@ Configuration
 Agent Configuration
 ......................
 
-The OpenALPR web server may have any number of agents connected to it who send license plate data. Configuration for these agents is managed centrally on the OpenALPR web server. To configure an agent:
+The Watchman On-Premises web server may have any number of agents connected to it who send license plate data. Configuration for these agents is managed centrally on the Watchman On-Premises web server. To configure an agent:
 
-- Log in to the OpenALPR web server.  
+- Log in to the Watchman On-Premises web server.  
 
 - Select Configuration -> Agents from the menu on the left-hand side of the page.
 
@@ -119,9 +119,3 @@ To watch the OpenALPR logs, run the following command:
 
 
 
-.. _web_services_api:
-
-Web Services 
------------------
-
-The `Web Services API <api/?api=cloudstream>`_ can be used to programmatically query your on-premises server for data. The API is documented `here <api/?api=cloudstream>`_

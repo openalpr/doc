@@ -3,3 +3,10 @@
 make -f makefile clean && make -f makefile html
 cp -R swagger/ build/html/api
 cp source/*.yaml build/html/api/specs/
+
+# Copy the old filenames so that they can still be reached
+cp build/html/watchman.html build/html/on_premises.html
+cp build/html/watchman.html build/html/cloud_stream.html
+cp build/html/api.html build/html/sdk.html
+cp build/html/api.html build/html/cloud_api.html
+

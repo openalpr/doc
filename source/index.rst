@@ -25,10 +25,9 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   on_premises
-   sdk
-   cloud_stream
-   cloud_api
+   watchman
+   api
+   forensic_plate_finder
    opensource
    camera_placement
    release_notes
