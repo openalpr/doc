@@ -97,7 +97,6 @@ Linux
      - Type the command alprlink-register -w https://[ip_address_of_web_server] .
      - Type in the e-mail address and password that you used to install the web server.
 
-  
 
 Docker
 ............
@@ -116,6 +115,34 @@ Docker
       docker run --restart always -d --cap-add SYS_NICE -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/commercial-agent
 
 .. _commercial_config_options:
+
+
+Axis Cameras
+............
+
+Install the Watchman Agent as an app on Axis cameras which sends video to the cloud for processing.
+The following prerequisites are required:
+
+  - A professional account with cloud.openalpr.com (on-premise webservers are *not* supported)
+  - A supported Axis camera
+  - An SD Card with at least 2GB storage space
+  - Internet Connectivity (minimum 2Mbps upload speed)
+  - Accurate date/time. We recommend configuring NTP (See Setup | Date & Time)
+  - DNS Configuration (See Setup | Advanced TCP/IP Settings)
+  - The latest Axis firmware (minimum is 5.60.1.1)
+
+After checking the prequisites, follow these steps for installation:
+
+  - Download the latest `Watchman Axis camera Agent <https://deb.openalpr.com/axis/OpenALPR_Cloud_latest_mipsisa32r2el.eap>`_
+  - Login to your Axis Camera
+  - Click Setup in the top right corner
+  - Click Applications
+  - Click the Choose File button and select the OpenALPR_Cloud_latest_mipsisa32r2el.eap file (downloaded above), then click the Upload Package button
+  - Click OpenALPR Cloud and then Start (you will be prompted for your cloud.openalpr.com credentials)
+
+As vehicles move past the camera, the video will be sent to OpenALPR for archiving and processing.
+You can view video recorded in the past 60 days using the "Video" link on the left.
+As license plates are detected, they will appear on our cloud account dashboard.
 
 
 NVIDIA GPU Acceleration
@@ -381,17 +408,10 @@ Watchman Webserver
 .. include:: watchman_web.include
 
 
-Watchman Cloud
-========================
-
-.. include:: watchman_cloud.include
-
 Application Integration
 ========================
 
 .. include:: app_integration.include
-
-
 
 .. _web_services_api:
 
