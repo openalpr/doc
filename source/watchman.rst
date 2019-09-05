@@ -51,6 +51,7 @@ Installation
 
 Follow the appropriate directions for your operating system below.
 After completing installation, you can can choose between four data destination options Depending on how you wish to use the Watchman Agent
+
   .. image:: images/agent-windows-config.png
       :scale: 100%
       :alt: Windows Agent Configuration
