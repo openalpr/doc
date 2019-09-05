@@ -4,3 +4,4 @@ swagger/
 swagger-ui/
 upload.sh
 doxygen/
+.idea/
