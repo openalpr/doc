@@ -5,9 +5,15 @@
 OpenALPR Watchman
 ********************
 
-Watchman software runs on your hardware/application. The software can be used for general surveillance purposes or as an engine to add LPR capabilities to other applications.
+Watchman software runs on your hardware/application and enables automatic license plate recognition from any IP camera.
+You don't need to spend $10,000 on a proprietary "LPR camera," nor do you need to use complicated and costly video management software.
+The software can be used for general surveillance purposes or as an engine to add LPR capabilities to other applications.
+
+The Watchman Agent recognizes license plates and the Watchman webserver (either cloud or on-premise) displays searchable results.
+Other options for retreiving results from the Agent are discussed in the Application Integration section.
 
 Sign-up for Watchman today on https://cloud.openalpr.com/
+
 
 Watchman Agent
 ========================
