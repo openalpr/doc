@@ -5,7 +5,7 @@
 OpenALPR Watchman
 ********************
 
-Watchman software runs on your hardware/application without any Internet connection. The software can be used for general surveillance purposes or as an engine to add LPR capabilities to other applications.
+Watchman software runs on your hardware/application. The software can be used for general surveillance purposes or as an engine to add LPR capabilities to other applications.
 
 Sign-up for Watchman today on https://cloud.openalpr.com/
 

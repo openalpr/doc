@@ -13,8 +13,8 @@ Sign Up
 
 When you're ready to get started, sign-up for an account at https://cloud.openalpr.com/
 
-Once enrolled, you will automatically be assigned a free account with a limited number of API credits per month. Each time you use the service, you will use one or more 
-API credits. You may enter your credit card information and upgrade your plan to receive access to more credits per month.
+Once enrolled, you will automatically be assigned a free account with a limited number of API credits per month. Each recognition provided by the service costs
+one API credit. You may enter your credit card information and upgrade your plan to receive access to more credits per month.
 
 Integration 
 -----------------------
