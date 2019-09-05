@@ -49,29 +49,29 @@ To estimate the number of cameras for a given system total FPS value, use the fo
 Installation
 ---------------
 
-.. _openalpr_windows_agent_install:
-
-Windows
-.........
-
-  - Download the `OpenALPR Windows Installer <https://deb.openalpr.com/windows-agent/openalpr-agent-latest.exe>`_
-  - Install the program onto your PC
-  - When installation is complete, start the Configure OpenALPR program.
-  - Depending on how you wish to use the Watchman Agent, you may choose one of four options for data destination:
-
+Follow the appropriate directions for your operating system below.
+After completing installation, you can can choose between four data destination options Depending on how you wish to use the Watchman Agent
   .. image:: images/agent-windows-config.png
       :scale: 100%
       :alt: Windows Agent Configuration
 
 
   1. **OpenALPR Cloud** — Data is sent to https://cloud.openalpr.com (requires an active OpenALPR Cloud Account).
-  2. **Watchman Web Server** — You have installed the OpenALPR web server on a Linux machine and wish to point the agent data to that server.
+  2. **Watchman Webserver** — You have installed an on-premise webserver on a Linux machine and wish to point the Agent data to that server.
   3. **Generic HTTP Url** — You wish to integrate OpenALPR with your own application. You can point the data to your own HTTP endpoint.
   4. **Local Queue** — You want the OpenALPR data to be stored on a local beanstalkd queue. Your application will programmatically drain the queue to process results.
 
-If you intend to use the agent for surveillance purposes, you will most likely select the "Watchman Web Server." Options 3 and 4 are useful if you are an application developer 
-and are integrating OpenALPR data into your own application.
+If you intend to use the agent for surveillance purposes, you will most likely select "OpenALPR Cloud" or "Watchman Webserver."
+Options 3 and 4 are useful if you are an developer integrating OpenALPR data into your own application.
 
+.. _openalpr_windows_agent_install:
+
+Windows
+.........
+
+  - Download the `OpenALPR Windows Installer <https://deb.openalpr.com/windows-agent/openalpr-agent-latest.exe>`_
+  - Right click the .exe file, run as administrator, and follow the install wizard
+  - Start the Configure OpenALPR program and go to Configure > Data Destination
 
 Linux
 .........
@@ -91,17 +91,16 @@ Linux
     bash <(curl -s https://deb.openalpr.com/install)
 
 
-  5. To connect the agent to the OpenALPR Cloud, choose "install_agent".
+  5. Choose "install_agent" and select yes/no when prompted to connect the Agent to your cloud account.
   6. If you are using a GUI, you can configure the agent using the alprdconfig utility by running the following command:
 
   .. code-block:: bash
 
     sudo alprdconfig
 
-  7. If your server does not have a GUI and you wish to connect your software to an Watchman web server, run the following commands.
-     - Type "n" to choose "no" to registering with the OpenALPR Cloud.
+  7. If your server does not have a GUI and you wish to connect your software to a Watchman webserver, run the following commands:
      - Type the command alprlink-register -w https://[ip_address_of_web_server] .
-     - Type in the e-mail address and password that you used to install the web server.
+     - Type in the e-mail address and password for your OpenALPR Cloud account, or the one you used when installing the on-premise webserver.
 
 
 Docker
