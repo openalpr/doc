@@ -17,6 +17,8 @@ System Requirements
 
 The Watchman Agent scales to make use of as many CPU resources as you can provide. For example, OpenALPR can utilize up to 100 percent of the processing power on both low-power devices (such as a Raspberry Pi) and high-end devices (such as an Intel 32 CPU-core Xeon server). High-end devices are capable of processing significantly more video frames per second.
 
+Memory and disk requirements are relatively constant. Once OpenALPR initializes, the process uses roughly 500MB per analysis thread (CPU core), and that memory usage will not increase. The agent records JPEG images to a disk as plates are recognized. However, Disk IO is usually not a bottleneck.
+
 The minimum system requirements for Watchman Agents are a function of:
 
   - The speed/angle of vehicles with respect to the camera (i.e., how long a legible license plate is in-frame)
@@ -25,10 +27,18 @@ The minimum system requirements for Watchman Agents are a function of:
   - Other CPU load
   - The volume of vehicles (i.e., whether vehicles are seen constantly or sporadically)
 
-As a rough rule of thumb, an Watchman Agent running on a latest-generation Intel i5 desktop-class CPU can process roughly 20 frames of 720p video per second. In other words, an agent can handle three cameras for low-speed vehicles, two cameras for medium-speed vehicles, and one camera for high-speed vehicles. Of course, mileage may vary, and it is always best to benchmark performance on your own hardware.
+OpenALPR maintains a `list of benchmarked processors <https://docs.google.com/spreadsheets/d/1FNwEuJAgZ1LyM2GGd7VRJo85x99IFbecveO8rmFH1to/edit?usp=sharing>`_ (both cloud and physical) at VGA, 720p, 1080p, and 4k resolution.
+Each Watchman release version has its own tab in the spreadsheet.
+If your CPU or GPU model is on the list, write down the "System Total FPS" numbers for the resolution(s) you are interested in.
+If you cannot find your CPU/GPU model in our list, the source code and instructions for running the speed benchmarks are available on `Github <https://github.com/openalpr/speed_benchmark>`_.
 
-Memory and disk requirements are relatively constant. Once OpenALPR initializes, the process uses roughly 500MB per analysis thread (CPU core), and that memory usage will not increase. The agent records JPEG images to a disk as plates are recognized. However, Disk IO is usually not a bottleneck.
+Please note that all benchmarks in our spreadsheet were conducted with Ubuntu as the operating system. If you plan to install on Windows, you should decrease the FPS values by 16-22%.
 
+To estimate the number of cameras for a given system total FPS value, use the following per-camera rules of thumb
+
+  - **Low Speed** (under 25 mph): 5-10 fps
+  - **Medium Speed** (25-45 mph): 10-15 fps
+  - **High Speed** (over 45 mph): 15-30 fps
 
 Installation
 ---------------
