@@ -375,7 +375,7 @@ To restart the Watchman Agent:
 
 .. _web_server:
 
-Watchman On-Premises Web
+Watchman Webserver
 =================================
 
 .. include:: watchman_web.include
