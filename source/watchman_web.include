@@ -1,30 +1,39 @@
+The Watchman webserver is a web-based interface that collects, manages, and presents license plate data that has been produced by one or more Watchman Agents.
+The webserver does not process license plate videos; that function is performed by the Agent.
+Data sent from the Agent to the webserver is relatively low-bandwidth because it contains text metadata describing the license plates.
 
+
+Cloud
+-----
+
+OpenALPR hosts a cloud version of the Watchman webserver at https://cloud.openalpr.com that your Agent(s) can send results to.
+This requires minimal setup (no installation beyond the Watchman Agent), and is sufficient for most users.
+The cloud webserver may also be preferable for new users looking to create a quick proof of concept.
+If you decide to use the cloud webserver, you can ignore the on-premise installation instructions below and continue to Configuring Agents.
+
+On-Premise
+----------
+Users that prefer an on-premise webserver can follow the instructions below to install the Watchman webserver locally.
+On-premise installations of the Watchman webserver store metadata from each license plate read in a local MySQL database.
+Full images of the plate captures remain in a rolling buffer on the hard drive where the Agent is installed.
 
 Requirements
------------------
+............
 
-The Watchman On-Premises web server is a web-based interface that collects, manages, and presents license plate data that has been produced by one or more OpenALPR agents. The server software installs on Ubuntu Linux.
-
-The web server does not process license plate videos; that function is performed by the OpenALPR agent. The web server receives license plate data and stores the data in a local database. When sizing a server for the Watchman On-Premises web server, make sure to select a sufficiently fast hard drive. For web servers supporting up to 200 OpenALPR agents, a single SSD hard drive should be sufficient. For larger installations, the server will likely need multiple hard drives configured as a RAID.
+When sizing a server for the Watchman on-premises webserver, make sure to select a sufficiently fast hard drive.
+For web servers supporting up to 200 Agents, a single SSD should be sufficient.
+For larger installations, the server will likely need multiple hard drives configured as a RAID.
 
 Minimum system requirements:
 
+  - Ubuntu Linux 18.04 64-bit
   - 4GB RAM
   - 250GB SSD hard drive
   - Dual-core or greater CPU
-  - Ubuntu Linux 18.04 64-bit
-
-
-Architecture
---------------
-
-The OpenALPR agent reads a video stream from your IP camera, processes the stream, and uploads plate metadata to the Watchman On-Premises web server. The agent also stores all of the plate images in a rolling buffer on the hard drive.
-
-There is a constant stream of data flowing between the camera and the agent, as well as between the agent and the web server.  The data sent to the cloud is relatively low-bandwidth because it contains text metadata describing the license plates.  The Watchman On-Premises web server does not store your plate images; these are downloaded directly from the agent when you select a plate to view from the web server.
 
 
 Installation
---------------
+............
 
 Download the Ubuntu 18.04 64-bit install DVD image and burn it to a DVD:
 
@@ -34,75 +43,73 @@ Follow this installation guide to install Ubuntu 18.04 64-bit:
 
   - http://www.ubuntu.com/download/desktop/install-ubuntu-desktop
 
-Run the following command from the terminal:
+Run the following command from the terminal and choose "install_webserver":
 
 .. code-block:: bash
 
     bash <(curl -s https://deb.openalpr.com/install)
 
-
 .. image:: images/linux-install.png
     :scale: 100%
     :alt: OpenALPR VM installation step 4
 
-Choose "install_webserver":
-
-
 .. _agent_configuration:
 
-Configuration
----------------
+
+Configuring Agents
+------------------
+
+The Watchman webserver may have any number of agents connected to it who send license plate data.
+Configuration for these agents is managed centrally from the webserver:
+
+  - Log in to your Watchman webserver (cloud or on-premises).
+  - Select Configuration > Agents from the menu on the left-hand side of the page.
+  - You should see all Agents managed by the webserver on this screen.
+
+Agent names should be unique and can be changed by clicking on them. Choose a sensible name related to the Agent's location (e.g., headquarters, dallas-branch, or warehouse3).
+By clicking the **Configure** button next to an Agent, you can:
+
+  - Add a new camera stream for the Agent to manage
+
+    - Select **Add Stream**
+
+    .. image:: images/webserver_vminstall5.png
+        :scale: 100%
+        :alt: OpenALPR VM installation step 4
+
+    - Select the model of IP camera you wish to connect to. Fill in the IP address. If the camera requires credentials, check the box and enter your camera's username and password.
+    - Click **Test**. After a few seconds, you will see a window indicating whether or not the connection was successful. If it was successful, click **Save Camera**. If not, try another option (such as H264 Alt1 or MJPEG) and click **Test** again until you succeed.
+
+    .. image:: images/webserver_vminstall-testsuccess.png
+        :scale: 100%
+        :alt: OpenALPR VM installation step 4
+
+  - Modify **Agent Parameters**
+
+    - Choose the **Country** in which the camera is located. US will recognize North American-style plates (12 inches x 6 inches). EU will recognize European-style plates. Other countries whose plates have different dimensions are also be supported.
+    - Set the number of **Processing Cores** to control how much CPU will be allocated to the LPR process. The more processing cores you provide (up to the number of CPU cores on the system), the more frames per second (fps) you will be able to process. Higher fps will generally increase accuracy and allow plates on faster-moving vehicles to be detected.
+    - Adjust the **Disk Quota** to control how much space is reserved for storing vehicle and license plate images. It will operate as a rolling buffer, so when it runs out of space, the oldest images will be removed.
+    - For Europe, **Pattern** is the country in which the camera is located. For the USA, OpenALPR uses a high-accuracy state detection algorithm to detect the state of origin, so it is better to leave the pattern set to "None" for recognition in the USA.
+    - Click **Update** to save your changes.
+
+    .. image:: images/webserver_vminstall6.png
+        :scale: 100%
+        :alt: OpenALPR VM installation step 4
+
+  - View the Agent's logs live
+
+    - You should now see **Video FPS** and other information indicating that the video is being pulled from the camera and license plates are being recognized.
+    - Once the Agent is configured and connected to a camera stream, it will continue collecting data from the configured video streams. If the Agent's computer is rebooted, it will automatically start. If the camera goes down or the network becomes temporarily inoperative, the Agent will retry until connectivity is restored. All results will be queued, so no data will be lost in an outage.
+
+    .. image:: images/webserver_vminstall7.png
+        :scale: 100%
+        :alt: OpenALPR VM installation step 4
 
 
-Agent Configuration
-......................
-
-The Watchman On-Premises web server may have any number of agents connected to it who send license plate data. Configuration for these agents is managed centrally on the Watchman On-Premises web server. To configure an agent:
-
-- Log in to the Watchman On-Premises web server.  
-
-- Select Configuration -> Agents from the menu on the left-hand side of the page.
-
-- You should see your new agent on this screen. Select **Configure** to set up the camera.
-
-- Select **Add Stream** to connect your agent to the camera stream.
-
-.. image:: images/webserver_vminstall5.png
-    :scale: 100%
-    :alt: OpenALPR VM installation step 4
-
-- Select the model of IP camera you wish to connect to. Fill in the IP address. If the camera requires credentials, check the box and enter your camera's username and password.
-- Click **Test**. After a few seconds, you will see a window indicating whether or not the connection was successful. If it was successful, click **Save Camera**. If not, try another option (such as H264 Alt1 or MJPEG) and click **Test** again until you succeed.
-
-.. image:: images/webserver_vminstall-testsuccess.png
-    :scale: 100%
-    :alt: OpenALPR VM installation step 4
-
-- Configure the **Agent Parameters**.  
-
-  - Choose a sensible name for your **Site ID**, such as the location of the agent system (e.g., headquarters, dallas-branch, or warehouse3). Each agent should be given a unique site ID.
-  - Choose the **country** in which the camera is located. US will recognize North American-style plates (12 inches x 6 inches). EU will recognize European-style plates. Other countries whose plates have different dimensions will also be supported.
-  - The number of **Processing Cores** will control how much CPU will be allocated to the LPR process. The more processing cores you provide (up to the number of CPU cores on the system), the more frames per second (fps) you will be able to process. Higher fps will generally increase accuracy and allow plates on faster-moving vehicles to be detected.
-  - **Disk Quota** will control how much space is reserved for storing vehicle and license plate images. It will operate as a rolling buffer, so when it runs out of space, the oldest images will be removed.
-  - For Europe, **Pattern** is the country in which the camera is located. For the USA, OpenALPR uses a high-accuracy state detection algorithm to detect the state of origin, so it is better to leave the pattern set to "None" for recognition in the USA.
-
-- Click **Update**.
-
-.. image:: images/webserver_vminstall6.png
-    :scale: 100%
-    :alt: OpenALPR VM installation step 4
-
-- Finally, if you scroll to the bottom of the page, you can watch the agent status. You should now see **Video FPS** and other information indicating that the video is being pulled from the camera and license plates are being recognized. Now that the agent is configured, it will continue collecting data from the configured video streams. If the agent is rebooted, the OpenALPR agent will automatically start. If the camera goes down or the network becomes temporarily inoperative, the agent will retry until connectivity is restored. All results will be queued, so no data will be lost in an outage.
-
-.. image:: images/webserver_vminstall7.png
-    :scale: 100%
-    :alt: OpenALPR VM installation step 4
-
-
-Advanced Agent Configuration
-..............................
-
-You can also configure the OpenALPR agent manually by modifying the file in /etc/openalpr/alprd.conf. This advanced option may be useful in the management of dozens or hundreds of agents. The default values with descriptions can be found here: /usr/share/openalpr/config/alprd.defaults.conf. You may add any value into the alprd.conf file; to apply changes, restart the agent.
+You can also configure Watchman Agents manually by modifying their /etc/openalpr/alprd.conf file.
+This advanced option may be useful in the management of dozens or hundreds of agents.
+The default values with descriptions can be found in /usr/share/openalpr/config/alprd.defaults.conf.
+You may add any value into the alprd.conf file, and then restart the Agent to apply changes.
 
 Additional documentation on these configuration options is located in the :ref:`commercial_config_options`.
 
@@ -115,7 +122,3 @@ To restart services, run the following command:
 To watch the OpenALPR logs, run the following command: 
 
     tail -f /var/log/alpr.log
-
-
-
-

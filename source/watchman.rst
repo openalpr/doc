@@ -425,4 +425,4 @@ Application Integration
 REST API 
 ========================
 
-The `Web Services API <api/?api=cloudstream>`_ can be used to programmatically query the Watchmen Web server.  It works the same way for both cloud and On-Premises. The API is documented `here <api/?api=cloudstream>`_
+The `Web Services API <api/?api=cloudstream>`_ can be used to programmatically query any Watchman webserver (both cloud and on-premises).
