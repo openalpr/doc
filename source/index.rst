@@ -25,6 +25,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   getting_started
    watchman
    api
    forensic_plate_finder
