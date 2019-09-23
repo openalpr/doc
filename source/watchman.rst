@@ -151,6 +151,24 @@ You can view video recorded in the past 60 days using the "Video" link on the le
 As license plates are detected, they will appear on our cloud account dashboard.
 
 
+Licensing
+---------------
+
+Each Watchman Agent connects to the OpenALPR Cloud service (https://cloud.openalpr.com/) to activate and maintain its license key.  Once the agent is registered, you may send Watchman data to any destination you choose, such as the Watchman Cloud Service, your own web server, or a local queue for application integration.  
+
+After installation, the Watchman service will ask you to register with https://cloud.openalpr.com/.  If you don't already have an account, you can sign-up.
+
+To register your agent using the Graphical User Interface, open the Configuration Utility and choose Configure -> Licensing
+
+To register your agent using the command line run::
+
+  On Linux
+  sudo openalpr-licenseregister
+
+  On Windows:
+  C:\OpenALPR\Agent\bin\openalpr-licenseregister.exe
+
+
 NVIDIA GPU Acceleration
 -------------------------
 
