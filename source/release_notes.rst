@@ -3,6 +3,26 @@
 Release Notes
 ********************
 
+2.7.102
+========
+
+Release Date: September 25, 2019
+
+  - New unified licensing service for Watchman Cloud and On-Premise
+  - Latency parameter added to control video buffering time
+  - Plate group previews added as an option for real-time applications
+
+
+Bug fixes:
+
+  - Python binding bug fixes for recognize functions
+  - Fixed Watchman on Jetson 4.2.1 and 4.2.2
+  - Added Docker image for Nvidia Jetson
+  - Fixed possible deadlock on alprstream API when processing corrupted video
+  - More responsive log flushing in Docker containers
+
+
+
 2.7.101
 ========
 
@@ -28,6 +48,20 @@ Bug fixes:
   - ONVIF discovery stability issue
   - AlprStream Python binding initialization error when using multiple threads
   - C# Vehicle Classifier binding bug
+
+
+Archived Windows Installers
+
+  - https://deb.openalpr.com/windows-agent/openalpr-agent-2.7.101-signed.exe
+  - https://deb.openalpr.com/windows-sdk/openalpr64-sdk-2.7.101.zip
+
+Archived Linux Repositories
+
+  - deb https://deb.openalpr.com/snapshot/bionic-2.7.101/ bionic main
+  - deb https://deb.openalpr.com/snapshot/xenial-2.7.101/ xenial main
+  - deb https://deb.openalpr.com/snapshot/jetson32-2.7.101/ jetson32 main
+  - deb https://deb.openalpr.com/snapshot/jetson40-2.7.101/ jetson40 main
+
 
 2.6.103
 =========
