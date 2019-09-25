@@ -339,8 +339,6 @@ The agent groups similar plate numbers together and sends a JSON post containing
     plate_groups_max_plates_to_group = 500
     plate_groups_max_delay_to_send = 7500
 
-
-
 Image Retrieval
 #############################
 
