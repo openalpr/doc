@@ -153,13 +153,12 @@ For Watchman Agents installed on hardware with a GUI
   1. Launch the Configure OpenALPR program
   2. From the top menu, go to Configure > Data Destination
 
-For hardware without a GUI
+For hardware without a GUI (Linux only)
 
   1. Registering with a Watchman Webserver (cloud or on-premise) using your email and password
 
   .. code-block:: bash
 
-    # Linux
     sudo openalpr-licenseregister
     sudo alprlink-register -w https://[ip_address_of_web_server]
 
