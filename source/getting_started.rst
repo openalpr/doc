@@ -5,7 +5,7 @@ Watchman Quick Start
 Create an Account
 =================
 
-Watchman software handles recognizes license plate data from a surveillance camera stream.
+Watchman software handles recognizing license plate data from a surveillance camera stream.
 Visit https://cloud.openalpr.com/account/register to sign up for a new account.
 You will be emailed an activation link shortly.
 
@@ -16,11 +16,11 @@ The Watchman Agent installs on your local PC and will use as many CPU resources 
 Memory and disk requirements are relatively constant.
 Once OpenALPR Watchman initializes, the process uses roughly 500MB per analysis thread (CPU core), and that memory usage will not increase.
 The agent records JPEG images to a disk as plates are recognized.
-However, Disk IO is usually not a bottleneck.
+However, disk IO is usually not a bottleneck.
 
 First, determine the resolution and *total* frames per second (fps) your hardware will need to handle.
 For instance, to support four cameras with 15, 15, 30, and 20 fps, respectively, you will need hardware capable of 80 fps.
-If you are unsure what fps value to set your camera to, we suggest the following rules of thumb based on the speed of traffic being monitored
+If you are unsure what fps value to set your camera(s) to, we suggest the following rules of thumb based on the speed of traffic being monitored
 
   - **Low Speed** (under 25 mph): 5-10 fps
   - **Medium Speed** (25-45 mph): 10-15 fps
@@ -54,7 +54,7 @@ Ubuntu Linux
 -------------
 
 Installation on Linux requires basic knowledge of using the terminal.
-If you do _not_ already have Linux installed as an operating system, please complete these steps before continuing
+If you do *not* already have Linux installed as an operating system, please complete these steps before continuing
 
   1. Download the `Ubuntu 18.04 64-bit install DVD image <http://releases.ubuntu.com/18.04/>`_ and burn it to a DVD
   2. Follow this `installation guide <http://www.ubuntu.com/download/desktop/install-ubuntu-desktop>`_
@@ -111,8 +111,8 @@ The following prerequisites are required:
   - A supported Axis camera
   - An SD Card with at least 2GB storage space
   - Internet Connectivity (minimum 2Mbps upload speed)
-  - Accurate date/time. We recommend configuring NTP (See Setup | Date & Time)
-  - DNS Configuration (See Setup | Advanced TCP/IP Settings)
+  - Accurate date/time. We recommend configuring NTP (See Setup > Date & Time)
+  - DNS Configuration (See Setup > Advanced TCP/IP Settings)
   - The latest Axis firmware (minimum is 5.60.1.1)
 
 After checking the prequisites, follow these steps for installation:
@@ -121,7 +121,7 @@ After checking the prequisites, follow these steps for installation:
   2. Login to your Axis Camera
   3. Click Setup in the top right corner
   4. Click Applications
-  5. Click the Choose File button and select the OpenALPR_Cloud_latest_mipsisa32r2el.eap file (downloaded above), then click the Upload Package button
+  5. Click the Choose File button, select OpenALPR_Cloud_latest_mipsisa32r2el.eap (downloaded above), and then click the Upload Package button
   6. Click OpenALPR Cloud and then Start (you will be prompted for your cloud.openalpr.com credentials)
 
 As vehicles move past the camera, the video will be sent to OpenALPR for archiving and processing.
@@ -140,7 +140,7 @@ After completing installation, you can can choose between four data destination 
       :alt: Windows Agent Configuration
 
   1. **Watchman Cloud:** Send data to https://cloud.openalpr.com (a Watchman webserver hosted by OpenALPR)
-  2. **Watchman Webserver:** Send data to an on-premise Watchman webserver (hosted by you on a Linux machine)
+  2. **Watchman On-Premises:** Send data to an on-premise Watchman webserver (hosted by you on a Linux machine)
   3. **Other HTTP Web Server:** Send data to your own HTTP endpoint
   4. **Local Queue:** Store data locally in beanstalkd and drain the queue programmatically from your application
 
@@ -183,7 +183,7 @@ If your stream will not play in VLC, the OpenALPR Agent will not be able to conn
 The Agent GUI's has an auto discovery feature which should work for camera's supporting the ONVIF communication protol.
 Most major brands of IP cameras will fall under this category.
 
-  1. Launch the Configure OpenALPR
+  1. Launch the Configure OpenALPR program
   2. Toggle the cameras tab on the left if it is not already active
   3. Click Add > Discover Devices
   4. Click the IP address matching your camera and you will be provided with a list of available substreams (different resolutions and/or frame rates)
@@ -204,7 +204,7 @@ For this option, make sure your Agent is registered with the cloud or an on-prem
 
   1. Determine the stream URL for your camera.
      The format varies by manufacturer, but typically has the form rtsp://username:password@ip_address:port_number/some/unique/extension (may also start with http:// instead).
-     The username and password portion may not be required for all cameras but typically come with a simple factory default such as root:1234 or admin:password.
+     The username and password portion may not be required for all cameras but typically comes with a simple factory default such as root:1234 or admin:password.
      For RTSP streams, the default port number is 554 while HTTP uses 80.
      If you do not know the /some/unique/extension portion, please review our templates for different camera manufacturers in approach 2.5, browse your camera's configuration interface if available, or contact the camera manufacturer directly.
   2. Follow approach 1, except instead of selecting Discover Devices chose Stream URL Manual
@@ -212,10 +212,10 @@ For this option, make sure your Agent is registered with the cloud or an on-prem
 **4) Manually edit configuration files**
 
   1. Follow approach 3.1 to determine your camera's stream URL
-  2. Open a blank text file in the Agent's stream folder (located at /etc/openalpr/stream.d on Linux or C:\OpenALPR\Agent\etc\openalpr\stream.d on Windows)
+  2. Open a blank text file in the Agent's stream folder (located at /etc/openalpr/stream.d on Linux or C:\\OpenALPR\\Agent\\etc\\openalpr\\stream.d on Windows)
   3. Add a line to the file with the following format: stream = [Camera HTTP/RTSP stream URL]
   4. Save with the file with a unique name and .conf extension (i.e. my_new_camera.conf)
   5. Restart the Agent
 
     * *GUI:* Services tab > Agent > Stop > Start
-    * *Terminal:* :code:`sudo service restart openalpr-daemon`
+    * *Linux Terminal:* :code:`sudo systemctl restart openalpr-daemon`
