@@ -42,7 +42,6 @@ Install Watchman Agent
 
 On the hardware you have previously sized, follow the appropriate steps based on your operating system to install the Watchman Agent.
 
-.. _openalpr_windows_agent_install:
 
 Windows 10
 ----------
@@ -99,7 +98,6 @@ Docker
 
       docker run --restart always -d --cap-add SYS_NICE -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/commercial-agent
 
-.. _commercial_config_options:
 
 Axis Cameras
 ------------
@@ -128,12 +126,26 @@ As vehicles move past the camera, the video will be sent to OpenALPR for archivi
 You can view video recorded in the past 60 days using the "Video" link on the left.
 As license plates are detected, they will appear on our cloud account dashboard.
 
+Licensing Registration
+=======================
+
+After completing installation, the agent is registered with cloud.openalpr.com to manage licensing.
+
+Sign-up for an account on https://cloud.openalpr.com/
+
+Next type in your e-mail address and password and select "Register"
+
+  .. image:: images/configuration_licenseregister.png
+      :scale: 100%
+      :alt: License Registration
+
+
 .. _data_destinations:
 
 Set Data Destination
 ====================
 
-After completing installation, you can can choose between four data destination options depending on how you wish to use the Watchman Agent
+You can can choose between four data destination options depending on how you wish to use the Watchman Agent
 
   .. image:: images/agent-windows-config.png
       :scale: 100%
