@@ -9,16 +9,13 @@ Watchman software handles recognizing license plate data from a surveillance cam
 Visit https://cloud.openalpr.com/account/register to sign up for a new account.
 You will be emailed an activation link shortly.
 
-Size Hardware
-=============
+Hardware Requirements
+=====================
 
-The Watchman Agent installs on your local PC and will use as many CPU resources as you provide.
-Memory and disk requirements are relatively constant.
-Once OpenALPR Watchman initializes, the process uses roughly 500MB per analysis thread (CPU core), and that memory usage will not increase.
-The agent records JPEG images to a disk as plates are recognized.
-However, disk IO is usually not a bottleneck.
+Most modern PCs from the past five years should be able to run the Watchman Agent without issues.
 
-First, determine the resolution and *total* frames per second (fps) your hardware will need to handle.
+
+If you would like to do a more thorough assessment, start by determining the resolution and *total* frames per second (fps) your hardware will need to handle.
 For instance, to support four cameras with 15, 15, 30, and 20 fps, respectively, you will need hardware capable of 80 fps.
 If you are unsure what fps value to set your camera(s) to, we suggest the following rules of thumb based on the speed of traffic being monitored
 
@@ -26,15 +23,15 @@ If you are unsure what fps value to set your camera(s) to, we suggest the follow
   - **Medium Speed** (25-45 mph): 10-15 fps
   - **High Speed** (over 45 mph): 15-30 fps
 
+Next, find the specifications for your computer's processor (see guides for `Windows <https://www.windowscentral.com/how-check-your-computer-full-specifications-windows-10>`_ or `Linux <https://www.binarytides.com/linux-cpu-information/>`_).
 Compare your total fps value and resolution with our `list of benchmarked processors <https://docs.google.com/spreadsheets/d/1FNwEuJAgZ1LyM2GGd7VRJo85x99IFbecveO8rmFH1to/edit?usp=sharing>`_.
-For example, most modern Intel i7 CPUs can handle around 60 fps of 720p resolution video.
+Note, there are different tabs depending on your operating system (we have found Windows performance to be 16-22% lower than Ubuntu).
+For example, most modern Intel i7 CPUs can handle around 60 fps of 720p resolution video with Ubuntu as the operating system.
 If your processor is not listed, you can either
 
   1. Lookup its `PassMark score <https://www.cpubenchmark.net/cpu_list.php>`_ and interpolate between the existing benchmarks
   2. Use our code and instructions on `Github <https://github.com/openalpr/speed_benchmark>`_ to run the same benchmark script on your hardware
 
-Please note that all benchmarks in our spreadsheet were conducted with Ubuntu as the operating system.
-If you plan to install on Windows, you should decrease the FPS values by 16-22%.
 Lastly, consider using a CPU with a higher total fps rating if you will run other processes besides OpenALPR on the hardware.
 
 Install Watchman Agent
@@ -173,7 +170,7 @@ Connect to Cameras
 ==================
 
 There are four approaches for connecting cameras to the OpenALPR Watchman Agent software.
-Regardless of which method you use, it is a good idea to first play the video stream in an external media player like VLC (click Media > Open Network Stream).
+Regardless of which method you use, it is a good idea to first play the video stream in an external media player like `VLC <https://www.videolan.org/vlc/>`_ (click Media > Open Network Stream).
 This ensures the URL is correctly formatted and there are no firewall/network issues.
 If your stream will not play in VLC, the OpenALPR Agent will not be able to connect to it either.
 
