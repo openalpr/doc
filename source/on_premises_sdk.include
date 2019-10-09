@@ -492,7 +492,7 @@ in a parking lot (or take your own video in .mp4 format). Then, run the followin
     from vehicleclassifier import VehicleClassifier
 
     # Initialize instances
-    alpr = Alpr('us', '', '')
+    alpr = Alpr('us', '/path/to/openalpr.conf', '/path/to/runtime_data')
     if not alpr.is_loaded():
         print('Error loading Alpr')
         sys.exit(1)
@@ -500,13 +500,13 @@ in a parking lot (or take your own video in .mp4 format). Then, run the followin
     if not alpr_stream.is_loaded():
         print('Error loading AlprStream')
         sys.exit(1)
-    vehicle = VehicleClassifier('', '')
+    vehicle = VehicleClassifier('/path/to/openalpr.conf', '/path/to/runtime_data')
     if not vehicle.is_loaded():
         print('Error loading VehicleClassifier')
         sys.exit(1)
 
     # Connect to stream/video and process results
-    alpr_stream.connect_video_file('/tmp/720p.mp4', 0)
+    alpr_stream.connect_video_file('/path/to/video.mp4', 0)
     while alpr_stream.video_file_active() or alpr_stream.get_queue_size() > 0:
         single_frame = alpr_stream.process_frame(alpr)
         active_groups = len(alpr_stream.peek_active_groups())
