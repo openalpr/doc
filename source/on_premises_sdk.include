@@ -247,7 +247,7 @@ Source code: https://github.com/openalpr/openalpr/tree/master/src/bindings/pytho
     from openalpr import Alpr
     from vehicleclassifier import VehicleClassifier
 
-    COUNTRY = 'eu'
+    COUNTRY = 'us'
     IMAGE_PATH = '/path/to/image.jpg'
 
     # Initialize instances
