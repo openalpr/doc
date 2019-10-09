@@ -243,33 +243,51 @@ Source code: https://github.com/openalpr/openalpr/tree/master/src/bindings/pytho
 
 .. code-block:: python
 
+    import sys
     from openalpr import Alpr
+    from vehicleclassifier import VehicleClassifier
 
-    alpr = Alpr("us", "/path/to/openalpr.conf", "/path/to/runtime_data")
+    COUNTRY = 'eu'
+    IMAGE_PATH = '/path/to/image.jpg'
+
+    # Initialize instances
+    alpr = Alpr(COUNTRY, '/path/to/openalpr.conf', '/path/to/runtime_data')
     if not alpr.is_loaded():
-        print("Error loading OpenALPR")
+        print('Error loading Alpr')
         sys.exit(1)
-        
-    alpr.set_top_n(20)
-    alpr.set_default_region("md")
+    vehicle = VehicleClassifier('/path/to/openalpr.conf', '/path/to/runtime_data')
+    if not vehicle.is_loaded():
+        print('Error loading VehicleClassifier')
+        sys.exit(1)
 
-    results = alpr.recognize_file("/path/to/image.jpg")
+    # Set additional detection parameters (optional)
+    alpr.set_top_n(5)
+    alpr.set_default_region('md')
 
-    i = 0
-    for plate in results['results']:
-        i += 1
-        print("Plate #%d" % i)
-        print("   %12s %12s" % ("Plate", "Confidence"))
-        for candidate in plate['candidates']:
-            prefix = "-"
-            if candidate['matches_template']:
-                prefix = "*"
+    # Gather and print results
+    plate_results = alpr.recognize_file(IMAGE_PATH)
+    for i, plate in enumerate(plate_results['results']):
+        print('Plate {:-<30}'.format(i))
+        for c in plate['candidates']:
+            display = '\t{:>7} {}'.format('{:.2f}%'.format(c['confidence']), c['plate'])
+            if c['matches_template']:
+                display += ' *'
+            print(display)
 
-            print("  %s %12s%12f" % (prefix, candidate['plate'], candidate['confidence']))
+    vehicle_results = vehicle.recognize_file(COUNTRY, IMAGE_PATH)
+    best = [v[0]['name'] for k, v in  vehicle_results.items() if k != 'make']
+    print('\nTop vehicle: {} oriented at {} degrees'.format(' '.join(best[:-1]), best[-1]))
+    for attribute, candidates in vehicle_results.items():
+        print('\n{:-<30}'.format(attribute.capitalize()))
+        for c in candidates:
+            label = c['name']
+            if c['name'] == 'missing':
+                label = 'unknown'
+            print('\t{:>7} {}'.format('{:.2f}%'.format(c['confidence']), label))
 
     # Call when completely done to release memory
     alpr.unload()
-
+    vehicle.unload()
 
 
 Java
@@ -471,26 +489,38 @@ in a parking lot (or take your own video in .mp4 format). Then, run the followin
     import sys
     from alprstream import AlprStream
     from openalpr import Alpr
+    from vehicleclassifier import VehicleClassifier
 
-    alpr = Alpr("us", "/path/to/openalpr.conf", "/path/to/runtime_data")
+    # Initialize instances
+    alpr = Alpr('us', '', '')
     if not alpr.is_loaded():
-        print("Error loading OpenALPR")
+        print('Error loading Alpr')
         sys.exit(1)
     alpr_stream = AlprStream(frame_queue_size=10, use_motion_detection=True)
     if not alpr_stream.is_loaded():
-        print("Error loading AlprStream")
+        print('Error loading AlprStream')
+        sys.exit(1)
+    vehicle = VehicleClassifier('', '')
+    if not vehicle.is_loaded():
+        print('Error loading VehicleClassifier')
         sys.exit(1)
 
-    alpr_stream.connect_video_file('/path/to/720p.mp4', 0)
-
+    # Connect to stream/video and process results
+    alpr_stream.connect_video_file('/tmp/720p.mp4', 0)
     while alpr_stream.video_file_active() or alpr_stream.get_queue_size() > 0:
         single_frame = alpr_stream.process_frame(alpr)
         active_groups = len(alpr_stream.peek_active_groups())
-        print("Active groups: {:<3} \tQueue size: {}".format(active_groups, alpr_stream.get_queue_size()))
-        groups = alpr_stream.pop_completed_groups()
+        print('Active groups: {:<3} \tQueue size: {}'.format(active_groups, alpr_stream.get_queue_size()))
+        groups = alpr_stream.pop_completed_groups_and_recognize_vehicle(vehicle)
         for group in groups:
-            print("=" * 50)
-            print("Group ({}-{}): {} ({:.2f}% confident)".format(
-                group['epoch_start'], group['epoch_end'],
-                group['best_plate']['plate'], group['best_plate']['confidence']))
-            print("=" * 50)
+            print('=' * 40)
+            print('Group from frames {}-{}'.format(group['frame_start'], group['frame_end']))
+            print('Plate: {} ({:.2f}%)'.format(group['best_plate']['plate'], group['best_plate']['confidence']))
+            print('Vehicle attributes')
+            for attribute, candidates in group['vehicle'].items():
+                print('\t{}: {} ({:.2f}%)'.format(attribute.capitalize(), candidates[0]['name'], candidates[0]['confidence']))
+            print('=' * 40)
+
+    # Call when completely done to release memory
+    alpr.unload()
+    vehicle.unload()
