@@ -107,20 +107,31 @@ Linux
 Docker
 ............
 
-  1. Run the command **docker pull openalpr/commercial-agent** to pull the latest OpenALPR docker commercial agent.
-  2. Run the following command to register the agent with the service:
+  1. Open a new terminal
+  2. Pull the latest OpenALPR Docker image
 
   .. code-block:: bash
 
-      docker run -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/commercial-agent alprlink-register
+      docker pull openalpr/agent
 
-  3. Start the docker container with the following command:
+  3. Enable the license for the agent
 
   .. code-block:: bash
 
-      docker run --restart always -d --cap-add SYS_NICE -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/commercial-agent
+      docker run -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/agent openalpr-licenseregister
 
-.. _commercial_config_options:
+  4. Configure it to point to a Watchman web server (default is https://cloud.openalpr.com)
+
+  .. code-block:: bash
+
+      docker run -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/agent alprlink-register
+
+  5. Start the container
+
+  .. code-block:: bash
+
+      docker run --restart always -d --cap-add SYS_NICE -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/agent
+
 
 
 Axis Cameras
@@ -237,6 +248,8 @@ If running the agent, edit the Watchman Agent config file (c:\\openalpr\\agent\\
 
 Restart the Watchman Agent Service
 
+
+.. _commercial_config_options:
 
 
 Configuration

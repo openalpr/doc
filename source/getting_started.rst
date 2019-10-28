@@ -75,7 +75,7 @@ Docker
 
   .. code-block:: bash
 
-      docker pull openalpr/commercial-agent
+      docker pull openalpr/agent
 
   3. Enable the license for the agent
 
@@ -93,7 +93,7 @@ Docker
 
   .. code-block:: bash
 
-      docker run --restart always -d --cap-add SYS_NICE -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/commercial-agent
+      docker run --restart always -d --cap-add SYS_NICE -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/agent
 
 
 Axis Cameras
