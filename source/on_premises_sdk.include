@@ -398,7 +398,7 @@ Each thread should have its own Alpr object, but can share the AlprStream object
 
 .. code-block:: c
 
-// System imports
+    // System imports
     #include <cstdlib>
     #include <vector>
     #include <string>
