@@ -398,7 +398,7 @@ Each thread should have its own Alpr object, but can share the AlprStream object
 
 .. code-block:: c
 
-    // System imports
+// System imports
     #include <cstdlib>
     #include <vector>
     #include <string>
@@ -408,6 +408,7 @@ Each thread should have its own Alpr object, but can share the AlprStream object
 
     // Import OpenALPR alprstream_c (also pulls in alpr_c.h and vehicleclassifier_c.h)
     #include <alprstream_c.h>
+    #include <vehicle_classifier_c.h>
     #include <alpr_c.h>
 
     using namespace std;
@@ -418,21 +419,26 @@ Each thread should have its own Alpr object, but can share the AlprStream object
         cout << "Initializing" << endl;
         const std::string LICENSEPLATE_COUNTRY = "eu";
 
-        // Video buffer frames controls the number of frames to buffer in memory. 
+        // Video buffer frames controls the number of frames to buffer in memory.
         const int VIDEO_BUFFER_SIZE = 15;
 
-        // The stream will assume sequential frames.  If there is no motion from frame to frame, then 
+        // The stream will assume sequential frames.  If there is no motion from frame to frame, then
         // processing can be skipped for some frames
         const int USE_MOTION_DETECTION = 1;
 
         // The point in time (ms) to start in the video file
         const int VIDEO_START_MS = 0;
 
-        OPENALPR* alpr = openalpr_init(LICENSEPLATE_COUNTRY.c_str(), "", "");
+        OPENALPR* alpr = openalpr_init(LICENSEPLATE_COUNTRY.c_str(), "", "", "");
+        VEHICLECLASSIFIER* vehicle_classifier = vehicleclassifier_init("", "", 0,0, 0, "");
+
         ALPRSTREAM* stream = alprstream_init(VIDEO_BUFFER_SIZE, USE_MOTION_DETECTION);
 
+        // Enable to see detailed debug messages related to video read/queue
+        putenv("GST_DEBUG=2");
+
         // AlprStream will spawn a background thread to read the eu-clip.mp4 video file
-        // and push to the queue.  Alternatively, you may connect to a stream URL, or 
+        // and push to the queue.  Alternatively, you may connect to a stream URL, or
         // push individual image frames into the alprstream object yourself
         alprstream_connect_video_file(stream, "C:\\Temp\\eu-clip.mp4", VIDEO_START_MS);
 
@@ -461,7 +467,7 @@ Each thread should have its own Alpr object, but can share the AlprStream object
             alprstream_free_frame_response(response);
 
             // Get Group results:
-            char* group_result = alprstream_pop_completed_groups_and_recognize_vehicle(stream);
+            char* group_result = alprstream_pop_completed_groups_and_recognize_vehicle(stream, vehicle_classifier);
             cout << "Groups: " << group_result << endl;
             alprstream_free_response_string(group_result);
 
@@ -477,6 +483,7 @@ Each thread should have its own Alpr object, but can share the AlprStream object
         alprstream_cleanup(stream);
         return 0;
     }
+
 
 Python
 ..................
