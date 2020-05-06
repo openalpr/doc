@@ -2,8 +2,8 @@
 .. _cloud_api:
 
 
-The OpenALPR Cloud API is a web-based service that analyzes images for license plates as well as vehicle information such as make, model, and color. 
-The Cloud API service is easy to integrate into your application via a web-based REST service. When you send image data to the OpenALPR API, we process that data 
+The OpenALPR CarCheck API is a web-based service that analyzes images for license plates as well as vehicle information such as make, model, and color. 
+The CarCheck API service is easy to integrate into your application via a web-based REST service. When you send image data to the OpenALPR API, we process that data 
 and return JSON data describing the license plate and vehicle.
 
 Check out the online demo: http://www.openalpr.com/demo-image.html
@@ -19,10 +19,10 @@ one API credit. You may enter your credit card information and upgrade your plan
 Integration 
 -----------------------
 
-Because the OpenALPR Cloud API is REST-based, it works with any programming language on any operating system. You can make API calls using whatever method
+Because the OpenALPR CarCheck API is REST-based, it works with any programming language on any operating system. You can make API calls using whatever method
 you prefer.
 
-The endpoint for the OpenALPR Cloud APIs are described in the `REST API documentation <api/?api=cloudapi>`_.
+The endpoint for the OpenALPR CarCheck APIs are described in the `REST API documentation <api/?api=cloudapi>`_.
 
 Code Samples
 ----------------------
@@ -187,7 +187,7 @@ JavaScript
 
     <html>
         <title>
-            Cloud API Demo
+            CarCheck API Demo
         </title>
 
         <head>

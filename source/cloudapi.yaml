@@ -2,9 +2,9 @@ swagger: '2.0'
 
 info:
   version: "2.0.1"
-  title: OpenALPR Cloud API
+  title: OpenALPR CarCheck API
   description: |
-    The OpenALPR Cloud API allows you to send images to the cloud for processing. 
+    The OpenALPR CarCheck API allows you to send images to the cloud for processing. 
     The image will be analyzed for license plates and vehicle make/models.  The results 
     are returned in JSON format
 
