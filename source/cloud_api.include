@@ -6,7 +6,7 @@ The OpenALPR CarCheck API is a web-based service that analyzes images for licens
 The CarCheck API service is easy to integrate into your application via a web-based REST service. When you send image data to the OpenALPR API, we process that data 
 and return JSON data describing the license plate and vehicle.
 
-Check out the online demo: http://www.openalpr.com/demo-image.html
+Check out the online demo: https://www.openalpr.com/carcheck-api.html
 
 Sign Up
 ---------
