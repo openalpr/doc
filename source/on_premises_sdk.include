@@ -201,6 +201,19 @@ Below is a simple example of using the OpenALPR C library to detect plates and c
         return 0;
     }
 
+Output:
+
+.. code-block:: bash
+
+    ./alpr_c_sample  cameraimage.jpg
+    plate: 4PCI264 - us-ca (94.7616195678711)
+      - make: bmw (86.89132690429688)
+      - color: silver-gray (90.59030151367188)
+      - orientation: 180 (96.70639038085938)
+      - make_model: bmw_3-series (86.49954223632813)
+      - body_type: sedan-standard (96.80194854736328)
+      - year: 2000-2004 (52.97491455078125)
+
 
 C++
 ..................
