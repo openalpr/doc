@@ -80,7 +80,7 @@ Below is a simple example of using the OpenALPR C library to detect plates and c
     #include <stdlib.h>
     #include <alpr_c.h>
     #include <vehicle_classifier_c.h>
-    #include <json.hpp> // https://github.com/nlohmann/json
+    #include "json.hpp" // https://github.com/nlohmann/json
     #include <iostream>
 
     long read_file(const char* file_path, unsigned char** buffer)
@@ -166,7 +166,7 @@ Below is a simple example of using the OpenALPR C library to detect plates and c
                 // Iterate over each plate and print the results
                 for (nlohmann::json result : parsed_plate_data["results"])
                 {
-                  std::cout << "plate: " << (std::string) result["plate"] << " - " << (std::string) result["region"] << " (" << result["confidence"] << ")" << std::endl;
+                  std::cout << "plate: " << result["plate"].get<std::string>() << " - " << result["region"].get<std::string>() << " (" << result["confidence"].get<float>() << ")" << std::endl;
 
                   // Classify the vehicle -- set the region of interest based on where ALPR tells us the car is
                   VehicleClassifierCRegionOfInterest roi;
@@ -183,7 +183,7 @@ Below is a simple example of using the OpenALPR C library to detect plates and c
 
                   // Write results to console
                   for (std::string category : {"make", "color", "orientation", "make_model", "body_type", "year"})
-                    std::cout << "  - " << category << ": " << (std::string) parsed_vehicle_data[category][0]["name"] << " (" << parsed_vehicle_data[category][0]["confidence"] << ")" << std::endl;
+                    std::cout << "  - " << category << ": " << parsed_vehicle_data[category][0]["name"].get<std::string>() << " (" << parsed_vehicle_data[category][0]["confidence"].get<float>() << ")" << std::endl;
 
                 }
 
