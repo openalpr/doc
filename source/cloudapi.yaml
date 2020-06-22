@@ -1,7 +1,7 @@
 swagger: '2.0'
 
 info:
-  version: "2.0.1"
+  version: "3.0.1"
   title: OpenALPR CarCheck API
   description: |
     The OpenALPR CarCheck API allows you to send images to the cloud for processing. 
@@ -9,7 +9,7 @@ info:
     are returned in JSON format
 
 host: api.openalpr.com
-basePath: /v2
+basePath: /v3
 schemes:
   - https
 produces:
@@ -42,13 +42,11 @@ paths:
         -
           $ref: "#/parameters/country"
         -
-          $ref: "#/parameters/state"
-        -
           $ref: "#/parameters/return_image"
         -
           $ref: "#/parameters/topn"
         -
-          $ref: "#/parameters/prewarp"
+          $ref: "#/parameters/is_cropped"
           
       # Expected responses for this operation:
       responses:
@@ -90,13 +88,9 @@ paths:
         -
           $ref: "#/parameters/country"
         -
-          $ref: "#/parameters/state"
-        -
           $ref: "#/parameters/return_image"
         -
           $ref: "#/parameters/topn"
-        -
-          $ref: "#/parameters/prewarp"
           
       # Expected responses for this operation:
       responses:
@@ -139,13 +133,9 @@ paths:
         -
           $ref: "#/parameters/country"
         -
-          $ref: "#/parameters/state"
-        -
           $ref: "#/parameters/return_image"
         -
           $ref: "#/parameters/topn"
-        -
-          $ref: "#/parameters/prewarp"
           
       # Expected responses for this operation:
       responses:
@@ -229,16 +219,17 @@ paths:
                   
           
 parameters:
-  prewarp:
-    name: prewarp
+  is_cropped:
+    name: is_cropped
     in: query
     description: |
-      Prewarp configuration is used to calibrate the analyses for the 
-      angle of a particular camera.  More information is available here
-      http://doc.openalpr.com/accuracy_improvements.html#calibration
+      When providing a plate or vehicle that is already cropped,  
+      this performs a recognition against the full crop and does not 
+      attempt to localize the plate/vehicle
     required: false
-    default: ''
-    type: string
+    default: 0
+    type: integer
+    enum: [0, 1]
     
   topn:
     name: topn
@@ -286,17 +277,6 @@ parameters:
     default: 0
     enum: [0, 1]
           
-  state:
-    name: state
-    in: query
-    description: |
-      Corresponds to a US state or EU country code used by OpenALPR pattern 
-      recognition.  For example, using "md" matches US plates against the 
-      Maryland plate patterns.  Using "fr" matches European plates against 
-      the French plate patterns.
-    required: false
-    default: ''
-    type: string
     
   secret_key:
     name: secret_key
@@ -363,6 +343,11 @@ responses:
           description: Describes the areas analyzed in the input image
           items:
             $ref: '#/definitions/region_of_interest'
+        vehicles:
+          type: array
+          description: Describes all vehicles found in the input image
+          items:
+            $ref: '#/definitions/vehicles'
         epoch_time:
           # This is actually an integer, but setting to number to avoid issues with overflow
           type: number
@@ -454,6 +439,20 @@ definitions:
         type: number
         description: confidence of value (percent)
   
+  vehicles:
+    type: object
+    properties:
+      x:
+        type: integer
+      y:
+        type: integer
+      width:
+        type: integer
+      height:
+        type: integer
+      details:
+        $ref: '#/definitions/vehicle_details'
+
   vehicle_details:
     type: object
     properties:
@@ -470,6 +469,14 @@ definitions:
         items:
           $ref: '#/definitions/vehicle_candidate'
       body_type:
+        type: array
+        items:
+          $ref: '#/definitions/vehicle_candidate'
+      orientation:
+        type: array
+        items:
+          $ref: '#/definitions/vehicle_candidate'
+      year:
         type: array
         items:
           $ref: '#/definitions/vehicle_candidate'

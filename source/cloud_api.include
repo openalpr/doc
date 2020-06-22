@@ -35,7 +35,7 @@ Bash
 
 .. code-block:: bash
 
-    curl -X POST -F image=@/car1.jpg 'https://api.openalpr.com/v2/recognize?recognize_vehicle=1&country=us&secret_key=sk_DEMODEMODEMODEMODEMODEMO'
+    curl -X POST -F image=@/car1.jpg 'https://api.openalpr.com/v3/recognize?recognize_vehicle=1&country=us&secret_key=sk_DEMODEMODEMODEMODEMODEMO'
 
 Python
 ###############
@@ -55,7 +55,7 @@ Python
     with open(IMAGE_PATH, 'rb') as image_file:
         img_base64 = base64.b64encode(image_file.read())
 
-    url = 'https://api.openalpr.com/v2/recognize_bytes?recognize_vehicle=1&country=us&secret_key=%s' % (SECRET_KEY)
+    url = 'https://api.openalpr.com/v3/recognize_bytes?recognize_vehicle=1&country=us&secret_key=%s' % (SECRET_KEY)
     r = requests.post(url, data = img_base64)
 
     print(json.dumps(r.json(), indent=2))
@@ -88,7 +88,7 @@ C#
 
                 var content = new StringContent(imagebase64);
 
-                var response = await client.PostAsync("https://api.openalpr.com/v2/recognize_bytes?recognize_vehicle=1&country=us&secret_key=" + SECRET_KEY, content).ConfigureAwait(false);
+                var response = await client.PostAsync("https://api.openalpr.com/v3/recognize_bytes?recognize_vehicle=1&country=us&secret_key=" + SECRET_KEY, content).ConfigureAwait(false);
 
                 var buffer = await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
                 var byteArray = buffer.ToArray();
@@ -135,7 +135,7 @@ Java
                 byte[] encoded = Base64.getEncoder().encode(data);
 
                 // Setup the HTTPS connection to api.openalpr.com
-                URL url = new URL("https://api.openalpr.com/v2/recognize_bytes?recognize_vehicle=1&country=us&secret_key=" + secret_key);
+                URL url = new URL("https://api.openalpr.com/v3/recognize_bytes?recognize_vehicle=1&country=us&secret_key=" + secret_key);
                 URLConnection con = url.openConnection();
                 HttpURLConnection http = (HttpURLConnection)con;
                 http.setRequestMethod("POST"); // PUT is another valid option
@@ -194,7 +194,7 @@ JavaScript
             <script>
             // Open connection to api.openalpr.com
             var secret_key = "sk_DEMODEMODEMODEMODEMODEMO";
-            var url = "https://api.openalpr.com/v2/recognize_bytes?recognize_vehicle=1&country=us&secret_key=" + secret_key;
+            var url = "https://api.openalpr.com/v3/recognize_bytes?recognize_vehicle=1&country=us&secret_key=" + secret_key;
             var xhr = new XMLHttpRequest();
             xhr.open("POST", url);
 
@@ -224,172 +224,353 @@ The JSON response is as follows:
 
 
     {
-       "uuid" : "",
-       "regions_of_interest" : [
-          {
-             "height" : 600,
-             "width" : 600,
-             "y" : 0,
-             "x" : 0
-          }
-       ],
-       "credits_monthly_used" : 7040,
-       "credit_cost" : 2,
+       "data_type" : "alpr_results",
+       "epoch_time" : 1592849838217,
+       "img_width" : 600,
        "img_height" : 600,
        "error" : false,
-       "epoch_time" : 1522978197756,
-       "version" : 2,
+       "version" : 3,
+       "credit_cost" : 1,
+       "uuid" : "",
+       "processing_time" : {
+          "plates" : 85.0386276245117,
+          "vehicles" : 76.9439999994574,
+          "total" : 830.30300000064
+       },
+       "regions_of_interest" : [
+          {
+             "y" : 0,
+             "height" : 600,
+             "x" : 0,
+             "width" : 600
+          }
+       ],
+       "credits_monthly_used" : 5001,
+       "credits_monthly_total" : 100000,
        "results" : [
           {
+             "requested_topn" : 10,
+             "matches_template" : 1,
+             "region_confidence" : 99,
              "plate_index" : 0,
+             "plate" : "627WWI",
+             "region" : "us-wa",
+             "confidence" : 94.0910949707031,
+             "coordinates" : [
+                {
+                   "x" : 238,
+                   "y" : 358
+                },
+                {
+                   "x" : 357,
+                   "y" : 358
+                },
+                {
+                   "x" : 357,
+                   "y" : 408
+                },
+                {
+                   "x" : 239,
+                   "y" : 409
+                }
+             ],
+             "candidates" : [
+                {
+                   "matches_template" : 1,
+                   "plate" : "627WWI",
+                   "confidence" : 94.0910949707031
+                },
+                {
+                   "matches_template" : 0,
+                   "plate" : "627WW1",
+                   "confidence" : 74.0910949707031
+                }
+             ],
              "vehicle_region" : {
-                "y" : 7,
-                "width" : 568,
-                "height" : 568,
-                "x" : 16
+                "y" : 96,
+                "x" : 3,
+                "width" : 589,
+                "height" : 483
              },
-             "processing_time_ms" : 68.9315719604492,
+             "processing_time_ms" : 8.83281803131104,
+             "vehicle_detected" : true,
              "vehicle" : {
-                "body_type" : [
+                "make" : [
                    {
-                      "name" : "sedan-compact",
-                      "confidence" : 89.6389389038086
+                      "name" : "daihatsu",
+                      "confidence" : 67.1475448608398
                    },
                    {
-                      "name" : "suv-standard",
-                      "confidence" : 2.92187452316284
+                      "name" : "mini",
+                      "confidence" : 18.6626739501953
                    },
                    {
-                      "name" : "sedan-wagon",
-                      "confidence" : 2.83985614776611
+                      "name" : "fiat",
+                      "confidence" : 8.87434959411621
+                   },
+                   {
+                      "confidence" : 1.25781571865082,
+                      "name" : "scion"
+                   },
+                   {
+                      "confidence" : 1.04451608657837,
+                      "name" : "toyota"
                    }
                 ],
                 "year" : [
                    {
-                      "confidence" : 47.3032341003418,
+                      "name" : "2005-2009",
+                      "confidence" : 54.0047645568848
+                   },
+                   {
+                      "confidence" : 39.7950668334961,
                       "name" : "2000-2004"
                    },
                    {
-                      "name" : "2005-2009",
-                      "confidence" : 39.6665573120117
+                      "name" : "2010-2014",
+                      "confidence" : 5.38613367080688
                    },
                    {
                       "name" : "1995-1999",
-                      "confidence" : 7.91491031646729
-                   }
-                ],
-                "make_model" : [
-                   {
-                      "confidence" : 40.9104766845703,
-                      "name" : "chevrolet_hhr"
+                      "confidence" : 0.628315031528473
                    },
                    {
-                      "name" : "toyota_ist",
-                      "confidence" : 22.9741859436035
-                   },
-                   {
-                      "confidence" : 6.41662836074829,
-                      "name" : "chevrolet_trailblazer"
-                   },
-                   {
-                      "confidence" : 1.58923923969269,
-                      "name" : "mazda_verisa"
-                   },
-                   {
-                      "confidence" : 1.31779313087463,
-                      "name" : "nissan_micra"
-                   },
-                   {
-                      "name" : "mazda_tribute",
-                      "confidence" : 1.24455153942108
-                   },
-                   {
-                      "confidence" : 0.991917014122009,
-                      "name" : "chevrolet_uplander"
-                   }
-                ],
-                "make" : [
-                   {
-                      "confidence" : 32.4275550842285,
-                      "name" : "chevrolet"
-                   },
-                   {
-                      "name" : "toyota",
-                      "confidence" : 31.9965953826904
-                   },
-                   {
-                      "confidence" : 15.4623928070068,
-                      "name" : "nissan"
-                   },
-                   {
-                      "confidence" : 8.25705337524414,
-                      "name" : "daihatsu"
-                   },
-                   {
-                      "name" : "mazda",
-                      "confidence" : 3.8371422290802
+                      "confidence" : 0.16707843542099,
+                      "name" : "1990-1994"
                    }
                 ],
                 "color" : [
                    {
-                      "name" : "silver-gray",
-                      "confidence" : 73.2146682739258
+                      "confidence" : 77.7851638793945,
+                      "name" : "silver-gray"
                    },
                    {
-                      "name" : "blue",
-                      "confidence" : 15.9568424224854
+                      "confidence" : 9.67624187469482,
+                      "name" : "blue"
+                   },
+                   {
+                      "name" : "black",
+                      "confidence" : 7.02981376647949
+                   },
+                   {
+                      "name" : "green",
+                      "confidence" : 2.66030049324036
+                   },
+                   {
+                      "name" : "gold-beige",
+                      "confidence" : 1.42329037189484
                    }
                 ],
                 "orientation" : [
                    {
                       "name" : "180",
-                      "confidence" : 97.7202453613281
+                      "confidence" : 99.9426956176758
                    },
                    {
-                      "confidence" : 1.84529066085815,
-                      "name" : "225"
+                      "name" : "225",
+                      "confidence" : 0.0323438383638859
+                   },
+                   {
+                      "name" : "135",
+                      "confidence" : 0.0129895266145468
+                   },
+                   {
+                      "name" : "45",
+                      "confidence" : 0.00725177442654967
+                   },
+                   {
+                      "confidence" : 0.00194440386258066,
+                      "name" : "90"
+                   }
+                ],
+                "body_type" : [
+                   {
+                      "confidence" : 99.8512573242188,
+                      "name" : "sedan-compact"
+                   },
+                   {
+                      "name" : "tractor-trailer",
+                      "confidence" : 0.0433907173573971
+                   },
+                   {
+                      "name" : "sedan-sports",
+                      "confidence" : 0.0432351566851139
+                   },
+                   {
+                      "confidence" : 0.0218438617885113,
+                      "name" : "suv-crossover"
+                   },
+                   {
+                      "confidence" : 0.0212091449648142,
+                      "name" : "sedan-wagon"
+                   }
+                ],
+                "make_model" : [
+                   {
+                      "name" : "mini_cooper-s",
+                      "confidence" : 35.001880645752
+                   },
+                   {
+                      "confidence" : 23.0991153717041,
+                      "name" : "mini_cooper"
+                   },
+                   {
+                      "confidence" : 5.29244709014893,
+                      "name" : "daihatsu_sirion"
+                   },
+                   {
+                      "name" : "mini_hatch",
+                      "confidence" : 4.69152307510376
+                   },
+                   {
+                      "confidence" : 4.35747337341309,
+                      "name" : "daihatsu_tanto"
                    }
                 ]
-             },
-             "matches_template" : 1,
-             "plate" : "627WWI",
-             "requested_topn" : 10,
-             "coordinates" : [
-                {
-                   "x" : 237,
-                   "y" : 357
-                },
-                {
-                   "y" : 359,
-                   "x" : 364
-                },
-                {
-                   "x" : 362,
-                   "y" : 416
-                },
-                {
-                   "x" : 237,
-                   "y" : 414
-                }
-             ],
-             "region_confidence" : 99,
-             "region" : "wa",
-             "candidates" : [
-                {
-                   "matches_template" : 1,
-                   "confidence" : 94.9990844726562,
-                   "plate" : "627WWI"
-                }
-             ],
-             "confidence" : 94.9990844726562
+             }
           }
        ],
-       "credits_monthly_total" : 10000000000,
-       "img_width" : 600,
-       "data_type" : "alpr_results",
-       "processing_time" : {
-          "total" : 621.703000000025,
-          "plates" : 140.277725219727,
-          "vehicles" : 476.741000000004
-       }
+       "vehicles" : [
+          {
+             "x" : 3,
+             "y" : 96,
+             "width" : 589,
+             "height" : 483,
+             "details" : {
+                "orientation" : [
+                   {
+                      "name" : "180",
+                      "confidence" : 99.9426956176758
+                   },
+                   {
+                      "name" : "225",
+                      "confidence" : 0.0323438383638859
+                   },
+                   {
+                      "name" : "135",
+                      "confidence" : 0.0129895266145468
+                   },
+                   {
+                      "confidence" : 0.00725177442654967,
+                      "name" : "45"
+                   },
+                   {
+                      "name" : "90",
+                      "confidence" : 0.00194440386258066
+                   }
+                ],
+                "make" : [
+                   {
+                      "name" : "daihatsu",
+                      "confidence" : 67.1475448608398
+                   },
+                   {
+                      "name" : "mini",
+                      "confidence" : 18.6626739501953
+                   },
+                   {
+                      "confidence" : 8.87434959411621,
+                      "name" : "fiat"
+                   },
+                   {
+                      "confidence" : 1.25781571865082,
+                      "name" : "scion"
+                   },
+                   {
+                      "confidence" : 1.04451608657837,
+                      "name" : "toyota"
+                   }
+                ],
+                "color" : [
+                   {
+                      "name" : "silver-gray",
+                      "confidence" : 77.7851638793945
+                   },
+                   {
+                      "name" : "blue",
+                      "confidence" : 9.67624187469482
+                   },
+                   {
+                      "name" : "black",
+                      "confidence" : 7.02981376647949
+                   },
+                   {
+                      "confidence" : 2.66030049324036,
+                      "name" : "green"
+                   },
+                   {
+                      "confidence" : 1.42329037189484,
+                      "name" : "gold-beige"
+                   }
+                ],
+                "year" : [
+                   {
+                      "name" : "2005-2009",
+                      "confidence" : 54.0047645568848
+                   },
+                   {
+                      "name" : "2000-2004",
+                      "confidence" : 39.7950668334961
+                   },
+                   {
+                      "name" : "2010-2014",
+                      "confidence" : 5.38613367080688
+                   },
+                   {
+                      "name" : "1995-1999",
+                      "confidence" : 0.628315031528473
+                   },
+                   {
+                      "confidence" : 0.16707843542099,
+                      "name" : "1990-1994"
+                   }
+                ],
+                "make_model" : [
+                   {
+                      "confidence" : 35.001880645752,
+                      "name" : "mini_cooper-s"
+                   },
+                   {
+                      "confidence" : 23.0991153717041,
+                      "name" : "mini_cooper"
+                   },
+                   {
+                      "name" : "daihatsu_sirion",
+                      "confidence" : 5.29244709014893
+                   },
+                   {
+                      "confidence" : 4.69152307510376,
+                      "name" : "mini_hatch"
+                   },
+                   {
+                      "name" : "daihatsu_tanto",
+                      "confidence" : 4.35747337341309
+                   }
+                ],
+                "body_type" : [
+                   {
+                      "confidence" : 99.8512573242188,
+                      "name" : "sedan-compact"
+                   },
+                   {
+                      "confidence" : 0.0433907173573971,
+                      "name" : "tractor-trailer"
+                   },
+                   {
+                      "confidence" : 0.0432351566851139,
+                      "name" : "sedan-sports"
+                   },
+                   {
+                      "confidence" : 0.0218438617885113,
+                      "name" : "suv-crossover"
+                   },
+                   {
+                      "confidence" : 0.0212091449648142,
+                      "name" : "sedan-wagon"
+                   }
+                ]
+             }
+          }
+       ]
     }
+
