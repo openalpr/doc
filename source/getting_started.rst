@@ -52,7 +52,7 @@ Ubuntu Linux
 Installation on Linux requires basic knowledge of using the terminal.
 If you do *not* already have Linux installed as an operating system, please complete these steps before continuing
 
-  1. Download the `Ubuntu 18.04 64-bit install DVD image <http://releases.ubuntu.com/18.04/>`_ and burn it to a DVD
+  1. Download the `Ubuntu 20.04 64-bit install DVD image <http://releases.ubuntu.com/20.04/>`_ and burn it to a DVD
   2. Follow this `installation guide <http://www.ubuntu.com/download/desktop/install-ubuntu-desktop>`_
 
 If you already have Linux installed

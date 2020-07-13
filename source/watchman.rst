@@ -183,7 +183,7 @@ To register your agent using the command line run::
 NVIDIA GPU Acceleration
 -------------------------
 
-Watchman Agent performance can also be drastically accelerated by Nvidia GPU hardware.  OpenALPR maintains binaries for CUDA 10.0 using CuDNN 7 on 64-bit Ubuntu Linux 18.04.  The OpenALPR software has been compiled for CUDA hardware versions 5.2 5.3 6.0 6.1 6.2 7.0 7.2 7.5.  You can verify your CUDA version here: https://developer.nvidia.com/cuda-gpus
+Watchman Agent performance can also be drastically accelerated by Nvidia GPU hardware.  OpenALPR maintains binaries for CUDA 10.0 using CuDNN 7 on 64-bit Ubuntu Linux 20.04.  The OpenALPR software has been compiled for CUDA hardware versions 5.2 5.3 6.0 6.1 6.2 7.0 7.2 7.5.  You can verify your CUDA version here: https://developer.nvidia.com/cuda-gpus
 
 Ubuntu 18.04
 ................
@@ -206,13 +206,12 @@ Now you may install the OpenALPR GPU acceleration package::
 
   Select OpenALPR software and the install_nvidia option 
 
-Ubuntu 16.04
+Ubuntu 20.04
 ...............
 
-To enable GPU acceleration, first install Nvidia packages::
+Nvidia drivers are included in the standard Ubuntu repos in Ubuntu 20.04.  Make sure that these are installed and that the following command works:
 
-  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb -O /tmp/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
-  sudo dpkg -i /tmp/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+  nvidia-smi
 
 Next install the OpenALPR Nvidia acceleration.  Choose "install_nvidia" from the menu::
 
@@ -222,7 +221,7 @@ The following properties will be set automatically in /etc/openalpr/openalpr.con
 
   hardware_acceleration = 1
   gpu_id = 0
-  gpu_batch_size = 10
+  gpu_batch_size = 5
 
 The batch size controls how many images are simultaneously processed by the GPU.  The default value is usually the best balance of performance and GPU memory usage.  
 
