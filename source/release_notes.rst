@@ -78,7 +78,7 @@ Archived Linux Repositories
   - deb https://deb.openalpr.com/snapshot/bionic-2.7.102/ bionic main
   - deb https://deb.openalpr.com/snapshot/xenial-2.7.102/ xenial main
   - deb https://deb.openalpr.com/snapshot/jetson40-2.7.102/ jetson40 main
-  - deb https://deb.openalpr.com/snapshot/jetson32-2.7.102/ jetson43 main
+  - deb https://deb.openalpr.com/snapshot/jetson43-2.7.102/ jetson43 main
 
 
 2.7.101
