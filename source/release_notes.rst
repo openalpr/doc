@@ -3,6 +3,52 @@
 Release Notes
 ********************
 
+
+2.8.101
+========
+
+Release Date: xxxx
+
+  - Core: 50-100% performance improvement on ARM64
+  - Core: 30% performance improvement on higher-end Nvidia GPUs
+  - Watchman: H264/H265/MJPEG Video decode on Nvidia GPU on Linux (reduces CPU usage)
+  - Core: Decreased memory usage
+  - Core: Small accuracy improvement on plate characters
+  - Core: Accuracy improvement for vehicle make/body type/color
+  - Core: Significant accuracy improvement on state/province recognition
+  - Watchman: Video recording feature supports transcoding to smaller size/framerate (supports using GPU on Jetson)
+  - SDK: Alpr API supports image data passed directly on hardware via GPU memory pointer
+  - SDK: AlprStream API supports asynchronous loading of batched image data on GPU while the current batch is processing
+  - SDK: Alpr API outputs vehicle bounding boxes in addition to license plates
+  - Watchman: Improved video decoding process reduces buffering artifacts under heavy load
+  - Core: Targeted Mexico and Canada country set
+  - Core: Add support/binaries for Ubuntu 20.04
+
+
+Web Server:
+
+  - Modernized Web User Interface
+  - Better usability for mobile devices
+  - Improved coverage for Spanish language translation
+  - Optional Multi-Factor Authentication (E-mail and/or text-message confirmation)
+  - Additional security options for stronger CJIS compliance (Single user sessions, password rotation, password requirements)
+  - Optional field to require all searches to include a user-entered "Justification"
+  - Optimizations to improve performance/memory usage for very large (1 million+) alert lists
+
+
+Bug fixes:
+
+  - Fixed memory leak appearing under some circumstances
+  - Fixed race condition which occasionally caused stream recording to be disabled on agent restart
+  - Fix playback issue when multiple cameras are recording on one agent
+  - Fixed accuracy-affecting bug on GPU processing with many vehicles in view (i.e., 4+ lanes of traffic)
+  - Fixed accuracy issue related to the Iraq dataset
+  - Fixed overflow bug on AlprStream Python binding
+  - Numerous additional bug fixes
+
+
+
+
 2.7.102
 ========
 
@@ -21,6 +67,18 @@ Bug fixes:
   - Fixed possible deadlock on alprstream API when processing corrupted video
   - More responsive log flushing in Docker containers
 
+
+Archived Windows Installers
+
+  - https://deb.openalpr.com/windows-agent/openalpr-agent-2.7.102-signed.exe
+  - https://deb.openalpr.com/windows-sdk/openalpr64-sdk-2.7.102.zip
+
+Archived Linux Repositories
+
+  - deb https://deb.openalpr.com/snapshot/bionic-2.7.102/ bionic main
+  - deb https://deb.openalpr.com/snapshot/xenial-2.7.102/ xenial main
+  - deb https://deb.openalpr.com/snapshot/jetson40-2.7.102/ jetson40 main
+  - deb https://deb.openalpr.com/snapshot/jetson32-2.7.102/ jetson43 main
 
 
 2.7.101
