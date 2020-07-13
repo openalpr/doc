@@ -103,7 +103,6 @@ Linux
      - Type the command alprlink-register -w https://[ip_address_of_web_server] .
      - Type in the e-mail address and password for your OpenALPR Cloud account, or the one you used when installing the on-premise webserver.
 
-
 Docker
 ............
 
@@ -132,7 +131,24 @@ Docker
 
       docker run --restart always -d --cap-add SYS_NICE -P -v openalpr-vol1-config:/etc/openalpr/ -v openalpr-vol1-images:/var/lib/openalpr/ -it openalpr/agent
 
+Jetson
+......
 
+The Watchman Agent can be installed on Nvidia Jetson devices such as the Nano, TX-1, and TX-2.
+These are excellent options for an edge device due to their embedded GPUs.
+Native binaries are available for a small subset of JetPack versions, however additional compatibility can be achieved through our Jetson Docker image
+
+  - **JetPack >= 4.2.1:** pull the Docker image for `openalr/agent:2.8.101-jetson <https://hub.docker.com/r/openalpr/agent/tags>`_ and follow Docker instructions above
+  - **JetPack >= 4.3.0 and < 4.4.0:** follow Linux instructions above
+
+Note that both native and Docker installs will automatically include our additional GPU packages.
+Therefore, you will not need to reference the GPU acceleration section of the documentation.
+When installing via Docker, make sure you have `Nvidia Docker Runtime <https://github.com/NVIDIA/nvidia-docker>`_ available so that the container can access the host GPU.
+You will also need to modify any Docker run commands
+
+  .. code-block:: bash
+
+    docker run --gpus all [other_flags] [image_tag] [command]
 
 Axis Cameras
 ............
