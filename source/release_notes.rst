@@ -7,7 +7,7 @@ Release Notes
 2.8.101
 ========
 
-Release Date: xxxx
+Release Date: July 13, 2020
 
   - Core: 50-100% performance improvement on ARM64
   - Core: 30% performance improvement on higher-end Nvidia GPUs
