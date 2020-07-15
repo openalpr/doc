@@ -134,14 +134,13 @@ Docker
 Jetson
 ......
 
-The Watchman Agent can be installed on Nvidia Jetson devices such as the Nano, TX-1, and TX-2.
-These are excellent options for an edge device due to their embedded GPUs.
-Native binaries are available for a small subset of JetPack versions, however additional compatibility can be achieved through our Jetson Docker image
+The Watchman Agent can be installed on Nvidia Jetson devices such as the Nano, TX-1, and TX-2.  These are excellent options for an edge device due to the power-efficient, embedded GPU.
+Native binaries are available for a JetPack versions 4.3.0.  The recommended package for other JetPack versions is the Jetson Docker image
 
   - **JetPack >= 4.2.1:** pull the Docker image for `openalr/agent:2.8.101-jetson <https://hub.docker.com/r/openalpr/agent/tags>`_ and follow Docker instructions above
-  - **JetPack >= 4.3.0 and < 4.4.0:** follow Linux instructions above
+  - **JetPack = 4.3.0:** follow Linux install instructions above
 
-Note that both native and Docker installs will automatically include our additional GPU packages.
+Note that both native and Docker installs will automatically include the additional GPU packages.
 Therefore, you will not need to reference the GPU acceleration section of the documentation.
 When installing via Docker, make sure you have `Nvidia Docker Runtime <https://github.com/NVIDIA/nvidia-docker>`_ available so that the container can access the host GPU.
 You will also need to modify any Docker run commands
