@@ -198,7 +198,7 @@ To register your agent using the command line run::
 NVIDIA GPU Acceleration
 -------------------------
 
-Watchman Agent performance can also be drastically accelerated by Nvidia GPU hardware.  OpenALPR maintains binaries for CUDA 10.0 using CuDNN 7 on 64-bit Ubuntu Linux 20.04.  The OpenALPR software has been compiled for CUDA hardware versions 5.2 5.3 6.0 6.1 6.2 7.0 7.2 7.5.  You can verify your CUDA version here: https://developer.nvidia.com/cuda-gpus
+Watchman Agent performance can also be drastically accelerated by Nvidia GPU hardware.  OpenALPR maintains binaries for CUDA 11.0 using CuDNN 8 on 64-bit Ubuntu Linux 20.04.  On Ubuntu 18.04 the software runs on CUDA 10.0 using CuDNN 7.  The OpenALPR software has been compiled for CUDA hardware versions 5.2 5.3 6.0 6.1 6.2 7.0 7.2 7.5 8.0.  You can verify your CUDA version here: https://developer.nvidia.com/cuda-gpus
 
 Ubuntu 18.04
 ................
@@ -224,7 +224,16 @@ Now you may install the OpenALPR GPU acceleration package::
 Ubuntu 20.04
 ...............
 
-Nvidia drivers are included in the standard Ubuntu repos in Ubuntu 20.04.  Make sure that these are installed and that the following command works:
+First install the Nvidia GPU drivers via the official Nvidia repository:
+
+  wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+  sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
+  sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/7fa2af80.pub
+  sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/ /"
+  sudo apt-get update
+  sudo apt-get -y install cuda-11-0
+
+After installation, you will likely need to reboot.  Make sure that the drivers are installed using the following command:
 
   nvidia-smi
 
