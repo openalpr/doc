@@ -224,7 +224,7 @@ Now you may install the OpenALPR GPU acceleration package::
 Ubuntu 20.04
 ...............
 
-First install the Nvidia GPU drivers via the official Nvidia repository:
+First install the Nvidia GPU drivers via the official Nvidia repository::
 
   wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
   sudo mv cuda-ubuntu2004.pin /etc/apt/preferences.d/cuda-repository-pin-600
@@ -233,7 +233,7 @@ First install the Nvidia GPU drivers via the official Nvidia repository:
   sudo apt-get update
   sudo apt-get -y install cuda-11-0
 
-After installation, you will likely need to reboot.  Make sure that the drivers are installed using the following command:
+After installation, you will likely need to reboot.  Make sure that the drivers are installed using the following command::
 
   nvidia-smi
 
