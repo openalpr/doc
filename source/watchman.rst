@@ -165,7 +165,12 @@ The following prerequisites are required:
 
 After checking the prequisites, follow these steps for installation:
 
-  - Download the latest `Watchman Axis camera Agent <https://deb.openalpr.com/axis/OpenALPR_Cloud_latest_mipsisa32r2el.eap>`_
+  - Download the latest OpenALPR Axis App:
+
+    - For Axis ARTPEC-6, ARTPEC-7, and most Ambarella-based processors: `OpenALPR Axis Agent <https://deb.openalpr.com/axis/OpenALPR_Cloud_latest_armv7hf.eap>`_
+    - For Axis ARTPEC-5 and earlier processors: `OpenALPR Axis Agent <https://deb.openalpr.com/axis/OpenALPR_Cloud_latest_mipsisa32r2el.eap>`_
+    - For less common Axis cameras and or previous app releases check `All Axis Camera Apps <https://deb.openalpr.com/axis/index.html>`_
+
   - Login to your Axis Camera
   - Click Setup in the top right corner
   - Click Applications
