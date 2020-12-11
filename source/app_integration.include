@@ -48,6 +48,7 @@ To configure OpenALPR to make the results available via the local queue, set the
     upload_data = 0
     websockets_enabled = 0
     web_server_enabled = 1
+    use_beanstalkd = 1
 
 In addition, you must add a valid on-premises license to /etc/openalpr/license.conf
 
