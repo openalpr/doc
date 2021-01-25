@@ -147,7 +147,7 @@ You will also need to modify any Docker run commands
 
   .. code-block:: bash
 
-    docker run --runtime nvidia [other_flags] [image_tag] [command]
+    docker run --runtime nvidia -e NVIDIA_DRIVER_CAPABILITIES=compute,video [other_flags] [image_tag] [command]
 
 Axis Cameras
 ............
