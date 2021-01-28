@@ -408,8 +408,13 @@ The agent must be configured to connect to one or more camera streams to process
 To add a camera stream:
 
 1. Create a new unique file in /etc/openalpr/stream.d/ with the extension ".conf".  For example, create a file named "my_new_camera.conf".
-2. Add a line to the file with the following format:
-   - stream = [Camera HTTP/RTSP stream URL]
+2. Add the following content
+
+  .. code-block:: bash
+
+    camera_id = [some unique number]
+    stream = [Camera HTTP/RTSP stream URL]
+
 3. Restart the Watchman Agent.
 
 
@@ -447,6 +452,17 @@ Once you have experimented with GStreamer to display video, you can now integrat
     2. Add gstreamer_format = [your custom gstreamer pipeline]
     3. Remove the "autovideosink" and replace it with "appsink name=sink max-buffers=5"
     4. Make sure you do not include the "gst-launch-1.0" command at the beginning.
+       Also, avoid quote marks as these will cause a syntax error from GStreamer's parser
+    5. Lastly, add stream = [any_string] and camera_id = [any_number].
+       These are required for the agent to recognize your configuration file as a proper camera
+
+A complete configuration example using the webcam pipeline above would be
+
+  .. code-block:: bash
+
+    stream = dummy
+    camera_id = 1234
+    gstreamer_format = v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1,width=1280,height=720 ! decodebin ! videoconvert ! video/x-raw,format=BGR ! videoconvert ! appsink name=sink max-buffers=5
 
 If you are using the AlprStream SDK, you will apply the pipeline to the API function "connect_video_stream_url" by passing it a string for "gstreamer_pipeline_format"
 

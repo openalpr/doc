@@ -226,7 +226,13 @@ For this option, make sure your Agent is registered with the cloud or an on-prem
 
   1. Follow approach 3.1 to determine your camera's stream URL
   2. Open a blank text file in the Agent's stream folder (located at /etc/openalpr/stream.d on Linux or C:\\OpenALPR\\Agent\\etc\\openalpr\\stream.d on Windows)
-  3. Add a line to the file with the following format: stream = [Camera HTTP/RTSP stream URL]
+  3. Add the following lines to the file
+
+  .. code-block:: bash
+
+    camera_id = [some unique number]
+    stream = [Camera HTTP/RTSP stream URL]
+
   4. Save with the file with a unique name and .conf extension (i.e. my_new_camera.conf)
   5. Restart the Agent
 
