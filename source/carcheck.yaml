@@ -2,9 +2,9 @@ swagger: '2.0'
 
 info:
   version: "3.0.1"
-  title: OpenALPR CarCheck API
+  title: Rekor CarCheck API
   description: |
-    The OpenALPR CarCheck API allows you to send images to the cloud for processing. 
+    The Rekor CarCheck API allows you to send images to the cloud for processing. 
     The image will be analyzed for license plates and vehicle make/models.  The results 
     are returned in JSON format
 
@@ -21,7 +21,7 @@ paths:
     post:
       operationId: recognizeFile
       description: |
-        Send an image for OpenALPR to analyze and provide metadata back
+        Send an image for Rekor to analyze and provide metadata back
         The image is sent as a file using a form data POST
       consumes: 
         - "multipart/form-data"
@@ -66,8 +66,8 @@ paths:
     post:
       operationId: recognizeUrl
       description: |
-        Send an image for OpenALPR to analyze and provide metadata back
-        The image is sent as a URL.  The OpenALPR service will download the image 
+        Send an image for Rekor to analyze and provide metadata back
+        The image is sent as a URL.  The Rekor service will download the image 
         and process it
       consumes: 
         - application/json
@@ -110,7 +110,7 @@ paths:
     post:
       operationId: recognizeBytes
       description: |
-        Send an image for OpenALPR to analyze and provide metadata back
+        Send an image for Rekor to analyze and provide metadata back
         The image is sent as base64 encoded bytes.
       consumes: 
         - application/json
@@ -258,7 +258,7 @@ parameters:
     name: country
     in: query
     description: |
-      Defines the training data used by OpenALPR.  "us" analyzes 
+      Defines the training data used by Rekor.  "us" analyzes 
       North-American style plates.  "eu" analyzes European-style plates.
       
       This field is required if using the "plate" task

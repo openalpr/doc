@@ -8,10 +8,10 @@ produces:
   - application/json
 
 info:
-  title: Watchman REST API
+  title: Rekor Scout API
   version: v2.0.1
   description: |
-    The OpenALPR Watchman Web Server API allows you to search license plate data programmatically from the 
+    The Rekor Scout Web Server API allows you to search license plate data programmatically from the 
     OpenALPR Web server.  Using this API you can search for license plate groups, individual 
     reads, and alerts.  You can also retrieve the plate images from the agent.
 
