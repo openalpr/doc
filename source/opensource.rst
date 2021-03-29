@@ -177,7 +177,7 @@ The following are the instructions for compiling on OS X, tested on OS X 10.9.5 
 Using Homebrew
 .................
 
-  * brew tap homebrew/science
+  * brew update
   * brew install openalpr
 
 Compiling OpenALPR Manually
